@@ -534,6 +534,19 @@ body.overlay-mode.page-strategy::before {
   .strategy-grid {
     gap: 20px 28px;
   }
+
+  .site-footer {
+    width: 100%;
+    max-width: none;
+  }
+
+  .site-footer::before {
+    width: 100%;
+  }
+
+  .footer-content {
+    width: 100%;
+  }
 }
 
 /* ---- Mobile Landscape (600px - 767px) ---------------------------- */
@@ -916,8 +929,6 @@ body.overlay-mode.page-strategy::before {
   }
 
   .site-footer {
-    width: 100%;
-    max-width: none;
     margin-top: auto;
     padding: 40px var(--outer-margin) 32px;
   }
