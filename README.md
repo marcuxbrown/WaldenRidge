@@ -49,6 +49,7 @@ This is a pixel-perfect recreation of the Walden Ridge marketing site, built to 
    http://localhost:8000/our-story/
    http://localhost:8000/portfolio/
    http://localhost:8000/strategy/
+   http://localhost:8000/governance/
    ```
 
 ## Overlay Validation Mode
@@ -121,6 +122,8 @@ walden-ridge/
 ├── portfolio/
 │   └── index.html
 ├── strategy/
+│   └── index.html
+├── governance/
 │   └── index.html
 ├── styles.css
 └── README.md

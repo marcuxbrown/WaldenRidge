@@ -8,47 +8,48 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../favicon.png">
 
+  <script>
+    document.documentElement.classList.add('js');
+  </script>
+
   <!-- Adobe Fonts (Typekit) - Elza Text -->
   <link rel="preconnect" href="https://use.typekit.net" crossorigin>
   <link rel="stylesheet" href="https://use.typekit.net/ckx4rji.css">
 
   <!-- Site Styles -->
   <link rel="stylesheet" href="../styles.css">
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 </head>
 <body class="page-our-story">
 
   <header class="site-header">
-    <div class="logo-block">
+    <a href="../" class="logo-block">
       <h1 class="logo-wordmark">WALDEN RIDGE</h1>
       <p class="logo-subtitle">Hospitality, Design, and Construction</p>
-    </div>
+    </a>
 
     <nav class="main-nav">
       <a href="../our-story/">Our Story</a>
       <a href="../strategy/">Strategy</a>
       <a href="../portfolio/">Portfolio</a>
-      <a href="../investors/">Investors</a>
+      <a href="../governance/">Governance</a>
     </nav>
   </header>
 
   <main class="container">
+    <div class="reveal-overlay" aria-hidden="true"></div>
     <div class="our-story-intro">
       <h1>Our Story</h1>
     </div>
 
-    <div class="our-story-grid">
+    <div class="our-story-grid no-hero">
 
       <div class="content-column">
-        <p>Walden Ridge executes brand-mandated renovation programs across select-service and upscale hotel assets. Operating since 2010, the company maintains repeat relationships with multi-asset owners across Hilton, Marriott, IHG, and Hyatt flag families.</p>
+        <p>Walden Ridge executes renovation programs for select-service and upscale hotel assets. Operating since 2010, the company works repeatedly with multi-asset owners across Hilton, Marriott, IHG, and Hyatt flag families.</p>
 
-        <p>Hotel renovation demand is non-discretionary. Brand families enforce Property Improvement Plans (PIPs) as a condition of maintaining franchise affiliation. Owners do not control timing, scope, or specification—brands do. This creates predictable, mandatory capital cycles that persist across economic conditions.</p>
-
-        <p>Walden Ridge competes on execution certainty, not lowest bid. Vertical integration across construction, millwork fabrication, and FF&E procurement reduces vendor handoff risk and schedule variance. Renovations complete in 4–6 months, enabling multiple capital deployments per year and reducing duration exposure relative to conversions (14–24 months) or new builds (24+ months).</p>
-      </div>
-
-      <div class="hero-column">
-        <img src="../assets/images/hero.jpg" alt="Cumberland Plateau and Appalachian Mountains landscape" class="hero-image">
-
+        <p>In branded hospitality, renovation timing is scheduled by the system, not by impulse. The work repeats in known cycles, with shorter execution windows that keep owners, contractors, and capital partners aligned on predictable outcomes.</p>
       </div>
 
     </div>
@@ -72,6 +73,33 @@
         document.body.classList.toggle('overlay-mode');
       }
     });
+
+    // GSAP entrance motion
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced || !window.gsap) {
+      document.documentElement.classList.add('no-motion');
+    } else {
+      const run = () => {
+        const tl = gsap.timeline({ defaults: { ease: 'sine.out', duration: 0.9 } });
+        tl.to('.reveal-overlay', { scaleY: 0, duration: 0.9, ease: 'sine.inOut' }, 0.05)
+          .from('.site-header', { autoAlpha: 0, duration: 0.8 }, 0)
+          .from('main', { autoAlpha: 0, duration: 1.0 }, 0.08);
+      };
+      let ran = false;
+      const safeRun = () => { if (ran) return; ran = true; run(); };
+      const timeout = setTimeout(safeRun, 500);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+          clearTimeout(timeout);
+          requestAnimationFrame(safeRun);
+        });
+      } else {
+        window.addEventListener('load', () => {
+          clearTimeout(timeout);
+          requestAnimationFrame(safeRun);
+        }, { once: true });
+      }
+    }
   </script>
 
 </body>

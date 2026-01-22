@@ -8,34 +8,42 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../favicon.png">
 
+  <script>
+    document.documentElement.classList.add('js');
+  </script>
+
   <!-- Adobe Fonts (Typekit) - Elza Text -->
   <link rel="preconnect" href="https://use.typekit.net" crossorigin>
   <link rel="stylesheet" href="https://use.typekit.net/ckx4rji.css">
 
   <!-- Site Styles -->
   <link rel="stylesheet" href="../styles.css">
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 </head>
 <body class="page-portfolio">
 
   <header class="site-header">
-    <div class="logo-block">
+    <a href="../" class="logo-block">
       <h1 class="logo-wordmark">WALDEN RIDGE</h1>
       <p class="logo-subtitle">Hospitality, Design, and Construction</p>
-    </div>
+    </a>
 
     <nav class="main-nav">
       <a href="../our-story/">Our Story</a>
       <a href="../strategy/">Strategy</a>
       <a href="../portfolio/">Portfolio</a>
-      <a href="../investors/">Investors</a>
+      <a href="../governance/">Governance</a>
     </nav>
   </header>
 
   <main class="container">
+    <div class="reveal-overlay" aria-hidden="true"></div>
 
     <div class="portfolio-intro">
       <h1>Portfolio</h1>
-      <p class="portfolio-intro-text">Walden Ridge executes brand-mandated renovation programs across select ownership platforms, with concentration in Hilton, Marriott, and IHG flag families.</p>
+      <p class="portfolio-intro-text">Walden Ridge executes brand-mandated renovation programs across select ownership platforms, with concentration in Hilton, Marriott, and IHG flag families and repeat engagement across multi-asset portfolios.</p>
     </div>
 
     <div class="portfolio-layout">
@@ -127,6 +135,38 @@
         document.body.classList.toggle('overlay-mode');
       }
     });
+
+    // GSAP entrance motion
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced || !window.gsap) {
+      document.documentElement.classList.add('no-motion');
+    } else {
+      const run = () => {
+        const tl = gsap.timeline({ defaults: { ease: 'sine.out', duration: 0.9 } });
+        tl.to('.reveal-overlay', { scaleY: 0, duration: 0.9, ease: 'sine.inOut' }, 0.05)
+          .from('.site-header', { autoAlpha: 0, duration: 0.8 }, 0)
+          .from('main', { autoAlpha: 0, duration: 1.0 }, 0.08)
+          .from('.portfolio-sidebar', { autoAlpha: 0, duration: 0.8 }, 0.22);
+        const regions = gsap.utils.toArray('.region-section');
+        if (regions.length) {
+          tl.from(regions, { autoAlpha: 0, stagger: 0.08, duration: 0.9 }, 0.18);
+        }
+      };
+      let ran = false;
+      const safeRun = () => { if (ran) return; ran = true; run(); };
+      const timeout = setTimeout(safeRun, 500);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+          clearTimeout(timeout);
+          requestAnimationFrame(safeRun);
+        });
+      } else {
+        window.addEventListener('load', () => {
+          clearTimeout(timeout);
+          requestAnimationFrame(safeRun);
+        }, { once: true });
+      }
+    }
   </script>
 
 </body>

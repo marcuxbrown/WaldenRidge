@@ -90,7 +90,7 @@ body {
 @keyframes breatheIn {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -116,14 +116,14 @@ body {
   max-width: 1440px;
   margin: 0 auto;
   margin-bottom: 48px;
-  opacity: 0;
-  animation: breatheIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
 }
 
 .logo-block {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  text-decoration: none;
+  color: inherit;
 }
 
 .logo-wordmark {
@@ -175,8 +175,7 @@ body {
 
 main {
   padding-top: 0;
-  opacity: 0;
-  animation: breatheIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+  position: relative;
 }
 
 /* ---- Typography -------------------------------------------------- */
@@ -243,6 +242,11 @@ p:last-child {
   align-items: start;
   margin-bottom: 0;
   position: relative;
+}
+
+.our-story-grid.no-hero {
+  grid-template-columns: 1fr;
+  gap: 0;
 }
 
 .hero-column {
@@ -331,7 +335,7 @@ p:last-child {
   height: 1px;
   width: 0;
   background: rgba(26, 26, 26, 0.12);
-  animation: expandWidth 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+  animation: expandWidth 0.9s cubic-bezier(0.16, 0.84, 0.3, 1) 0.2s forwards;
 }
 
 @keyframes expandWidth {
@@ -365,8 +369,6 @@ p:last-child {
 }
 
 .portfolio-sidebar {
-  opacity: 0;
-  animation: fadeIn 0.6s ease-out 0.5s forwards;
 }
 
 .portfolio-sidebar .sidebar-title,
@@ -377,53 +379,49 @@ p:last-child {
   /* Inherit all sidebar styles from .page-sidebar */
 }
 
-/* ---- Investors Page --------------------------------------------- */
-.investors-intro {
+/* ---- Governance Page -------------------------------------------- */
+.governance-intro {
   margin-bottom: 32px;
   max-width: 900px;
   position: relative;
   padding-bottom: 32px;
+  z-index: 1;
 }
 
-.investors-intro::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 1px;
-  width: 0;
-  background: rgba(26, 26, 26, 0.12);
-  animation: expandWidth 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
-}
-
-.investors-intro h1 {
+.governance-intro h1 {
   font-size: var(--fs-h1);
   font-weight: 500;
   line-height: var(--lh-h1);
   margin-bottom: 12px;
 }
 
-.investors-text {
+.governance-text {
   font-size: var(--fs-body);
   line-height: var(--lh-body);
   font-weight: 300;
   margin-bottom: 18px;
 }
 
-.investors-contact {
+.governance-divider {
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.12);
+  margin-bottom: 24px;
+}
+
+.governance-contact {
   font-size: var(--fs-body);
   line-height: var(--lh-body);
   font-weight: 300;
   margin-top: 32px;
 }
 
-.investors-contact a {
+.governance-contact a {
   color: var(--color-link);
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
 
-.investors-contact a:hover {
+.governance-contact a:hover {
   opacity: 0.6;
 }
 
@@ -438,8 +436,6 @@ p:last-child {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  opacity: 0;
-  animation: breatheIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 .region-section-combined {
@@ -494,7 +490,8 @@ p:last-child {
 .page-portfolio .site-footer,
 .page-strategy .site-footer,
 .page-our-story .site-footer,
-.page-investors .site-footer {
+.page-governance .site-footer,
+.page-home .site-footer {
   margin-top: 240px;
 }
 
@@ -513,7 +510,7 @@ p:last-child {
   height: 1px;
   width: 0;
   background: rgba(26, 26, 26, 0.12);
-  animation: expandWidth 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+  animation: expandWidth 0.9s cubic-bezier(0.16, 0.84, 0.3, 1) 0.2s forwards;
 }
 
 .strategy-layout {
@@ -974,8 +971,44 @@ body.overlay-mode.page-strategy::before {
 
 /* ---- Right Sidebar ----------------------------------------------- */
 .page-sidebar {
+}
+
+/* JS-driven animation states */
+.js .site-header,
+.js main,
+.js .portfolio-sidebar,
+.js .region-section,
+.js .page-sidebar {
   opacity: 0;
-  animation: fadeIn 0.6s ease-out 0.5s forwards;
+  will-change: opacity;
+}
+
+.reveal-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--color-bg);
+  transform-origin: top;
+  transform: scaleY(1);
+  will-change: transform;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.js .reveal-overlay {
+  transform: scaleY(1);
+}
+
+.no-motion .site-header,
+.no-motion main,
+.no-motion .portfolio-sidebar,
+.no-motion .region-section,
+.no-motion .page-sidebar {
+  opacity: 1 !important;
+}
+
+.no-motion .reveal-overlay {
+  transform: scaleY(0);
+  opacity: 0;
 }
 
 .sidebar-title {
@@ -1084,6 +1117,82 @@ body.overlay-mode.page-strategy::before {
   .portfolio-grid {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+}
+
+/* ---- Home Page --------------------------------------------------- */
+.home-hero {
+  margin-top: 8px;
+}
+
+.home-hero-media {
+  position: relative;
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #e9e6e2;
+}
+
+.home-hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.home-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(245, 243, 240, 0.12) 0%, rgba(245, 243, 240, 0.55) 75%, rgba(245, 243, 240, 0.8) 100%);
+}
+
+.home-hero-text {
+  position: absolute;
+  left: 40px;
+  bottom: 32px;
+  max-width: 560px;
+  color: var(--color-text);
+}
+
+.home-hero-text h1 {
+  font-size: 48px;
+  line-height: 1.15;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.home-hero-text p {
+  font-size: 18px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+@media (max-width: 1023px) {
+  .home-hero-text {
+    left: 32px;
+    bottom: 28px;
+    max-width: 520px;
+  }
+  .home-hero-text h1 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 833px) {
+  .home-hero-text {
+    position: static;
+    padding: 20px 20px 0;
+  }
+  .home-hero-overlay {
+    display: none;
+  }
+}
+
+@media (max-width: 599px) {
+  .home-hero-text h1 {
+    font-size: 32px;
+  }
+  .home-hero-text p {
+    font-size: 16px;
   }
 }
 
@@ -1234,7 +1343,9 @@ body.overlay-mode.page-strategy::before {
 
   .page-portfolio .site-footer,
   .page-strategy .site-footer,
-  .page-our-story .site-footer {
+  .page-our-story .site-footer,
+  .page-governance .site-footer,
+  .page-home .site-footer {
     margin-top: auto;
   }
 

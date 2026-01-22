@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Governance & Oversight - Walden Ridge</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../favicon.png">
+
+  <script>
+    document.documentElement.classList.add('js');
+  </script>
+
+  <!-- Adobe Fonts (Typekit) - Elza Text -->
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+  <link rel="stylesheet" href="https://use.typekit.net/ckx4rji.css">
+
+  <!-- Site Styles -->
+  <link rel="stylesheet" href="../styles.css">
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+</head>
+<body class="page-governance">
+
+  <header class="site-header">
+    <a href="../" class="logo-block">
+      <h1 class="logo-wordmark">WALDEN RIDGE</h1>
+      <p class="logo-subtitle">Hospitality, Design, and Construction</p>
+    </a>
+
+    <nav class="main-nav">
+      <a href="../our-story/">Our Story</a>
+      <a href="../strategy/">Strategy</a>
+      <a href="../portfolio/">Portfolio</a>
+      <a href="../governance/">Governance</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="reveal-overlay" aria-hidden="true"></div>
+
+    <div class="governance-intro">
+      <h1>Governance & Oversight</h1>
+
+      <p class="governance-text governance-divider">Walden Ridge is structured to support durability, accountability, and institutional engagement.<br>Separation exists between ownership, management, and advisory oversight, aligning incentives and decision authority.</p>
+
+      <h3>Board of Directors</h3>
+      <p class="governance-text"><strong>Nathan Moore, CEO</strong> — Construction executive with 25+ years across residential, multifamily, and hospitality development, specializing in renovation execution and millwork integration. Since entering the hotel sector in 2009, he has overseen 60+ branded hotel renovations across Hilton, Marriott, Hyatt, Wyndham, La Quinta, and Extended Stay, and participated in six ground-up developments. Board focus: construction execution, millwork integration, schedule risk mitigation.</p>
+
+      <h3>Advisory Board</h3>
+      <p class="governance-text"><strong>Larry E. Collier Jr., CHA</strong> — Hospitality operations executive with nearly four decades advising ownership groups on renovation-driven value creation, repositioning, and operational stabilization. Director of Operations at H.I. Development Corp., overseeing multi-property portfolios, complex renovations, and brand conversions; contributor to top-tier recognitions from IHG Hotels & Resorts and Wyndham Hotel Group. Board focus: hospitality operations, renovation oversight, capital prioritization, post-renovation performance.</p>
+
+      <p class="governance-contact">For institutional inquiries: <a href="mailto:info@waldenridgeco.com">info@waldenridgeco.com</a></p>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <a href="mailto:info@waldenridgeco.com">info@waldenridgeco.com</a>
+        <div class="footer-location">River City, USA</div>
+      </div>
+      <img src="../logo.png" alt="WR" class="footer-logo">
+    </div>
+  </footer>
+
+  <script>
+    // Overlay toggle for pixel-perfect validation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'o' || e.key === 'O') {
+        document.body.classList.toggle('overlay-mode');
+      }
+    });
+
+    // GSAP entrance motion
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced || !window.gsap) {
+      document.documentElement.classList.add('no-motion');
+    } else {
+      const run = () => {
+        const tl = gsap.timeline({ defaults: { ease: 'sine.out', duration: 0.9 } });
+        tl.to('.reveal-overlay', { scaleY: 0, duration: 0.9, ease: 'sine.inOut' }, 0.05)
+          .from('.site-header', { autoAlpha: 0, duration: 0.8 }, 0)
+          .from('main', { autoAlpha: 0, duration: 1.0 }, 0.08);
+      };
+      let ran = false;
+      const safeRun = () => { if (ran) return; ran = true; run(); };
+      const timeout = setTimeout(safeRun, 500);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+          clearTimeout(timeout);
+          requestAnimationFrame(safeRun);
+        });
+      } else {
+        window.addEventListener('load', () => {
+          clearTimeout(timeout);
+          requestAnimationFrame(safeRun);
+        }, { once: true });
+      }
+    }
+  </script>
+
+</body>
+</html>

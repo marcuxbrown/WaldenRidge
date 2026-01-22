@@ -186,9 +186,27 @@ Each block's body text line breaks should match exactly:
 
 ---
 
+## GOVERNANCE PAGE
+
+### Open http://localhost:8000/governance/
+
+### Layout & Typography
+- [ ] H1 "Governance & Oversight" matches other pages' H1 styling
+- [ ] Body text uses Elza Text Light (300), size 18px
+- [ ] Paragraph spacing matches global body rhythm
+- [ ] Section headings (H3) match section heading styling
+- [ ] Contact line uses standard link styling
+
+### Content Presence
+- [ ] Governance summary appears above Board of Directors section
+- [ ] Board of Directors section present
+- [ ] Advisory Board section present
+
+---
+
 ## CROSS-PAGE CONSISTENCY
 
-- [ ] Header is identical across all three pages
+- [ ] Header is identical across all four pages
 - [ ] Container width consistent: 1280px (with 80px outer margins)
 - [ ] H1 styling identical on all pages
 - [ ] Body text styling consistent throughout

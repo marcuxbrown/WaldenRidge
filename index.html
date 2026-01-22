@@ -2,11 +2,96 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=./our-story/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Walden Ridge</title>
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
+
+  <script>
+    document.documentElement.classList.add('js');
+  </script>
+
+  <!-- Adobe Fonts (Typekit) - Elza Text -->
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+  <link rel="stylesheet" href="https://use.typekit.net/ckx4rji.css">
+
+  <!-- Site Styles -->
+  <link rel="stylesheet" href="./styles.css">
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 </head>
-<body>
-  <p>Redirecting to <a href="./our-story/">Our Story</a>...</p>
+<body class="page-home">
+
+  <header class="site-header">
+    <a href="./" class="logo-block">
+      <h1 class="logo-wordmark">WALDEN RIDGE</h1>
+      <p class="logo-subtitle">Hospitality, Design, and Construction</p>
+    </a>
+
+    <nav class="main-nav">
+      <a href="./our-story/">Our Story</a>
+      <a href="./strategy/">Strategy</a>
+      <a href="./portfolio/">Portfolio</a>
+      <a href="./governance/">Governance</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="reveal-overlay" aria-hidden="true"></div>
+
+    <section class="home-hero">
+      <div class="home-hero-media">
+        <img src="./assets/images/S.png" alt="Chattanooga and Cumberland Plateau landscape" class="home-hero-image">
+        <div class="home-hero-overlay" aria-hidden="true"></div>
+        <div class="home-hero-text">
+          <h1>Renovation, repeated with discipline.</h1>
+          <p>Walden Ridge executes within brand systems, delivering predictable outcomes for owners, contractors, and capital partners.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <a href="mailto:info@waldenridgeco.com">info@waldenridgeco.com</a>
+        <div class="footer-location">River City, USA</div>
+      </div>
+      <img src="./logo.png" alt="WR" class="footer-logo">
+    </div>
+  </footer>
+
+  <script>
+    // GSAP entrance motion
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced || !window.gsap) {
+      document.documentElement.classList.add('no-motion');
+    } else {
+      const run = () => {
+        const tl = gsap.timeline({ defaults: { ease: 'sine.out', duration: 0.9 } });
+        tl.to('.reveal-overlay', { scaleY: 0, duration: 0.9, ease: 'sine.inOut' }, 0.05)
+          .from('.site-header', { autoAlpha: 0, duration: 0.8 }, 0)
+          .from('main', { autoAlpha: 0, duration: 1.0 }, 0.08);
+      };
+      let ran = false;
+      const safeRun = () => { if (ran) return; ran = true; run(); };
+      const timeout = setTimeout(safeRun, 500);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+          clearTimeout(timeout);
+          requestAnimationFrame(safeRun);
+        });
+      } else {
+        window.addEventListener('load', () => {
+          clearTimeout(timeout);
+          requestAnimationFrame(safeRun);
+        }, { once: true });
+      }
+    }
+  </script>
+
 </body>
 </html>

@@ -29,6 +29,11 @@ walden-ridge/
 │                                          • Strategy blocks with headings
 │                                          • Body text with line breaks
 │
+├── 📁 governance/
+│   └── 📄 index.html                      Governance page
+│                                          • Oversight structure and board
+│                                          • Advisory governance details
+│
 ├── 📁 assets/
 │   │
 │   ├── 📁 fonts/
@@ -146,6 +151,14 @@ PAGES OVERVIEW
    • Headings + body text
    • Manual line breaks match reference
 
+4️⃣ GOVERNANCE PAGE
+   URL: http://localhost:8000/governance/
+   Layout: Single-column content block
+   Features:
+   • Governance & oversight summary
+   • Board of Directors
+   • Advisory Board
+
 ================================================================================
 
 GLOBAL HEADER (All Pages)
@@ -156,7 +169,7 @@ Left side:
   • "Design, Construction, Hospitality" (Elza Light, 18px)
 
 Right side:
-  • Navigation: Our Story | Strategy | Portfolio | Investors
+  • Navigation: Our Story | Strategy | Portfolio | Governance
   • Elza Regular, 18px
   • 60px spacing between items
 

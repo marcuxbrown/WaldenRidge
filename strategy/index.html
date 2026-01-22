@@ -8,34 +8,42 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../favicon.png">
 
+  <script>
+    document.documentElement.classList.add('js');
+  </script>
+
   <!-- Adobe Fonts (Typekit) - Elza Text -->
   <link rel="preconnect" href="https://use.typekit.net" crossorigin>
   <link rel="stylesheet" href="https://use.typekit.net/ckx4rji.css">
 
   <!-- Site Styles -->
   <link rel="stylesheet" href="../styles.css">
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 </head>
 <body class="page-strategy">
 
   <header class="site-header">
-    <div class="logo-block">
+    <a href="../" class="logo-block">
       <h1 class="logo-wordmark">WALDEN RIDGE</h1>
       <p class="logo-subtitle">Hospitality, Design, and Construction</p>
-    </div>
+    </a>
 
     <nav class="main-nav">
       <a href="../our-story/">Our Story</a>
       <a href="../strategy/">Strategy</a>
       <a href="../portfolio/">Portfolio</a>
-      <a href="../investors/">Investors</a>
+      <a href="../governance/">Governance</a>
     </nav>
   </header>
 
   <main class="container">
+    <div class="reveal-overlay" aria-hidden="true"></div>
 
     <div class="strategy-intro">
       <h1>Strategy</h1>
-      <p class="strategy-intro-text">We remove execution risk from brand-mandated capital cycles by controlling schedule, budget, and compliance through vertical integration</p>
+      <p class="strategy-intro-text">We reduce execution variance in brand-mandated capital cycles by controlling schedule, budget discipline, and compliance sequencing through vertical integration.</p>
     </div>
 
     <div class="strategy-layout">
@@ -45,7 +53,7 @@
 
       <div class="strategy-block">
         <h3 class="strategy-heading">Compliance-Driven Procurement Authority</h3>
-        <p class="strategy-text">Tight control of approved vendors, submittals, and material substitutions to protect inspection outcomes and working capital timing.</p>
+        <p class="strategy-text">Approved vendors, submittals, and substitutions are governed to protect inspection outcomes and working capital timing.</p>
       </div>
 
       <div class="strategy-block">
@@ -55,17 +63,27 @@
 
       <div class="strategy-block">
         <h3 class="strategy-heading">Vertical Integration for Control</h3>
-        <p class="strategy-text">In-house millwork fabrication, FF&E procurement, and MEP coordination eliminate vendor handoff risk and approval delays, reducing schedule variance.</p>
+        <p class="strategy-text">In-house millwork fabrication, FF&E procurement, and MEP coordination reduce handoffs and approval delays, lowering schedule variance.</p>
       </div>
 
       <div class="strategy-block">
         <h3 class="strategy-heading">Code Compliance & Inspection Readiness</h3>
-        <p class="strategy-text">We pre-qualify all MEP, fire/life-safety, and ADA work to eliminate inspection delays and certificate of occupancy risk, ensuring on-time re-flagging and revenue restoration.</p>
+        <p class="strategy-text">MEP, fire/life-safety, and ADA work is sequenced for inspection readiness to reduce approval delays and reopening risk.</p>
       </div>
 
       <div class="strategy-block">
         <h3 class="strategy-heading">Repeatability Over Speculation</h3>
-        <p class="strategy-text">We execute repeat renovation programs across Hilton, Marriott, and IHG portfolios, building institutional knowledge of brand standards and inspection protocols. Each repeat engagement compounds execution advantage through procurement efficiency, schedule certainty, and reduced approval friction.</p>
+        <p class="strategy-text">We execute repeat renovation programs across Hilton, Marriott, and IHG portfolios, building institutional knowledge of brand standards and inspection protocols. Repeat engagements improve procurement efficiency, schedule certainty, and approval velocity.</p>
+      </div>
+
+      <div class="strategy-block">
+        <h3 class="strategy-heading">Scope Discipline & Risk Boundaries</h3>
+        <p class="strategy-text">Scope decisions prioritize execution control and inspection outcomes over bid volume. Building systems are selectively integrated where coordination and compliance authority reduce execution risk.</p>
+      </div>
+
+      <div class="strategy-block">
+        <h3 class="strategy-heading">Platform Services</h3>
+        <p class="strategy-text">Early-stage scope planning and cost appraisal reduce execution variance and prevent over-capitalization in brand-mandated renovations. Conversions are considered only when internal execution and procurement materially reduce cost basis.</p>
       </div>
 
         </div>
@@ -80,12 +98,20 @@
             <div class="sidebar-item-text">Property Improvement Plans enforced by Hilton, Marriott, IHG, and Hyatt require strict adherence to franchise specifications and inspection protocols.</div>
           </li>
           <li>
+            <div class="sidebar-item-title">Procurement Authority</div>
+            <div class="sidebar-item-text">Approved vendors, submittals, and substitutions are governed to protect inspection outcomes and working capital timing.</div>
+          </li>
+          <li>
             <div class="sidebar-item-title">Occupied Asset Protocols</div>
             <div class="sidebar-item-text">Renovations completed while properties remain operational through phased construction, swing room coordination, and noise restriction compliance.</div>
           </li>
           <li>
             <div class="sidebar-item-title">Capital Cycle Alignment</div>
             <div class="sidebar-item-text">Execution aligned to 6, 12, and 18-year brand-mandated renovation cycles and franchise agreement timelines.</div>
+          </li>
+          <li>
+            <div class="sidebar-item-title">Fire/Life-Safety & ADA</div>
+            <div class="sidebar-item-text">Compliance sequencing maintains life-safety and accessibility requirements throughout occupied-asset execution.</div>
           </li>
         </ul>
       </aside>
@@ -112,6 +138,34 @@
         document.body.classList.toggle('overlay-mode');
       }
     });
+
+    // GSAP entrance motion
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced || !window.gsap) {
+      document.documentElement.classList.add('no-motion');
+    } else {
+      const run = () => {
+        const tl = gsap.timeline({ defaults: { ease: 'sine.out', duration: 0.9 } });
+        tl.to('.reveal-overlay', { scaleY: 0, duration: 0.9, ease: 'sine.inOut' }, 0.05)
+          .from('.site-header', { autoAlpha: 0, duration: 0.8 }, 0)
+          .from('main', { autoAlpha: 0, duration: 1.0 }, 0.08)
+          .from('.page-sidebar', { autoAlpha: 0, duration: 0.8 }, 0.22);
+      };
+      let ran = false;
+      const safeRun = () => { if (ran) return; ran = true; run(); };
+      const timeout = setTimeout(safeRun, 500);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+          clearTimeout(timeout);
+          requestAnimationFrame(safeRun);
+        });
+      } else {
+        window.addEventListener('load', () => {
+          clearTimeout(timeout);
+          requestAnimationFrame(safeRun);
+        }, { once: true });
+      }
+    }
   </script>
 
 </body>

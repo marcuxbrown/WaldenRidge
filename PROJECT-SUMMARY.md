@@ -2,17 +2,18 @@
 
 ## ✅ Deliverables Complete
 
-### HTML Pages (3)
+### HTML Pages (4)
 - ✅ `/our-story/index.html` - Two-column layout with hero image
 - ✅ `/portfolio/index.html` - Three-column property grid
 - ✅ `/strategy/index.html` - Two-column strategy blocks
+- ✅ `/governance/index.html` - Governance and oversight page
 - ✅ `/index.html` - Root redirect to Our Story
 
 ### CSS
 - ✅ `/styles.css` - Single stylesheet with:
   - CSS variables for all measurements
   - Explicit px values at 1440px breakpoint
-  - Grid layouts for all three pages
+  - Grid layouts for all four pages
   - Responsive rules for smaller screens
   - Overlay debug mode styling
 
