@@ -570,7 +570,7 @@ body.overlay-mode.page-strategy::before {
 /* ---- Mobile Portrait (390px - 599px) - iPhone, Android ----------- */
 @media (max-width: 599px) {
   :root {
-    --outer-margin: 24px;
+    --outer-margin: 16px;
     --fs-h1: 32px;
     --fs-intro: 18px;
     --fs-body: 16px;
@@ -680,7 +680,7 @@ body.overlay-mode.page-strategy::before {
 /* ---- Small Mobile (320px - 389px) - iPhone SE, older Android ----- */
 @media (max-width: 389px) {
   :root {
-    --outer-margin: 20px;
+    --outer-margin: 16px;
     --fs-h1: 28px;
     --fs-intro: 17px;
     --fs-body: 15px;
