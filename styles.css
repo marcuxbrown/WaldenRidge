@@ -571,7 +571,7 @@ body.overlay-mode.page-strategy::before {
 @media (max-width: 599px) {
   :root {
     --outer-margin: 16px;
-    --fs-h1: 32px;
+    --fs-h1: calc(32px * 0.8);
     --fs-intro: 18px;
     --fs-body: 16px;
     --fs-section-head: 17px;
@@ -702,7 +702,7 @@ body.overlay-mode.page-strategy::before {
 @media (max-width: 389px) {
   :root {
     --outer-margin: 16px;
-    --fs-h1: 28px;
+    --fs-h1: calc(28px * 0.8);
     --fs-intro: 17px;
     --fs-body: 15px;
     --fs-section-head: 16px;
