@@ -64,6 +64,8 @@
 
 html {
   font-size: 16px;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -79,6 +81,8 @@ body {
   letter-spacing: 0.01em;
   opacity: 0;
   animation: fadeIn 0.6s ease-out forwards;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .break-desktop {
@@ -914,6 +918,12 @@ body.overlay-mode.page-strategy::before {
   .site-footer {
     margin-top: auto;
     padding: 40px var(--outer-margin) 32px;
+  }
+
+  .page-portfolio .site-footer,
+  .page-strategy .site-footer,
+  .page-our-story .site-footer {
+    margin-top: auto;
   }
 
   .footer-grid {
