@@ -1198,6 +1198,9 @@ body.overlay-mode.page-strategy::before {
   .home-hero-text h1 {
     font-size: 40px;
   }
+  .home-hero-overlay {
+    display: none;
+  }
 }
 
 @media (max-width: 833px) {
