@@ -604,6 +604,18 @@ body.overlay-mode.page-strategy::before {
     gap: 20px 24px;
   }
 
+  .logo-wordmark {
+    margin-left: -0.04em;
+  }
+
+  .main-nav {
+    margin-left: -0.04em;
+  }
+
+  .main-nav a:first-child {
+    margin-left: 0;
+  }
+
   .main-nav a {
     font-size: 15px;
   }
