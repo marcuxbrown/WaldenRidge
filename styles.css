@@ -916,8 +916,18 @@ body.overlay-mode.page-strategy::before {
   }
 
   .site-footer {
+    width: 100%;
+    max-width: none;
     margin-top: auto;
     padding: 40px var(--outer-margin) 32px;
+  }
+
+  .site-footer::before {
+    width: 100%;
+  }
+
+  .footer-content {
+    width: 100%;
   }
 
   .page-portfolio .site-footer,
