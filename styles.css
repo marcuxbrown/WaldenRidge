@@ -901,8 +901,18 @@ body.overlay-mode.page-strategy::before {
 }
 
 @media (max-width: 599px) {
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1;
+  }
+
   .site-footer {
-    margin-top: 60px;
+    margin-top: auto;
     padding: 40px var(--outer-margin) 32px;
   }
 
