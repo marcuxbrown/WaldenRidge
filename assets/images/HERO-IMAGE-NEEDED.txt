@@ -1,0 +1,19 @@
+HERO IMAGE REQUIRED
+===================
+
+Please place your hero image (the mountain landscape from the Our Story reference)
+at this location:
+
+/assets/images/hero.jpg
+
+The image should be the black and white landscape showing the Cumberland Plateau
+and Appalachian Mountains.
+
+Currently, the Our Story page will show a broken image icon until you add this file.
+
+You can:
+1. Copy the image file here
+2. Rename it to "hero.jpg" 
+3. Refresh your browser
+
+The image from your first screenshot should work perfectly.
