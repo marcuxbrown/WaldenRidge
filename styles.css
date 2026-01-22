@@ -66,6 +66,7 @@ html {
   font-size: 16px;
   width: 100%;
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -81,6 +82,15 @@ body {
   letter-spacing: 0.01em;
   width: 100%;
   overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
 }
 
 .break-desktop {
@@ -727,6 +737,19 @@ body.overlay-mode.page-strategy::before {
 
   .footer-content {
     width: 100%;
+  }
+
+  /* Force visibility on small screens to avoid blank renders */
+  .js .site-header,
+  .js main,
+  .js .portfolio-sidebar,
+  .js .region-section,
+  .js .page-sidebar {
+    opacity: 1 !important;
+  }
+
+  .reveal-overlay {
+    display: none;
   }
 }
 
