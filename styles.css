@@ -597,7 +597,9 @@ body.overlay-mode.page-strategy::before {
   }
 
   .main-nav {
+    width: 100%;
     flex-wrap: wrap;
+    justify-content: space-between;
     gap: 20px 24px;
   }
 
