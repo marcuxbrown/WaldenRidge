@@ -7,7 +7,7 @@
 /* ---- Font Loading ------------------------------------------------ */
 @font-face {
   font-family: "JunicodeExpBold";
-  src: url("/assets/fonts/Junicode-ExpBold.otf") format("opentype");
+  src: url("assets/fonts/Junicode-ExpBold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: block;
