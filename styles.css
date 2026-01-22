@@ -601,10 +601,10 @@ body.overlay-mode.page-strategy::before {
   .main-nav {
     width: 100%;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 20px 24px;
     align-self: stretch;
-    margin-left: -0.04em;
+    margin-left: 0;
   }
 
   .logo-wordmark {
