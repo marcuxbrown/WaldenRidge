@@ -594,6 +594,7 @@ body.overlay-mode.page-strategy::before {
 
   .logo-subtitle {
     font-size: 15px;
+    padding-left: 0;
   }
 
   .main-nav {
