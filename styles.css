@@ -585,6 +585,7 @@ body.overlay-mode.page-strategy::before {
   .site-header {
     padding: 24px var(--outer-margin) 0;
     margin-bottom: 28px;
+    align-items: center;
   }
 
   .logo-wordmark {
@@ -602,15 +603,13 @@ body.overlay-mode.page-strategy::before {
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 20px 24px;
+    align-self: stretch;
+    margin-left: 0;
   }
 
   .logo-wordmark {
     margin-left: 0;
     text-align: center;
-  }
-
-  .main-nav {
-    margin-left: -0.04em;
   }
 
   .main-nav a:first-child {
