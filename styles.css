@@ -170,6 +170,7 @@ a:visited {
   text-decoration: none;
   transition: color 0.2s ease;
   letter-spacing: 0.005em;
+  padding: 4px 0;
 }
 
 .main-nav a:hover {
@@ -196,6 +197,7 @@ h1 {
   line-height: var(--lh-h1);
   margin: 0 0 28px 0;
   letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
 h2 {
@@ -204,6 +206,7 @@ h2 {
   font-weight: 500;
   line-height: var(--lh-intro);
   margin: 0 0 32px 0;
+  text-wrap: balance;
 }
 
 h3 {
@@ -213,11 +216,13 @@ h3 {
   line-height: var(--lh-section);
   margin: 0 0 4px 0;
   letter-spacing: -0.005em;
+  text-wrap: balance;
 }
 
 p {
   font-weight: 300;
   margin: 0 0 18px 0;
+  text-wrap: pretty;
 }
 
 p:last-child {
@@ -1146,6 +1151,7 @@ body.overlay-mode.page-strategy::before {
 /* ---- Home Page --------------------------------------------------- */
 .home-hero {
   margin-top: 8px;
+  background: transparent;
 }
 
 .home-hero-media {
@@ -1167,11 +1173,14 @@ body.overlay-mode.page-strategy::before {
 }
 
 .home-hero-text {
-  position: absolute;
-  left: 40px;
-  bottom: 32px;
-  max-width: 560px;
+  position: static;
+  margin-top: 16px;
+  max-width: 900px;
   color: var(--color-text);
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
 }
 
 .home-hero-text h1 {
@@ -1179,18 +1188,22 @@ body.overlay-mode.page-strategy::before {
   line-height: 1.15;
   margin-bottom: 10px;
   letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
 .home-hero-text p {
   font-size: 18px;
   line-height: 1.55;
   margin: 0;
+  text-wrap: pretty;
+}
+
+.nowrap {
+  white-space: nowrap;
 }
 
 @media (max-width: 1023px) {
   .home-hero-text {
-    left: 32px;
-    bottom: 28px;
     max-width: 520px;
   }
   .home-hero-text h1 {
@@ -1203,8 +1216,8 @@ body.overlay-mode.page-strategy::before {
 
 @media (max-width: 833px) {
   .home-hero-text {
-    position: static;
-    padding: 20px 20px 0;
+    margin-top: 14px;
+    max-width: 100%;
   }
   .home-hero-overlay {
     display: none;
@@ -1217,6 +1230,9 @@ body.overlay-mode.page-strategy::before {
   }
   .home-hero-text p {
     font-size: 16px;
+  }
+  .main-nav a {
+    padding: 8px 0;
   }
 }
 
