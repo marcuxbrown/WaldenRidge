@@ -331,8 +331,14 @@ p:last-child {
 .content-column p {
   font-size: var(--fs-body);
   line-height: 1.45;
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 18px;
+}
+
+@media (min-width: 1024px) {
+  .page-our-story .content-column p {
+    max-width: 50%;
+  }
 }
 
 /* ---- Portfolio Page ---------------------------------------------- */
@@ -374,7 +380,7 @@ p:last-child {
 
 .portfolio-layout {
   display: grid;
-  grid-template-columns: 1fr 280px;
+  grid-template-columns: minmax(0, 1fr) 320px;
   gap: 80px;
   align-items: start;
 }
@@ -442,7 +448,7 @@ p:last-child {
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 32px 48px;
   margin-bottom: 0;
 }
@@ -530,7 +536,7 @@ p:last-child {
 
 .strategy-layout {
   display: grid;
-  grid-template-columns: 1fr 280px;
+  grid-template-columns: minmax(0, 1fr) 320px;
   gap: 80px;
   align-items: start;
 }
@@ -554,7 +560,7 @@ p:last-child {
 
 .strategy-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 28px 32px;
   margin-bottom: 0;
 }
@@ -578,7 +584,7 @@ p:last-child {
   line-height: 1.5;
   font-weight: 300;
   margin: 0;
-  max-width: 420px;
+  max-width: none;
 }
 
 /* ---- Overlay Debug Mode ------------------------------------------ */
@@ -1079,6 +1085,11 @@ body.overlay-mode.page-strategy::before {
   opacity: 0.95;
   letter-spacing: -0.005em;
   margin-bottom: 6px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  text-overflow: clip;
+  overflow: visible;
 }
 
 .sidebar-item-text {
@@ -1157,14 +1168,16 @@ body.overlay-mode.page-strategy::before {
 .home-hero-media {
   position: relative;
   width: 100%;
-  border-radius: 6px;
+  max-height: calc(100vh - 300px);
   overflow: hidden;
   background: #e9e6e2;
 }
 
 .home-hero-image {
   width: 100%;
-  height: auto;
+  height: 100%;
+  max-height: calc(100vh - 300px);
+  object-fit: cover;
   display: block;
 }
 
@@ -1212,6 +1225,18 @@ body.overlay-mode.page-strategy::before {
   .home-hero-overlay {
     display: none;
   }
+  .home-hero-media {
+    max-height: calc(100vh - 260px);
+  }
+  .home-hero-image {
+    max-height: calc(100vh - 260px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-hero-text p {
+    white-space: nowrap;
+  }
 }
 
 @media (max-width: 833px) {
@@ -1221,6 +1246,12 @@ body.overlay-mode.page-strategy::before {
   }
   .home-hero-overlay {
     display: none;
+  }
+  .home-hero-media {
+    max-height: calc(100vh - 230px);
+  }
+  .home-hero-image {
+    max-height: calc(100vh - 230px);
   }
 }
 
