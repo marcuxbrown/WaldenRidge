@@ -10,11 +10,31 @@
 
   <script>
     document.documentElement.classList.add('js');
+
+    // Font loading optimization
+    if ('fonts' in document) {
+      Promise.all([
+        document.fonts.load('300 1em elza-text'),
+        document.fonts.load('500 1em elza-text'),
+        document.fonts.load('700 1em JunicodeExpBold')
+      ]).then(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      }).catch(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      });
+
+      setTimeout(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      }, 2000);
+    } else {
+      document.documentElement.classList.add('fonts-loaded');
+    }
   </script>
 
   <!-- Adobe Fonts (Typekit) - Elza Text -->
   <link rel="preconnect" href="https://use.typekit.net" crossorigin>
-  <link rel="stylesheet" href="https://use.typekit.net/ckx4rji.css">
+  <link rel="stylesheet" href="https://use.typekit.net/ckx4rji.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://use.typekit.net/ckx4rji.css"></noscript>
 
   <!-- Site Styles -->
   <link rel="stylesheet" href="../styles.css">
@@ -139,32 +159,11 @@
       }
     });
 
-    // GSAP entrance motion
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced || !window.gsap) {
+    // Remove reveal overlay on navigation (not initial load)
+    const isInitialLoad = !window.performance || performance.navigation.type === 0;
+    if (!isInitialLoad) {
+      document.querySelector('.reveal-overlay')?.remove();
       document.documentElement.classList.add('no-motion');
-    } else {
-      const run = () => {
-        const tl = gsap.timeline({ defaults: { ease: 'sine.out', duration: 0.9 } });
-        tl.to('.reveal-overlay', { scaleY: 0, duration: 0.9, ease: 'sine.inOut' }, 0.05)
-          .from('.site-header', { autoAlpha: 0, duration: 0.8 }, 0)
-          .from('main', { autoAlpha: 0, duration: 1.0 }, 0.08)
-          .from('.page-sidebar', { autoAlpha: 0, duration: 0.8 }, 0.22);
-      };
-      let ran = false;
-      const safeRun = () => { if (ran) return; ran = true; run(); };
-      const timeout = setTimeout(safeRun, 500);
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(() => {
-          clearTimeout(timeout);
-          requestAnimationFrame(safeRun);
-        });
-      } else {
-        window.addEventListener('load', () => {
-          clearTimeout(timeout);
-          requestAnimationFrame(safeRun);
-        }, { once: true });
-      }
     }
   </script>
 

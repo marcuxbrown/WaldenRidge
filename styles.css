@@ -10,7 +10,7 @@
   src: url("assets/fonts/Junicode-ExpBold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
-  font-display: block;
+  font-display: swap;
 }
 
 /* ---- CSS Variables ----------------------------------------------- */
@@ -67,6 +67,25 @@ html {
   width: 100%;
   overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
+}
+
+/* View Transitions API support */
+@view-transition {
+  navigation: auto;
+}
+
+html {
+  view-transition-name: root;
+}
+
+/* Prevent FOUC - hide content until fonts and styles load */
+html:not(.fonts-loaded) body {
+  opacity: 0;
+}
+
+html.fonts-loaded body {
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
 }
 
 body {
