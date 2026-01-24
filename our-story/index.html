@@ -8,7 +8,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../favicon.png">
 
-  <script>
+    <script>
     document.documentElement.classList.add('js');
 
     // Font loading optimization
@@ -24,6 +24,7 @@
         document.documentElement.classList.add('fonts-loaded');
       });
 
+      // Timeout fallback
       setTimeout(() => {
         document.documentElement.classList.add('fonts-loaded');
       }, 2000);
@@ -31,6 +32,7 @@
       document.documentElement.classList.add('fonts-loaded');
     }
   </script>
+
 
   <!-- Google Fonts - IBM Plex Sans + Cormorant Garamond -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,15 +71,15 @@
     <div class="our-story-grid no-hero">
 
       <div class="content-column">
-        <p class="story-intro">Since 2009, Walden Ridge has executed renovation programs for select-service and upscale hotel assets across repeat ownership platforms. Formerly known as HRS Group, the platform has delivered 60+ branded renovations and six ground-up developments.</p>
+        <p class="story-intro">Since 2009, Walden Ridge has executed renovation programs for <span class="nowrap">select-service</span> and upscale hotel assets across repeat ownership platforms Formerly known as HRS Group, the platform has delivered 60+ branded renovations and six <span class="nowrap">ground-up</span> developments</p>
 
-        <p>The company was formed to bring disciplined, repeatable execution to brand-mandated capital cycles, work defined by PIP requirements, fixed inspection windows, and occupied-asset constraints.</p>
+        <p>The company was formed to bring disciplined, repeatable execution to <span class="nowrap">brand-mandated</span> capital cycles, work defined by PIP requirements, fixed inspection windows, and <span class="nowrap">occupied-asset</span> constraints</p>
 
-        <p>Over 15+ years, Walden Ridge built an integrated platform that keeps procurement, millwork, FF&amp;E, and field coordination under a single operating rhythm, reducing handoffs and schedule variance.</p>
+        <p>Over 15+ years, Walden Ridge built an integrated platform that keeps procurement, millwork, FF&amp;E, and field coordination under a single operating rhythm, reducing handoffs and schedule variance</p>
 
-        <p>Today the team works repeatedly with multi-asset owners across Hilton, Marriott, Hyatt, IHG, Wyndham, La Quinta, and Extended Stay flag families, typically delivering full-scope renovations in 4-6 month windows.</p>
+        <p>Today the team works repeatedly with <span class="nowrap">multi-asset</span> owners across Hilton, Marriott, Hyatt, IHG, Wyndham, La Quinta, and Extended Stay flag families, typically delivering <span class="nowrap">full-scope</span> renovations in <span class="nowrap">4-6</span> month windows</p>
 
-        <p>Based in Chattanooga, TN, Walden Ridge partners with institutional and owner-operator clients who value predictable outcomes, compliance certainty, and disciplined capital planning.</p>
+        <p>Based in Chattanooga, TN, Walden Ridge partners with institutional and <span class="nowrap">owner-operator</span> clients who value predictable outcomes, compliance certainty, and disciplined capital planning</p>
       </div>
 
       <aside class="story-rail" aria-label="Company timeline">
@@ -85,15 +87,15 @@
           <div class="timeline-eyebrow">Timeline</div>
           <div class="timeline-item">
             <div class="timeline-year">2009</div>
-            <div class="timeline-text">Entered the hotel sector and formed the renovation operating platform.</div>
+            <div class="timeline-text">Entered the hotel sector and formed the renovation operating platform</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-year">15+ Years</div>
-            <div class="timeline-text">HRS Group operating history carried forward into the Walden Ridge platform.</div>
+            <div class="timeline-text">HRS Group operating history carried forward into the Walden Ridge platform</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-year">Today</div>
-            <div class="timeline-text">Repeat renovation programs across seven flag families and multi-asset owners.</div>
+            <div class="timeline-text">Repeat renovation programs across seven flag families and <span class="nowrap">multi-asset</span> owners</div>
           </div>
         </div>
       </aside>
@@ -113,7 +115,7 @@
     </div>
   </footer>
 
-  <script>
+    <script>
     // Lightweight entrance animation - only on initial page load
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isInitialLoad = !window.performance || performance.navigation.type === 0;
@@ -154,6 +156,7 @@
       }
     }
   </script>
+
 
 </body>
 </html>

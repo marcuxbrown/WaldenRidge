@@ -99,6 +99,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   letter-spacing: 0.001em;
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
   width: 100%;
   overflow-x: hidden;
 }
@@ -1308,7 +1311,7 @@ body.overlay-mode.page-strategy::before {
   letter-spacing: -0.005em;
   margin-bottom: 6px;
   white-space: normal;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   word-break: normal;
   text-overflow: clip;
   overflow: visible;

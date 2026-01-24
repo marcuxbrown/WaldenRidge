@@ -16,27 +16,27 @@
   <link rel="preload" href="./styles.min.css" as="style">
   
   <script>
-    document.documentElement.classList.add('js');
+    documentdocumentElementclassListadd('js');
 
     // Font loading optimization
     if ('fonts' in document) {
-      Promise.all([
-        document.fonts.load('400 1em IBM Plex Sans'),
-        document.fonts.load('600 1em IBM Plex Sans'),
-        document.fonts.load('600 1em Cormorant Garamond'),
-        document.fonts.load('700 1em JunicodeExpBold')
-      ]).then(() => {
-        document.documentElement.classList.add('fonts-loaded');
-      }).catch(() => {
-        document.documentElement.classList.add('fonts-loaded');
+      Promiseall([
+        documentfontsload('400 1em IBM Plex Sans'),
+        documentfontsload('600 1em IBM Plex Sans'),
+        documentfontsload('600 1em Cormorant Garamond'),
+        documentfontsload('700 1em JunicodeExpBold')
+      ])then(() => {
+        documentdocumentElementclassListadd('fonts-loaded');
+      })catch(() => {
+        documentdocumentElementclassListadd('fonts-loaded');
       });
 
       // Timeout fallback
       setTimeout(() => {
-        document.documentElement.classList.add('fonts-loaded');
+        documentdocumentElementclassListadd('fonts-loaded');
       }, 2000);
     } else {
-      document.documentElement.classList.add('fonts-loaded');
+      documentdocumentElementclassListadd('fonts-loaded');
     }
   </script>
 
@@ -73,9 +73,9 @@
         <img src="./assets/images/4983091.jpg" alt="Chattanooga and Cumberland Plateau landscape" class="home-hero-image" loading="eager">
       </div>
       <div class="home-hero-text">
-        <h1>Renovation, repeated <span class="nowrap">with&nbsp;discipline.</span></h1>
-        <p><span class="copy-extended">Institutional renovation platform for select-service and upscale hospitality assets.</span><span class="copy-compact">Institutional renovation platform for select-service and upscale assets.</span><span class="break-desktop"><br></span> Predictable execution for owners, operators, and capital partners.</p>
-        <p class="home-hero-proof"><span class="copy-extended">Formerly HRS Group, the platform has executed branded hotel renovations since 2009.</span><span class="copy-compact">Formerly HRS Group. Branded renovations since 2009.</span></p>
+        <h1>Renovation, repeated <span class="nowrap">with&nbsp;discipline</span></h1>
+        <p><span class="copy-extended">Institutional renovation platform for <span class="nowrap">select-service</span> and upscale hospitality assets</span><span class="copy-compact">Institutional renovation platform for <span class="nowrap">select-service</span> and upscale assets</span><span class="break-desktop"><br></span> Predictable execution for owners, operators, and capital partners</p>
+        <p class="home-hero-proof"><span class="copy-extended">Formerly HRS Group, the platform has executed branded hotel renovations since 2009</span><span class="copy-compact">Formerly HRS Group, branded renovations since 2009</span></p>
       </div>
     </section>
 
@@ -86,32 +86,32 @@
       <div class="data-panel">
         <div class="summary-grid">
           <article class="summary-item">
-            <h3>Mandatory, Non-Discretionary Demand</h3>
-            <p><span class="copy-extended">$29B annual US hotel renovation spend; PIPs required to maintain franchise, ADR, and asset value.</span><span class="copy-compact">$29B annual renovation spend; PIPs required to maintain franchise and asset value.</span></p>
+            <h3>Mandatory, <span class="nowrap">Non-Discretionary</span> Demand</h3>
+            <p><span class="copy-extended">$29B annual US hotel renovation spend; PIPs required to maintain franchise, ADR, and asset value</span><span class="copy-compact">$29B annual renovation spend; PIPs required to maintain franchise and asset value</span></p>
           </article>
           <article class="summary-item">
-            <h3>Execution-Led Risk Profile</h3>
-            <p><span class="copy-extended">Outcomes driven by schedule certainty, inspection readiness, and compliance (fire/life-safety, ADA).</span><span class="copy-compact">Outcomes driven by schedule certainty and compliance.</span></p>
+            <h3><span class="nowrap">Execution-Led</span> Risk Profile</h3>
+            <p><span class="copy-extended">Outcomes driven by schedule certainty, inspection readiness, and compliance (<span class="nowrap">fire/life-safety</span>, ADA)</span><span class="copy-compact">Outcomes driven by schedule certainty and compliance</span></p>
           </article>
           <article class="summary-item">
             <h3>Short Duration, High Capital Velocity</h3>
-            <p><span class="copy-extended">~4-6 month renovations vs 9-14 month conversions and 24+ month new builds.</span><span class="copy-compact">~4-6 month renovations vs longer conversions and new builds.</span></p>
+            <p><span class="copy-extended">~<span class="nowrap">4-6</span> month renovations vs <span class="nowrap">9-14</span> month conversions and 24+ month new builds</span><span class="copy-compact">~<span class="nowrap">4-6</span> month renovations vs longer conversions and new builds</span></p>
           </article>
           <article class="summary-item">
             <h3>Institutional Brand Fluency</h3>
-            <p><span class="copy-extended">Repeat execution in Hilton, Marriott, Hyatt, IHG, and Wyndham systems reduces approval friction.</span><span class="copy-compact">Repeat execution in major brand systems reduces approval friction.</span></p>
+            <p><span class="copy-extended">Repeat execution in Hilton, Marriott, Hyatt, IHG, and Wyndham systems reduces approval friction</span><span class="copy-compact">Repeat execution in major brand systems reduces approval friction</span></p>
           </article>
           <article class="summary-item">
             <h3>Repeat Portfolio Economics</h3>
-            <p><span class="copy-extended">Multi-asset owners drive backlog visibility, procurement leverage, and margin durability.</span><span class="copy-compact">Multi-asset owners drive backlog visibility and procurement leverage.</span></p>
+            <p><span class="copy-extended"><span class="nowrap">Multi-asset</span> owners drive backlog visibility, procurement leverage, and margin durability</span><span class="copy-compact"><span class="nowrap">Multi-asset</span> owners drive backlog visibility and procurement leverage</span></p>
           </article>
           <article class="summary-item">
             <h3>Vertically Integrated Control Model</h3>
-            <p><span class="copy-extended">Internal construction, millwork, fabrication, and FF&amp;E reduce handoffs and rework.</span><span class="copy-compact">Internal construction, millwork, fabrication, and FF&amp;E reduce handoffs.</span></p>
+            <p><span class="copy-extended">Internal construction, millwork, fabrication, and FF&amp;E reduce handoffs and rework</span><span class="copy-compact">Internal construction, millwork, fabrication, and FF&amp;E reduce handoffs</span></p>
           </article>
         </div>
       </div>
-      <p class="summary-note">Investor overview available on request. <a href="mailto:marcus@waldenridgeco.com?subject=Investor%20Overview%20Request">marcus@waldenridgeco.com</a></p>
+      <p class="summary-note">Investor overview available on request <a href="mailto:marcus@waldenridgeco.com?subject=Investor%20Overview%20Request">marcus@waldenridgeco.com</a></p>
     </section>
 
     <section class="home-metrics" aria-label="Track record">
@@ -122,23 +122,23 @@
         <dl class="metrics-grid">
           <div class="metric-item">
             <dt>15+ Years</dt>
-            <dd>Operating history since 2009.</dd>
+            <dd>Operating history since 2009</dd>
           </div>
           <div class="metric-item">
             <dt>60+ Branded Renovations</dt>
-            <dd>Renovations across select-service and upscale assets.</dd>
+            <dd>Renovations across <span class="nowrap">select-service</span> and upscale assets</dd>
           </div>
           <div class="metric-item">
             <dt>6 Ground-Up Developments</dt>
-            <dd>Participated in six hotel ground-up developments.</dd>
+            <dd>Participated in six hotel <span class="nowrap">ground-up</span> developments</dd>
           </div>
           <div class="metric-item">
-            <dt>4-6 Month Execution</dt>
-            <dd>Typical renovation window.</dd>
+            <dt><span class="nowrap">4-6</span> Month Execution</dt>
+            <dd>Typical renovation window</dd>
           </div>
           <div class="metric-item">
             <dt>7 Flag Families</dt>
-            <dd>Hilton, Marriott, Hyatt, IHG, Wyndham, La Quinta, Extended Stay.</dd>
+            <dd>Hilton, Marriott, Hyatt, IHG, Wyndham, La Quinta, Extended Stay</dd>
           </div>
         </dl>
       </div>
@@ -161,44 +161,44 @@
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script defer>
     // Wait for both GSAP and DOM to be ready
-    window.addEventListener('DOMContentLoaded', function() {
+    windowaddEventListener('DOMContentLoaded', function() {
       // Lightweight entrance animation - only on initial page load
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const isInitialLoad = !window.performance || performance.navigation.type === 0;
+      const prefersReduced = windowmatchMedia('(prefers-reduced-motion: reduce)')matches;
+      const isInitialLoad = !windowperformance || performancenavigationtype === 0;
 
       if (prefersReduced || !isInitialLoad) {
         // Skip animation on navigation or if motion reduced
-        document.documentElement.classList.add('no-motion');
-        document.querySelector('.reveal-overlay')?.remove();
+        documentdocumentElementclassListadd('no-motion');
+        documentquerySelector('reveal-overlay')?remove();
       } else {
         // Wait for GSAP to load
         const initAnimation = function() {
-          if (!window.gsap) {
+          if (!windowgsap) {
             setTimeout(initAnimation, 50);
             return;
           }
 
           const run = () => {
-            const tl = gsap.timeline({
+            const tl = gsaptimeline({
               defaults: { ease: 'power2.out', duration: 0.6 },
               onComplete: () => {
-                document.querySelector('.reveal-overlay')?.remove();
+                documentquerySelector('reveal-overlay')?remove();
               }
             });
-            tl.to('.reveal-overlay', { autoAlpha: 0, duration: 0.4, ease: 'power2.inOut' }, 0)
-              .from('.site-header', { autoAlpha: 0, y: -8, duration: 0.5 }, 0.1)
-              .from('main', { autoAlpha: 0, y: 12, duration: 0.6 }, 0.15);
+            tlto('reveal-overlay', { autoAlpha: 0, duration: 0.4, ease: 'power2.inOut' }, 0)
+              from('site-header', { autoAlpha: 0, y: -8, duration: 0.5 }, 0.1)
+              from('main', { autoAlpha: 0, y: 12, duration: 0.6 }, 0.15);
           };
 
           let ran = false;
           const safeRun = () => { if (ran) return; ran = true; run(); };
 
           // Wait for fonts to be ready
-          if (document.documentElement.classList.contains('fonts-loaded')) {
+          if (documentdocumentElementclassListcontains('fonts-loaded')) {
             requestAnimationFrame(safeRun);
           } else {
             const checkFonts = setInterval(() => {
-              if (document.documentElement.classList.contains('fonts-loaded')) {
+              if (documentdocumentElementclassListcontains('fonts-loaded')) {
                 clearInterval(checkFonts);
                 requestAnimationFrame(safeRun);
               }

@@ -8,7 +8,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../favicon.png">
 
-  <script>
+    <script>
     document.documentElement.classList.add('js');
 
     // Font loading optimization
@@ -24,6 +24,7 @@
         document.documentElement.classList.add('fonts-loaded');
       });
 
+      // Timeout fallback
       setTimeout(() => {
         document.documentElement.classList.add('fonts-loaded');
       }, 2000);
@@ -31,6 +32,7 @@
       document.documentElement.classList.add('fonts-loaded');
     }
   </script>
+
 
   <!-- Google Fonts - IBM Plex Sans + Cormorant Garamond -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,7 +67,7 @@
 
     <div class="portfolio-intro">
       <h1>Portfolio</h1>
-      <p class="portfolio-intro-text">Since 2009, Walden Ridge has completed 60+ branded hotel renovations across Hilton, Marriott, IHG, Hyatt, Wyndham, La Quinta, and Extended Stay flag families, with repeat engagement across multi-asset portfolios. Portfolio concentration spans the Southeast, Mid-Atlantic, and Mountain West.</p>
+      <p class="portfolio-intro-text">Since 2009, Walden Ridge has completed 60+ branded hotel renovations across Hilton, Marriott, IHG, Hyatt, Wyndham, La Quinta, and Extended Stay flag families, with repeat engagement across <span class="nowrap">multi-asset</span> portfolios Portfolio concentration spans the Southeast, <span class="nowrap">Mid-Atlantic</span>, and Mountain West</p>
     </div>
 
     <div class="portfolio-layout">
@@ -79,19 +81,19 @@
         <div class="evidence-grid">
           <article class="evidence-item">
             <h3>Renovation Volume</h3>
-            <p>60+ branded hotel renovations executed since 2009.</p>
+            <p>60+ branded hotel renovations executed since 2009</p>
           </article>
           <article class="evidence-item">
             <h3>Brand Families</h3>
-            <p>Hilton, Marriott, Hyatt, IHG, Wyndham, La Quinta, and Extended Stay.</p>
+            <p>Hilton, Marriott, Hyatt, IHG, Wyndham, La Quinta, and Extended Stay</p>
           </article>
           <article class="evidence-item">
             <h3>Regional Concentration</h3>
-            <p>Southeast, Mid-Atlantic, and Mountain West with repeat multi-asset owners.</p>
+            <p>Southeast, <span class="nowrap">Mid-Atlantic</span>, and Mountain West with repeat <span class="nowrap">multi-asset</span> owners</p>
           </article>
           <article class="evidence-item">
             <h3>Execution Scope</h3>
-            <p>Guestrooms, lobbies, meeting space, and common areas under PIP protocols.</p>
+            <p>Guestrooms, lobbies, meeting space, and common areas under PIP protocols</p>
           </article>
         </div>
       </div>
@@ -116,15 +118,15 @@
         <ul class="sidebar-list">
           <li>
             <div class="sidebar-item-title">Renovation Scope</div>
-            <div class="sidebar-item-text">Full interior renovation including guestrooms, lobby, meeting space, and common areas executed under brand compliance protocols.</div>
+            <div class="sidebar-item-text">Full interior renovation including guestrooms, lobby, meeting space, and common areas executed under brand compliance protocols</div>
           </li>
           <li>
             <div class="sidebar-item-title">Capital Cycles</div>
-            <div class="sidebar-item-text">Assets represent 6-year soft goods refresh, 12-year full renovation, and 18-year system reset programs across multiple ownership platforms.</div>
+            <div class="sidebar-item-text">Assets represent <span class="nowrap">6-year</span> soft goods refresh, <span class="nowrap">12-year</span> full renovation, and <span class="nowrap">18-year</span> system reset programs across multiple ownership platforms</div>
           </li>
           <li>
             <div class="sidebar-item-title">Occupied Operations</div>
-            <div class="sidebar-item-text">All properties completed while maintaining operational status through phased execution, swing room coordination, and brand-approved protocols.</div>
+            <div class="sidebar-item-text">All properties completed while maintaining operational status through phased execution, swing room coordination, and <span class="nowrap">brand-approved</span> protocols</div>
           </li>
         </ul>
       </aside>
@@ -145,7 +147,7 @@
     </div>
   </footer>
 
-  <script>
+    <script>
     // Lightweight entrance animation - only on initial page load
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isInitialLoad = !window.performance || performance.navigation.type === 0;
@@ -186,6 +188,7 @@
       }
     }
   </script>
+
 
 </body>
 </html>
