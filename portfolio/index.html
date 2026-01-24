@@ -14,8 +14,9 @@
     // Font loading optimization
     if ('fonts' in document) {
       Promise.all([
-        document.fonts.load('300 1em elza-text'),
-        document.fonts.load('500 1em elza-text'),
+        document.fonts.load('400 1em IBM Plex Sans'),
+        document.fonts.load('600 1em IBM Plex Sans'),
+        document.fonts.load('600 1em Cormorant Garamond'),
         document.fonts.load('700 1em JunicodeExpBold')
       ]).then(() => {
         document.documentElement.classList.add('fonts-loaded');
@@ -31,10 +32,11 @@
     }
   </script>
 
-  <!-- Adobe Fonts (Typekit) - Elza Text -->
-  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
-  <link rel="stylesheet" href="https://use.typekit.net/ckx4rji.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://use.typekit.net/ckx4rji.css"></noscript>
+  <!-- Google Fonts - IBM Plex Sans + Cormorant Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"></noscript>
 
   <!-- Site Styles -->
   <link rel="stylesheet" href="../styles.css">
@@ -63,54 +65,48 @@
 
     <div class="portfolio-intro">
       <h1>Portfolio</h1>
-      <p class="portfolio-intro-text">Walden Ridge executes brand-mandated renovation programs across select ownership platforms, with concentration in Hilton, Marriott, and IHG flag families and repeat engagement across multi-asset portfolios.</p>
+      <p class="portfolio-intro-text">Since 2009, Walden Ridge has completed 60+ branded hotel renovations across Hilton, Marriott, IHG, Hyatt, Wyndham, La Quinta, and Extended Stay flag families, with repeat engagement across multi-asset portfolios. Portfolio concentration spans the Southeast, Mid-Atlantic, and Mountain West.</p>
     </div>
 
     <div class="portfolio-layout">
 
       <div class="portfolio-main">
-        <div class="portfolio-grid">
-
-      <div class="region-section">
-        <h3 class="region-title">Hilton Portfolio</h3>
-        <ul class="property-list">
-          <li>Hilton Garden Inn, Emeryville, CA</li>
-          <li>Hampton Inn, Columbus, OH</li>
-          <li>Hampton Inn, Cincinnati, OH</li>
-          <li>Hampton Inn, King of Prussia, PA</li>
-        </ul>
+        <section class="portfolio-evidence" aria-label="Portfolio evidence">
+      <div class="section-header">
+        <span class="section-eyebrow">Portfolio Evidence</span>
       </div>
-
-      <div class="region-section">
-        <h3 class="region-title">Marriott Portfolio</h3>
-        <ul class="property-list">
-          <li>Courtyard Marriott, Houston, TX</li>
-          <li>Residence Inn, Houston, TX</li>
-          <li>SpringHill Suites, Houston, TX</li>
-          <li>SpringHill Suites, Frederick, MD</li>
-          <li>Four Points, Peoria, IL</li>
-        </ul>
-      </div>
-
-      <div class="region-section region-section-combined">
-        <div class="region-subsection">
-          <h3 class="region-title">Independent & Boutique</h3>
-          <ul class="property-list">
-            <li>Hyatt House, Emeryville, CA</li>
-            <li>Sonesta Hotel, Milpitas, CA</li>
-            <li>Nest Hotel, San Carlos, CA</li>
-            <li>Rocky Mountain Resort, Granby, CO</li>
-            <li>Valdoro Lodge, Breckenridge, CO</li>
-          </ul>
-        </div>
-        <div class="region-subsection">
-          <h3 class="region-title">IHG Portfolio</h3>
-          <ul class="property-list">
-            <li>Holiday Inn, Southington, CT</li>
-          </ul>
+      <div class="data-panel">
+        <div class="evidence-grid">
+          <article class="evidence-item">
+            <h3>Renovation Volume</h3>
+            <p>60+ branded hotel renovations executed since 2009.</p>
+          </article>
+          <article class="evidence-item">
+            <h3>Brand Families</h3>
+            <p>Hilton, Marriott, Hyatt, IHG, Wyndham, La Quinta, and Extended Stay.</p>
+          </article>
+          <article class="evidence-item">
+            <h3>Regional Concentration</h3>
+            <p>Southeast, Mid-Atlantic, and Mountain West with repeat multi-asset owners.</p>
+          </article>
+          <article class="evidence-item">
+            <h3>Execution Scope</h3>
+            <p>Guestrooms, lobbies, meeting space, and common areas under PIP protocols.</p>
+          </article>
         </div>
       </div>
+    </section>
 
+        <!-- Brand Logos (Static) -->
+        <div class="brand-logos-section">
+          <div class="brand-logos-container">
+            <img src="../assets/images/brands-optimized/Hilton Garden Inn.png" alt="Hilton Garden Inn" class="brand-logo brand-logo-hilton-garden">
+            <img src="../assets/images/brands-optimized/Logo-Hampton-Inn.png" alt="Hampton Inn" class="brand-logo brand-logo-hampton">
+            <img src="../assets/images/brands-optimized/Courtyard-logo.png" alt="Courtyard by Marriott" class="brand-logo brand-logo-courtyard">
+            <img src="../assets/images/brands-optimized/Residence_Inn_logo.svg.png" alt="Residence Inn" class="brand-logo brand-logo-residence">
+            <img src="../assets/images/brands-optimized/SpringHill_Suites_logo.svg.png" alt="SpringHill Suites" class="brand-logo brand-logo-springhill">
+            <img src="../assets/images/brands-optimized/sonesta-hotels-resorts.jpg.png" alt="Sonesta" class="brand-logo brand-logo-sonesta">
+          </div>
         </div>
       </div>
 
@@ -142,7 +138,8 @@
     <div class="footer-content">
       <div class="footer-left">
         <a href="mailto:info@waldenridgeco.com">info@waldenridgeco.com</a>
-        <div class="footer-location">River City, USA</div>
+        <div class="footer-location">Chattanooga, TN</div>
+        <div class="footer-cta"><a href="mailto:marcus@waldenridgeco.com?subject=Investor%20Overview%20Request">Request Investor Overview</a></div>
       </div>
       <img src="../logo.png" alt="WR" class="footer-logo">
     </div>

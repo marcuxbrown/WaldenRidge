@@ -14,8 +14,9 @@
     // Font loading optimization
     if ('fonts' in document) {
       Promise.all([
-        document.fonts.load('300 1em elza-text'),
-        document.fonts.load('500 1em elza-text'),
+        document.fonts.load('400 1em IBM Plex Sans'),
+        document.fonts.load('600 1em IBM Plex Sans'),
+        document.fonts.load('600 1em Cormorant Garamond'),
         document.fonts.load('700 1em JunicodeExpBold')
       ]).then(() => {
         document.documentElement.classList.add('fonts-loaded');
@@ -32,10 +33,11 @@
   </script>
 
 
-  <!-- Adobe Fonts (Typekit) - Elza Text -->
-  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
-  <link rel="stylesheet" href="https://use.typekit.net/ckx4rji.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://use.typekit.net/ckx4rji.css"></noscript>
+  <!-- Google Fonts - IBM Plex Sans + Cormorant Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"></noscript>
 
   <!-- Site Styles -->
   <link rel="stylesheet" href="../styles.css">
@@ -79,32 +81,22 @@
 
       <div class="strategy-block">
         <h3 class="strategy-heading">Lifecycle-Based Capital Planning</h3>
-        <p class="strategy-text">Renovation execution aligned to 6, 12, and 18-year brand cycles, enabling predictable reinvestment and asset lifecycle management.</p>
+        <p class="strategy-text">Execution aligned to 6, 12, and 18-year brand cycles to maintain valuation and compliance.</p>
       </div>
 
       <div class="strategy-block">
         <h3 class="strategy-heading">Vertical Integration for Control</h3>
-        <p class="strategy-text">In-house millwork fabrication, FF&E procurement, and MEP coordination reduce handoffs and approval delays, lowering schedule variance.</p>
+        <p class="strategy-text">Internal construction, millwork fabrication, FF&amp;E procurement, and MEP coordination reduce handoffs and approval delays.</p>
       </div>
 
       <div class="strategy-block">
         <h3 class="strategy-heading">Code Compliance & Inspection Readiness</h3>
-        <p class="strategy-text">MEP, fire/life-safety, and ADA work is sequenced for inspection readiness to reduce approval delays and reopening risk.</p>
+        <p class="strategy-text">MEP, fire/life-safety, and ADA work sequenced for inspection readiness and reopening certainty.</p>
       </div>
 
       <div class="strategy-block">
         <h3 class="strategy-heading">Repeatability Over Speculation</h3>
-        <p class="strategy-text">We execute repeat renovation programs across Hilton, Marriott, and IHG portfolios, building institutional knowledge of brand standards and inspection protocols. Repeat engagements improve procurement efficiency, schedule certainty, and approval velocity.</p>
-      </div>
-
-      <div class="strategy-block">
-        <h3 class="strategy-heading">Scope Discipline & Risk Boundaries</h3>
-        <p class="strategy-text">Scope decisions prioritize execution control and inspection outcomes over bid volume. Building systems are selectively integrated where coordination and compliance authority reduce execution risk.</p>
-      </div>
-
-      <div class="strategy-block">
-        <h3 class="strategy-heading">Platform Services</h3>
-        <p class="strategy-text">Early-stage scope planning and cost appraisal reduce execution variance and prevent over-capitalization in brand-mandated renovations. Conversions are considered only when internal execution and procurement materially reduce cost basis.</p>
+        <p class="strategy-text">Repeat renovation programs across Hilton, Marriott, and IHG portfolios compound brand fluency, schedule certainty, and approval velocity.</p>
       </div>
 
         </div>
@@ -115,24 +107,20 @@
         <h4 class="sidebar-title">Execution Focus</h4>
         <ul class="sidebar-list">
           <li>
-            <div class="sidebar-item-title">Brand Compliance</div>
-            <div class="sidebar-item-text">Property Improvement Plans enforced by Hilton, Marriott, IHG, and Hyatt require strict adherence to franchise specifications and inspection protocols.</div>
+            <div class="sidebar-item-title">Non-Discretionary Demand</div>
+            <div class="sidebar-item-text">$29B annual US hotel renovation spend driven by brand-mandated PIPs; $12.2B addressable in upscale/select service.</div>
           </li>
           <li>
-            <div class="sidebar-item-title">Procurement Authority</div>
-            <div class="sidebar-item-text">Approved vendors, submittals, and substitutions are governed to protect inspection outcomes and working capital timing.</div>
+            <div class="sidebar-item-title">Renovation Velocity</div>
+            <div class="sidebar-item-text">Typical renovation windows of 4-6 months versus 9-14 months (conversions) and 24+ months (new builds).</div>
           </li>
           <li>
-            <div class="sidebar-item-title">Occupied Asset Protocols</div>
-            <div class="sidebar-item-text">Renovations completed while properties remain operational through phased construction, swing room coordination, and noise restriction compliance.</div>
+            <div class="sidebar-item-title">Brand Systems</div>
+            <div class="sidebar-item-text">PIP compliance, submittals, and inspection protocols govern sequencing.</div>
           </li>
           <li>
-            <div class="sidebar-item-title">Capital Cycle Alignment</div>
-            <div class="sidebar-item-text">Execution aligned to 6, 12, and 18-year brand-mandated renovation cycles and franchise agreement timelines.</div>
-          </li>
-          <li>
-            <div class="sidebar-item-title">Fire/Life-Safety & ADA</div>
-            <div class="sidebar-item-text">Compliance sequencing maintains life-safety and accessibility requirements throughout occupied-asset execution.</div>
+            <div class="sidebar-item-title">Occupied Operations</div>
+            <div class="sidebar-item-text">Phased execution keeps hotels operational through swing room coordination and brand-approved protocols.</div>
           </li>
         </ul>
       </aside>
@@ -146,7 +134,8 @@
     <div class="footer-content">
       <div class="footer-left">
         <a href="mailto:info@waldenridgeco.com">info@waldenridgeco.com</a>
-        <div class="footer-location">River City, USA</div>
+        <div class="footer-location">Chattanooga, TN</div>
+        <div class="footer-cta"><a href="mailto:marcus@waldenridgeco.com?subject=Investor%20Overview%20Request">Request Investor Overview</a></div>
       </div>
       <img src="../logo.png" alt="WR" class="footer-logo">
     </div>

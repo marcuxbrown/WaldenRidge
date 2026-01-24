@@ -14,8 +14,9 @@
     // Font loading optimization
     if ('fonts' in document) {
       Promise.all([
-        document.fonts.load('300 1em elza-text'),
-        document.fonts.load('500 1em elza-text'),
+        document.fonts.load('400 1em IBM Plex Sans'),
+        document.fonts.load('600 1em IBM Plex Sans'),
+        document.fonts.load('600 1em Cormorant Garamond'),,
         document.fonts.load('700 1em JunicodeExpBold')
       ]).then(() => {
         document.documentElement.classList.add('fonts-loaded');
@@ -33,10 +34,11 @@
     }
   </script>
 
-  <!-- Adobe Fonts (Typekit) - Elza Text -->
-  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
-  <link rel="stylesheet" href="https://use.typekit.net/ckx4rji.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://use.typekit.net/ckx4rji.css"></noscript>
+  <!-- Google Fonts - IBM Plex Sans + Cormorant Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"></noscript>
 
   <!-- Site Styles -->
   <link rel="stylesheet" href="./styles.css">
@@ -60,7 +62,7 @@
     </nav>
   </header>
 
-  <main class="container">
+  <main class="container home-main">
     <div class="reveal-overlay" aria-hidden="true"></div>
 
     <section class="home-hero">
@@ -69,7 +71,73 @@
       </div>
       <div class="home-hero-text">
         <h1>Renovation, repeated <span class="nowrap">with&nbsp;discipline.</span></h1>
-        <p>Walden Ridge executes within brand systems, delivering predictable outcomes for owners, contractors, and capital partners.</p>
+        <p><span class="copy-extended">Institutional renovation platform for select-service and upscale hospitality assets.</span><span class="copy-compact">Institutional renovation platform for select-service and upscale assets.</span><span class="break-desktop"><br></span> Predictable execution for owners, operators, and capital partners.</p>
+        <p class="home-hero-proof"><span class="copy-extended">Formerly HRS Group, the platform has executed branded hotel renovations since 2009.</span><span class="copy-compact">Formerly HRS Group. Branded renovations since 2009.</span></p>
+      </div>
+    </section>
+
+    <section class="home-summary" aria-label="Investment committee summary">
+      <div class="section-header">
+        <span class="section-eyebrow">Investment Committee Summary</span>
+      </div>
+      <div class="data-panel">
+        <div class="summary-grid">
+          <article class="summary-item">
+            <h3>Mandatory, Non-Discretionary Demand</h3>
+            <p><span class="copy-extended">$29B annual US hotel renovation spend; PIPs required to maintain franchise, ADR, and asset value.</span><span class="copy-compact">$29B annual renovation spend; PIPs required to maintain franchise and asset value.</span></p>
+          </article>
+          <article class="summary-item">
+            <h3>Execution-Led Risk Profile</h3>
+            <p><span class="copy-extended">Outcomes driven by schedule certainty, inspection readiness, and compliance (fire/life-safety, ADA).</span><span class="copy-compact">Outcomes driven by schedule certainty and compliance.</span></p>
+          </article>
+          <article class="summary-item">
+            <h3>Short Duration, High Capital Velocity</h3>
+            <p><span class="copy-extended">~4-6 month renovations vs 9-14 month conversions and 24+ month new builds.</span><span class="copy-compact">~4-6 month renovations vs longer conversions and new builds.</span></p>
+          </article>
+          <article class="summary-item">
+            <h3>Institutional Brand Fluency</h3>
+            <p><span class="copy-extended">Repeat execution in Hilton, Marriott, Hyatt, IHG, and Wyndham systems reduces approval friction.</span><span class="copy-compact">Repeat execution in major brand systems reduces approval friction.</span></p>
+          </article>
+          <article class="summary-item">
+            <h3>Repeat Portfolio Economics</h3>
+            <p><span class="copy-extended">Multi-asset owners drive backlog visibility, procurement leverage, and margin durability.</span><span class="copy-compact">Multi-asset owners drive backlog visibility and procurement leverage.</span></p>
+          </article>
+          <article class="summary-item">
+            <h3>Vertically Integrated Control Model</h3>
+            <p><span class="copy-extended">Internal construction, millwork, fabrication, and FF&amp;E reduce handoffs and rework.</span><span class="copy-compact">Internal construction, millwork, fabrication, and FF&amp;E reduce handoffs.</span></p>
+          </article>
+        </div>
+      </div>
+      <p class="summary-note">Investor overview available on request. <a href="mailto:marcus@waldenridgeco.com?subject=Investor%20Overview%20Request">marcus@waldenridgeco.com</a></p>
+    </section>
+
+    <section class="home-metrics" aria-label="Track record">
+      <div class="section-header">
+        <span class="section-eyebrow">Track Record</span>
+      </div>
+      <div class="data-panel">
+        <dl class="metrics-grid">
+          <div class="metric-item">
+            <dt>15+ Years</dt>
+            <dd>Operating history since 2009.</dd>
+          </div>
+          <div class="metric-item">
+            <dt>60+ Branded Renovations</dt>
+            <dd>Renovations across select-service and upscale assets.</dd>
+          </div>
+          <div class="metric-item">
+            <dt>6 Ground-Up Developments</dt>
+            <dd>Participated in six hotel ground-up developments.</dd>
+          </div>
+          <div class="metric-item">
+            <dt>4-6 Month Execution</dt>
+            <dd>Typical renovation window.</dd>
+          </div>
+          <div class="metric-item">
+            <dt>7 Flag Families</dt>
+            <dd>Hilton, Marriott, Hyatt, IHG, Wyndham, La Quinta, Extended Stay.</dd>
+          </div>
+        </dl>
       </div>
     </section>
   </main>
@@ -79,7 +147,8 @@
     <div class="footer-content">
       <div class="footer-left">
         <a href="mailto:info@waldenridgeco.com">info@waldenridgeco.com</a>
-        <div class="footer-location">River City, USA</div>
+        <div class="footer-location">Chattanooga, TN</div>
+        <div class="footer-cta"><a href="mailto:marcus@waldenridgeco.com?subject=Investor%20Overview%20Request">Request Investor Overview</a></div>
       </div>
       <img src="./logo.png" alt="WR" class="footer-logo">
     </div>

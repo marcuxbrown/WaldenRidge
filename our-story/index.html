@@ -14,8 +14,9 @@
     // Font loading optimization
     if ('fonts' in document) {
       Promise.all([
-        document.fonts.load('300 1em elza-text'),
-        document.fonts.load('500 1em elza-text'),
+        document.fonts.load('400 1em IBM Plex Sans'),
+        document.fonts.load('600 1em IBM Plex Sans'),
+        document.fonts.load('600 1em Cormorant Garamond'),
         document.fonts.load('700 1em JunicodeExpBold')
       ]).then(() => {
         document.documentElement.classList.add('fonts-loaded');
@@ -31,10 +32,11 @@
     }
   </script>
 
-  <!-- Adobe Fonts (Typekit) - Elza Text -->
-  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
-  <link rel="stylesheet" href="https://use.typekit.net/ckx4rji.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://use.typekit.net/ckx4rji.css"></noscript>
+  <!-- Google Fonts - IBM Plex Sans + Cormorant Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"></noscript>
 
   <!-- Site Styles -->
   <link rel="stylesheet" href="../styles.css">
@@ -67,10 +69,34 @@
     <div class="our-story-grid no-hero">
 
       <div class="content-column">
-        <p>Walden Ridge executes renovation programs for select-service and upscale hotel assets. Operating since 2010, the company works repeatedly with multi-asset owners across Hilton, Marriott, IHG, and Hyatt flag families.</p>
+        <p class="story-intro">Since 2009, Walden Ridge has executed renovation programs for select-service and upscale hotel assets across repeat ownership platforms. Formerly known as HRS Group, the platform has delivered 60+ branded renovations and six ground-up developments.</p>
 
-        <p>In branded hospitality, renovation timing is scheduled by the system, not by impulse. The work repeats in known cycles, with shorter execution windows that keep owners, contractors, and capital partners aligned on predictable outcomes.</p>
+        <p>The company was formed to bring disciplined, repeatable execution to brand-mandated capital cycles, work defined by PIP requirements, fixed inspection windows, and occupied-asset constraints.</p>
+
+        <p>Over 15+ years, Walden Ridge built an integrated platform that keeps procurement, millwork, FF&amp;E, and field coordination under a single operating rhythm, reducing handoffs and schedule variance.</p>
+
+        <p>Today the team works repeatedly with multi-asset owners across Hilton, Marriott, Hyatt, IHG, Wyndham, La Quinta, and Extended Stay flag families, typically delivering full-scope renovations in 4-6 month windows.</p>
+
+        <p>Based in Chattanooga, TN, Walden Ridge partners with institutional and owner-operator clients who value predictable outcomes, compliance certainty, and disciplined capital planning.</p>
       </div>
+
+      <aside class="story-rail" aria-label="Company timeline">
+        <div class="story-timeline">
+          <div class="timeline-eyebrow">Timeline</div>
+          <div class="timeline-item">
+            <div class="timeline-year">2009</div>
+            <div class="timeline-text">Entered the hotel sector and formed the renovation operating platform.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">15+ Years</div>
+            <div class="timeline-text">HRS Group operating history carried forward into the Walden Ridge platform.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Today</div>
+            <div class="timeline-text">Repeat renovation programs across seven flag families and multi-asset owners.</div>
+          </div>
+        </div>
+      </aside>
 
     </div>
   </main>
@@ -80,7 +106,8 @@
     <div class="footer-content">
       <div class="footer-left">
         <a href="mailto:info@waldenridgeco.com">info@waldenridgeco.com</a>
-        <div class="footer-location">River City, USA</div>
+        <div class="footer-location">Chattanooga, TN</div>
+        <div class="footer-cta"><a href="mailto:marcus@waldenridgeco.com?subject=Investor%20Overview%20Request">Request Investor Overview</a></div>
       </div>
       <img src="../logo.png" alt="WR" class="footer-logo">
     </div>
