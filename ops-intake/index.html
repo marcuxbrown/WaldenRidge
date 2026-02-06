@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ops Intake (Internal) - Walden Ridge</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../favicon.png" />
+
+  <script>
+    document.documentElement.classList.add('js');
+
+    // Font loading optimization (matches rest of site)
+    if ('fonts' in document) {
+      Promise.all([
+        document.fonts.load('400 1em IBM Plex Sans'),
+        document.fonts.load('600 1em IBM Plex Sans'),
+        document.fonts.load('600 1em Cormorant Garamond'),
+        document.fonts.load('700 1em JunicodeExpBold')
+      ]).then(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      }).catch(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      });
+
+      setTimeout(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      }, 2000);
+    } else {
+      document.documentElement.classList.add('fonts-loaded');
+    }
+  </script>
+
+  <!-- Google Fonts - IBM Plex Sans + Cormorant Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"></noscript>
+
+  <!-- Site Styles -->
+  <link rel="stylesheet" href="../styles.css" />
+
+  <style>
+    /* Lightweight page-local layout; keeps global WR typography */
+    .intake-shell { max-width: 920px; margin: 0 auto; padding: 0 var(--outer-margin); }
+    .intake-card { border: 1px solid var(--line-soft); border-radius: 12px; padding: 20px; background: rgba(255,255,255,0.25); }
+    .intake-title { margin: 0 0 6px; }
+    .intake-sub { margin: 0 0 14px; opacity: 0.8; }
+
+    .intake-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 18px; }
+    .intake-grid .full { grid-column: 1 / -1; }
+
+    label { display:block; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.9; margin: 0 0 6px; }
+    input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--line-soft);
+      background: rgba(255,255,255,0.65);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    textarea { min-height: 110px; resize: vertical; }
+
+    .req { color: #7a2f2f; font-weight: 600; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip { display: inline-flex; align-items: center; gap: 8px; padding: 10px 12px; border: 1px solid var(--line-soft); border-radius: 999px; background: rgba(255,255,255,0.45); }
+    .chip input { width: 16px; height: 16px; }
+
+    .actions { display:flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 14px; }
+    .actions button { border-radius: 999px; }
+
+    .statusbox { margin-top: 12px; font-size: 14px; opacity: 0.9; }
+    .status-ok { color: #1d3e2f; }
+    .status-bad { color: #7a2f2f; }
+
+    .preview-row { display:grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; margin-top: 10px; }
+    .preview-row img { width: 100%; height: 110px; object-fit: cover; border-radius: 10px; border: 1px solid rgba(0,0,0,0.12); }
+
+    @media (max-width: 740px) {
+      .intake-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="page-ops">
+
+  <header class="site-header">
+    <a href="../" class="logo-block">
+      <h1 class="logo-wordmark">WALDEN RIDGE</h1>
+      <p class="logo-subtitle">Hospitality Design &amp;&nbsp;Construction</p>
+    </a>
+
+    <nav class="main-nav">
+      <a href="../our-story/">Our Story</a>
+      <a href="../strategy/">Strategy</a>
+      <a href="../portfolio/">Portfolio</a>
+      <a href="../leadership/">Leadership</a>
+    </nav>
+  </header>
+
+  <main class="intake-shell" style="padding-top: 18px;">
+    <div class="intake-card">
+      <h1 class="intake-title">Ops Intake</h1>
+      <p class="intake-sub">Internal intake → Google Sheets + Drive PDF. Photos capped at 3, auto-compressed.</p>
+
+      <form id="wr-intake" class="intake-form" novalidate>
+        <div class="intake-grid">
+          <div>
+            <label>Property / Project name <span class="req">*</span></label>
+            <input name="property" type="text" required />
+          </div>
+          <div>
+            <label>Brand / Flag <span class="req">*</span></label>
+            <input name="brand" type="text" required />
+          </div>
+
+          <div>
+            <label>City <span class="req">*</span></label>
+            <input name="city" type="text" required />
+          </div>
+          <div>
+            <label>State <span class="req">*</span></label>
+            <input name="state" type="text" required />
+          </div>
+
+          <div>
+            <label>Owner entity <span class="req">*</span></label>
+            <input name="owner_entity" type="text" required />
+          </div>
+          <div>
+            <label>Management company</label>
+            <input name="management_company" type="text" />
+          </div>
+
+          <div>
+            <label>Contact name <span class="req">*</span></label>
+            <input name="contact_name" type="text" required />
+          </div>
+          <div>
+            <label>Role <span class="req">*</span></label>
+            <input name="contact_role" type="text" required />
+          </div>
+
+          <div>
+            <label>Email</label>
+            <input name="contact_email" type="email" />
+          </div>
+          <div>
+            <label>Phone</label>
+            <input name="contact_phone" type="tel" />
+          </div>
+
+          <div>
+            <label>Renovation type <span class="req">*</span></label>
+            <select name="renovation_type" required>
+              <option value="" selected disabled>Choose…</option>
+              <option>PIP</option>
+              <option>Soft goods</option>
+              <option>Full guestroom</option>
+              <option>Public areas</option>
+              <option>Conversion</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Occupancy status <span class="req">*</span></label>
+            <select name="occupancy_status" required>
+              <option value="" selected disabled>Choose…</option>
+              <option>Occupied</option>
+              <option>Dark</option>
+              <option>Phased</option>
+            </select>
+          </div>
+
+          <div class="full">
+            <label>Scope buckets</label>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="scope" value="Interiors demolition + build-back">Interiors demolition + build-back</label>
+              <label class="chip"><input type="checkbox" name="scope" value="Guest rooms">Guest rooms</label>
+              <label class="chip"><input type="checkbox" name="scope" value="Corridors">Corridors</label>
+              <label class="chip"><input type="checkbox" name="scope" value="Lobby / public areas">Lobby / public areas</label>
+              <label class="chip"><input type="checkbox" name="scope" value="F&B outlets">F&B outlets</label>
+              <label class="chip"><input type="checkbox" name="scope" value="Meeting / ballroom">Meeting / ballroom</label>
+              <label class="chip"><input type="checkbox" name="scope" value="Back-of-house">Back-of-house</label>
+              <label class="chip"><input type="checkbox" name="scope" value="MEP upgrades">MEP upgrades</label>
+              <label class="chip"><input type="checkbox" name="scope" value="Fire/life-safety remediation">Fire/life-safety remediation</label>
+              <label class="chip"><input type="checkbox" name="scope" value="Windows / envelope">Windows / envelope</label>
+              <label class="chip"><input type="checkbox" name="scope" value="Millwork / casegoods / fabrication">Millwork / casegoods / fabrication</label>
+              <label class="chip"><input type="checkbox" name="scope" value="FF&E procurement / logistics">FF&E procurement / logistics</label>
+              <label class="chip"><input type="checkbox" name="scope" value="Signage / wayfinding">Signage / wayfinding</label>
+              <label class="chip"><input type="checkbox" name="scope" value="Site / parking / exterior scopes">Site / parking / exterior scopes</label>
+            </div>
+          </div>
+
+          <div>
+            <label>Phasing constraints</label>
+            <input name="phasing" type="text" />
+          </div>
+          <div>
+            <label>Quiet hours / guest impact</label>
+            <input name="quiet_hours" type="text" />
+          </div>
+
+          <div class="full">
+            <label>Procurement boundaries</label>
+          </div>
+
+          <div>
+            <label>Casegoods provider</label>
+            <input name="casegoods" type="text" />
+          </div>
+          <div>
+            <label>Casegoods notes</label>
+            <input name="casegoods_notes" type="text" />
+          </div>
+
+          <div>
+            <label>FF&E provider</label>
+            <input name="ffe" type="text" />
+          </div>
+          <div>
+            <label>FF&E notes</label>
+            <input name="ffe_notes" type="text" />
+          </div>
+
+          <div>
+            <label>MEP provider</label>
+            <input name="mep" type="text" />
+          </div>
+          <div>
+            <label>MEP notes</label>
+            <input name="mep_notes" type="text" />
+          </div>
+
+          <div>
+            <label>Owner items</label>
+            <input name="owner_items" type="text" />
+          </div>
+          <div>
+            <label>Owner items notes</label>
+            <input name="owner_items_notes" type="text" />
+          </div>
+
+          <div class="full">
+            <label>Risks + questions</label>
+          </div>
+          <div>
+            <label>Key risks</label>
+            <textarea name="key_risks"></textarea>
+          </div>
+          <div>
+            <label>Open questions / follow-up</label>
+            <textarea name="open_questions"></textarea>
+          </div>
+
+          <div class="full">
+            <label>Next steps</label>
+          </div>
+          <div>
+            <label>Preferred follow-up</label>
+            <input name="follow_up" type="text" />
+          </div>
+          <div>
+            <label>Step one</label>
+            <input name="step_one" type="text" />
+          </div>
+          <div>
+            <label>Step two</label>
+            <input name="step_two" type="text" />
+          </div>
+          <div>
+            <label>Step three</label>
+            <input name="step_three" type="text" />
+          </div>
+
+          <div class="full">
+            <label>Notes</label>
+            <textarea name="notes"></textarea>
+          </div>
+
+          <div class="full">
+            <label>Photos (max 3)</label>
+            <input id="photos" type="file" accept="image/*" capture="environment" multiple />
+            <div id="photo-status" class="statusbox"></div>
+            <div id="photo-previews" class="preview-row"></div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">Submit intake</button>
+          <button id="email-proposal" class="btn btn-secondary" type="button" style="display:none;">Email proposal</button>
+          <a class="btn btn-secondary" href="mailto:workwithus@waldenridgeco.com?subject=Ops%20Intake%20Question">Email us</a>
+          <span id="submit-status" class="statusbox"></span>
+        </div>
+
+        <p class="statusbox" style="margin-top:10px; opacity:0.75;">
+          This is a free interim workflow (Cloudflare Pages + Apps Script) until the dedicated server is live.
+        </p>
+      </form>
+    </div>
+  </main>
+
+  <script src="./assets/intake.js" defer></script>
+</body>
+</html>
