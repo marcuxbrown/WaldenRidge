@@ -3,7 +3,7 @@
    - Opens PDF in a new tab on submit (best-effort; pop-up blockers may apply)
 */
 
-const WEB_APP_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLid0fOtSJeP8f1JCOVvlffevjbZ9pEyhyNUsP1H2oEF3tIbBTa3EzudrHjO55dD_2tv8h9kKhA1dxIKSeWXg6SRQmLVyd4aW9s8Lh0Ijc70-EymMsaa-B0Nj36fopg2BmIfApm8cEHJ498EM4mB_mTc0BhgzPub7ez-md4-L8Po3M3BKYD8gLyRe4bMFU7jqSxH-iYip-aDnUryrkqrYXtXZ8TTZTECjivdpLX0BzKofS8VBSayYqyZq6tRxBun-PGqu1hTk6ob_OKXgCHUGX7N3rUXWT5PVW0Fd123&lib=M2amxi56kUsxTNRame4gT5vEb409dptCx";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxpqCxmIbQQGecvCclMtg6RZK-gPHLSGFeYh1-5xa3Qz72Ag8-vtT0cT6BspglWETTEeA/exec";
 const PROPOSAL_PDF_URL = "https://waldenridge.pages.dev/assets/downloads/Walden%20Ridge%20-%20Proposal%20Sheet.pdf";
 
 const form = document.getElementById('wr-request');
@@ -53,10 +53,11 @@ form.addEventListener('submit', async (e) => {
   try {
     setStatus('Sending...', null);
 
-    const res = await fetch(WEB_APP_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(d),
+    // Apps Script Web Apps often redirect POST->GET (302), which breaks JSON POST.
+    // Use GET with query params instead; Apps Script must support reading parameters in doGet.
+    const qs = new URLSearchParams(d).toString();
+    const res = await fetch(`${WEB_APP_URL}?${qs}`, {
+      method: 'GET',
       redirect: 'follow'
     });
 
