@@ -38,9 +38,10 @@ form.addEventListener('submit', async (e) => {
     return;
   }
 
-  // Best-effort open in new tab (must be within user gesture)
+  // Open the PDF in a new tab immediately (must be within user gesture)
+  // This is independent of whether the email request succeeds.
   let pdfWin = null;
-  try { pdfWin = window.open('about:blank', '_blank', 'noopener'); } catch {}
+  try { pdfWin = window.open(PROPOSAL_PDF_URL, '_blank', 'noopener'); } catch {}
 
   try {
     setStatus('Sending...', null);
@@ -60,12 +61,9 @@ form.addEventListener('submit', async (e) => {
       return;
     }
 
-    // Navigate the new tab to the PDF (or fallback)
-    const pdfUrl = j.pdfUrl || PROPOSAL_PDF_URL;
-    if(pdfWin){
-      try { pdfWin.location = pdfUrl; } catch {}
-    } else {
-      window.open(pdfUrl, '_blank', 'noopener');
+    // If pop-up was blocked, open PDF now as fallback
+    if(!pdfWin){
+      window.open(PROPOSAL_PDF_URL, '_blank', 'noopener');
     }
 
     setStatus('Sent. Check your inbox.', 'ok');
