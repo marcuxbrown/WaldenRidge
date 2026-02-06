@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story - Walden Ridge</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../favicon.png">
+
+  <script>
+    document.documentElement.classList.add('js');
+
+    // Font loading optimization
+    if ('fonts' in document) {
+      Promise.all([
+        document.fonts.load('300 1em elza-text'),
+        document.fonts.load('500 1em elza-text'),
+        document.fonts.load('700 1em JunicodeExpBold')
+      ]).then(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      }).catch(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      });
+
+      setTimeout(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      }, 2000);
+    } else {
+      document.documentElement.classList.add('fonts-loaded');
+    }
+  </script>
+
+  <!-- Adobe Fonts (Typekit) - Elza Text -->
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+  <link rel="stylesheet" href="https://use.typekit.net/ckx4rji.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://use.typekit.net/ckx4rji.css"></noscript>
+
+  <!-- Site Styles -->
+  <link rel="stylesheet" href="../styles.css">
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+</head>
+<body class="page-our-story">
+
+  <header class="site-header">
+    <a href="../" class="logo-block">
+      <h1 class="logo-wordmark">WALDEN RIDGE</h1>
+      <p class="logo-subtitle">Hospitality Design &amp; Construction</p>
+    </a>
+
+    <nav class="main-nav">
+      <a href="../our-story/">Our Story</a>
+      <a href="../strategy/">Strategy</a>
+      <a href="../portfolio/">Portfolio</a>
+      <a href="../governance/">Governance</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="reveal-overlay" aria-hidden="true"></div>
+    <div class="our-story-intro">
+      <h1>Our Story</h1>
+    </div>
+
+    <div class="our-story-grid no-hero">
+
+      <div class="content-column">
+        <p class="story-intro">Since 2009, Walden Ridge has executed renovation programs for select-service and upscale hotel assets across repeat ownership platforms. Formerly known as HRS Group, the platform has delivered 60+ branded renovations and six ground-up developments.</p>
+
+        <div class="story-timeline" aria-label="Company timeline">
+          <div class="timeline-eyebrow">Timeline</div>
+          <div class="timeline-item">
+            <div class="timeline-year">2009</div>
+            <div class="timeline-text">Entered the hotel sector and formed the renovation operating platform.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">15+ Years</div>
+            <div class="timeline-text">HRS Group operating history carried forward into the Walden Ridge platform.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Today</div>
+            <div class="timeline-text">Repeat renovation programs across seven flag families and multi-asset owners.</div>
+          </div>
+        </div>
+
+        <p>The company was formed to bring disciplined, repeatable execution to brand-mandated capital cycles, work defined by PIP requirements, fixed inspection windows, and occupied-asset constraints.</p>
+
+        <p>Over 15+ years, Walden Ridge built an integrated platform that keeps procurement, millwork, FF&amp;E, and field coordination under a single operating rhythm, reducing handoffs and schedule variance.</p>
+
+        <p>Today the team works repeatedly with multi-asset owners across Hilton, Marriott, Hyatt, IHG, Wyndham, La Quinta, and Extended Stay flag families, typically delivering full-scope renovations in 4-6 month windows.</p>
+
+        <p>Based in Chattanooga, TN, Walden Ridge partners with institutional and owner-operator clients who value predictable outcomes, compliance certainty, and disciplined capital planning.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <a href="mailto:workwithus@waldenridgeco.com">workwithus@waldenridgeco.com</a>
+        <div class="footer-location">Chattanooga, TN</div>
+        <div class="footer-cta"><a href="../request/">Request Proposal</a></div>
+      </div>
+      <img src="../logo.png" alt="WR" class="footer-logo">
+    </div>
+  </footer>
+
+  <script>
+    // Lightweight entrance animation - only on initial page load
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isInitialLoad = !window.performance || performance.navigation.type === 0;
+
+    if (prefersReduced || !window.gsap || !isInitialLoad) {
+      // Skip animation on navigation or if motion reduced
+      document.documentElement.classList.add('no-motion');
+      document.querySelector('.reveal-overlay')?.remove();
+    } else {
+      const run = () => {
+        const tl = gsap.timeline({
+          defaults: { ease: 'power2.out', duration: 0.6 },
+          onComplete: () => {
+            document.querySelector('.reveal-overlay')?.remove();
+          }
+        });
+        tl.to('.reveal-overlay', { autoAlpha: 0, duration: 0.4, ease: 'power2.inOut' }, 0)
+          .from('.site-header', { autoAlpha: 0, y: -8, duration: 0.5 }, 0.1)
+          .from('main', { autoAlpha: 0, y: 12, duration: 0.6 }, 0.15);
+      };
+
+      let ran = false;
+      const safeRun = () => { if (ran) return; ran = true; run(); };
+
+      // Wait for fonts to be ready
+      if (document.documentElement.classList.contains('fonts-loaded')) {
+        requestAnimationFrame(safeRun);
+      } else {
+        const checkFonts = setInterval(() => {
+          if (document.documentElement.classList.contains('fonts-loaded')) {
+            clearInterval(checkFonts);
+            requestAnimationFrame(safeRun);
+          }
+        }, 50);
+
+        // Timeout fallback
+        setTimeout(safeRun, 800);
+      }
+    }
+  </script>
+
+</body>
+</html>

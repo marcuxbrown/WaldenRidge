@@ -46,7 +46,8 @@ Then visit:
 - http://localhost:8000/our-story/
 - http://localhost:8000/portfolio/
 - http://localhost:8000/strategy/
-- http://localhost:8000/governance/
+- http://localhost:8000/leadership/
+- http://localhost:8000/governance/ (redirects)
 
 ### Set Browser to 1440px
 

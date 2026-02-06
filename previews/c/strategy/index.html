@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategy - Walden Ridge</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../favicon.png">
+
+  <script>
+    document.documentElement.classList.add('js');
+
+    // Font loading optimization
+    if ('fonts' in document) {
+      Promise.all([
+        document.fonts.load('300 1em elza-text'),
+        document.fonts.load('500 1em elza-text'),
+        document.fonts.load('700 1em JunicodeExpBold')
+      ]).then(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      }).catch(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      });
+
+      setTimeout(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      }, 2000);
+    } else {
+      document.documentElement.classList.add('fonts-loaded');
+    }
+  </script>
+
+
+  <!-- Adobe Fonts (Typekit) - Elza Text -->
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+  <link rel="stylesheet" href="https://use.typekit.net/ckx4rji.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://use.typekit.net/ckx4rji.css"></noscript>
+
+  <!-- Site Styles -->
+  <link rel="stylesheet" href="../styles.css">
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+</head>
+<body class="page-strategy">
+
+  <header class="site-header">
+    <a href="../" class="logo-block">
+      <h1 class="logo-wordmark">WALDEN RIDGE</h1>
+      <p class="logo-subtitle">Hospitality Design &amp; Construction</p>
+    </a>
+
+    <nav class="main-nav">
+      <a href="../our-story/">Our Story</a>
+      <a href="../strategy/">Strategy</a>
+      <a href="../portfolio/">Portfolio</a>
+      <a href="../governance/">Governance</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="reveal-overlay" aria-hidden="true"></div>
+
+    <div class="strategy-intro">
+      <h1>Strategy</h1>
+      <p class="strategy-intro-text">We reduce execution variance in brand-mandated capital cycles by controlling schedule, budget discipline, and compliance sequencing through vertical integration.</p>
+    </div>
+
+    <div class="strategy-layout">
+
+      <div class="strategy-main">
+        <div class="strategy-grid">
+
+      <div class="strategy-block">
+        <h3 class="strategy-heading">Compliance-Driven Procurement Authority</h3>
+        <p class="strategy-text">Approved vendors, submittals, and substitutions are governed to protect inspection outcomes and working capital timing.</p>
+      </div>
+
+      <div class="strategy-block">
+        <h3 class="strategy-heading">Lifecycle-Based Capital Planning</h3>
+        <p class="strategy-text">Execution aligned to 6, 12, and 18-year brand cycles to maintain valuation and compliance.</p>
+      </div>
+
+      <div class="strategy-block">
+        <h3 class="strategy-heading">Vertical Integration for Control</h3>
+        <p class="strategy-text">Internal construction, millwork fabrication, FF&amp;E procurement, and MEP coordination reduce handoffs and approval delays.</p>
+      </div>
+
+      <div class="strategy-block">
+        <h3 class="strategy-heading">Code Compliance & Inspection Readiness</h3>
+        <p class="strategy-text">MEP, fire/life-safety, and ADA work sequenced for inspection readiness and reopening certainty.</p>
+      </div>
+
+      <div class="strategy-block">
+        <h3 class="strategy-heading">Repeatability Over Speculation</h3>
+        <p class="strategy-text">Repeat renovation programs across Hilton, Marriott, and IHG portfolios compound brand fluency, schedule certainty, and approval velocity.</p>
+      </div>
+
+        </div>
+      </div>
+
+      <!-- Right Sidebar -->
+      <aside class="page-sidebar">
+        <h4 class="sidebar-title">Execution Focus</h4>
+        <ul class="sidebar-list">
+          <li>
+            <div class="sidebar-item-title">Non-Discretionary Demand</div>
+            <div class="sidebar-item-text">$29B annual US hotel renovation spend driven by brand-mandated PIPs; $12.2B addressable in upscale/select service.</div>
+          </li>
+          <li>
+            <div class="sidebar-item-title">Renovation Velocity</div>
+            <div class="sidebar-item-text">Typical renovation windows of 4-6 months versus 9-14 months (conversions) and 24+ months (new builds).</div>
+          </li>
+          <li>
+            <div class="sidebar-item-title">Brand Systems</div>
+            <div class="sidebar-item-text">PIP compliance, submittals, and inspection protocols govern sequencing.</div>
+          </li>
+          <li>
+            <div class="sidebar-item-title">Occupied Operations</div>
+            <div class="sidebar-item-text">Phased execution keeps hotels operational through swing room coordination and brand-approved protocols.</div>
+          </li>
+        </ul>
+      </aside>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <a href="mailto:workwithus@waldenridgeco.com">workwithus@waldenridgeco.com</a>
+        <div class="footer-location">Chattanooga, TN</div>
+        <div class="footer-cta"><a href="../request/">Request Proposal</a></div>
+      </div>
+      <img src="../logo.png" alt="WR" class="footer-logo">
+    </div>
+  </footer>
+
+  <script>
+    // Lightweight entrance animation - only on initial page load
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isInitialLoad = !window.performance || performance.navigation.type === 0;
+
+    if (prefersReduced || !window.gsap || !isInitialLoad) {
+      // Skip animation on navigation or if motion reduced
+      document.documentElement.classList.add('no-motion');
+      document.querySelector('.reveal-overlay')?.remove();
+    } else {
+      const run = () => {
+        const tl = gsap.timeline({
+          defaults: { ease: 'power2.out', duration: 0.6 },
+          onComplete: () => {
+            document.querySelector('.reveal-overlay')?.remove();
+          }
+        });
+        tl.to('.reveal-overlay', { autoAlpha: 0, duration: 0.4, ease: 'power2.inOut' }, 0)
+          .from('.site-header', { autoAlpha: 0, y: -8, duration: 0.5 }, 0.1)
+          .from('main', { autoAlpha: 0, y: 12, duration: 0.6 }, 0.15);
+      };
+
+      let ran = false;
+      const safeRun = () => { if (ran) return; ran = true; run(); };
+
+      // Wait for fonts to be ready
+      if (document.documentElement.classList.contains('fonts-loaded')) {
+        requestAnimationFrame(safeRun);
+      } else {
+        const checkFonts = setInterval(() => {
+          if (document.documentElement.classList.contains('fonts-loaded')) {
+            clearInterval(checkFonts);
+            requestAnimationFrame(safeRun);
+          }
+        }, 50);
+
+        // Timeout fallback
+        setTimeout(safeRun, 800);
+      }
+    }
+  </script>
+
+</body>
+</html>

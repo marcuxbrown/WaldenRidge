@@ -12,13 +12,13 @@ Primary navigation (global header):
 - Our Story (`/our-story/`)
 - Strategy (`/strategy/`)
 - Portfolio (`/portfolio/`)
-- Governance (`/governance/`)
+- Leadership (`/leadership/`)
 
 IA intent:
 - **Our Story**: Platform framing and why demand is non-discretionary.
 - **Strategy**: Risk controls, execution model, and compliance economics.
 - **Portfolio**: Geographic footprint and brand exposure.
-- **Governance**: Oversight structure and institutional readiness.
+ - **Leadership**: Oversight structure and institutional readiness.
 
 ## 3) Typography System (Implemented)
 **Font families**
@@ -102,6 +102,18 @@ IA intent:
 - Text: `#1a1a1a`
 - Background: `#f5f3f0`
 - Link hover: `#666`
+
+Supporting tokens:
+Token | Value
+---|---
+`--color-surface` | `rgba(255, 255, 255, 0.7)`
+`--line-subtle` | `rgba(26, 26, 26, 0.12)`
+`--line-soft` | `rgba(26, 26, 26, 0.14)`
+`--line-mid` | `rgba(26, 26, 26, 0.15)`
+`--line-strong` | `rgba(26, 26, 26, 0.24)`
+`--line-emphasis` | `rgba(26, 26, 26, 0.25)`
+`--radius-md` | `18px`
+`--shadow-soft` | `0 18px 50px rgba(0, 0, 0, 0.10)`
 
 ## 7) Responsiveness (Implemented)
 Breakpoints and primary adjustments:

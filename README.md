@@ -63,7 +63,8 @@ This repo includes optional Pages config files:
    http://localhost:8000/our-story/
    http://localhost:8000/portfolio/
    http://localhost:8000/strategy/
-   http://localhost:8000/governance/
+   http://localhost:8000/leadership/
+   http://localhost:8000/governance/ (redirects)
    ```
 
 ## Overlay Validation Mode
@@ -137,8 +138,10 @@ walden-ridge/
 │   └── index.html
 ├── strategy/
 │   └── index.html
-├── governance/
+├── leadership/
 │   └── index.html
+├── governance/
+│   └── index.html (redirect)
 ├── styles.css
 └── README.md
 ```

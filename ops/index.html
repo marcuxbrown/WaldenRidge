@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Walden Ridge · Ops Intake</title>
+
+  <link rel="icon" type="image/png" href="../favicon.png">
+
+  <script>
+    document.documentElement.classList.add('js');
+
+    if ('fonts' in document) {
+      Promise.all([
+        document.fonts.load('400 1em IBM Plex Sans'),
+        document.fonts.load('600 1em IBM Plex Sans'),
+        document.fonts.load('600 1em Cormorant Garamond'),
+        document.fonts.load('700 1em JunicodeExpBold')
+      ]).then(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      }).catch(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      });
+
+      setTimeout(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      }, 2000);
+    } else {
+      document.documentElement.classList.add('fonts-loaded');
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"></noscript>
+
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .ops-shell {
+      padding: 0 var(--outer-margin) 60px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    .ops-head {
+      max-width: var(--content-width);
+      margin: 0 auto 16px;
+      display: grid;
+      gap: 8px;
+    }
+    .ops-head h2 {
+      font-family: var(--font-display);
+      font-size: 34px;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: var(--optical-adjust-md);
+    }
+    .ops-head p {
+      color: rgba(26, 26, 26, 0.7);
+      max-width: 760px;
+    }
+    .ops-frame-wrap {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      border: 1px solid var(--line-subtle);
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+    .ops-frame {
+      width: 100%;
+      height: min(1200px, calc(100vh - 310px));
+      border: 0;
+      display: block;
+      background: #fff;
+    }
+    .ops-meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+    .ops-pill {
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line-subtle);
+      background: rgba(255, 255, 255, 0.65);
+      font-weight: 600;
+    }
+    .ops-link {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    @media (max-width: 920px) {
+      .ops-shell { padding: 0 20px 40px; }
+      .ops-frame { height: calc(100vh - 260px); }
+      .main-nav { gap: 28px; }
+    }
+  </style>
+</head>
+<body class="page-home">
+  <header class="site-header">
+    <a href="../" class="logo-block">
+      <h1 class="logo-wordmark">WALDEN RIDGE</h1>
+      <p class="logo-subtitle">Hospitality Design &amp;&nbsp;Construction</p>
+    </a>
+
+    <nav class="main-nav">
+      <a href="../our-story/">Our Story</a>
+      <a href="../strategy/">Strategy</a>
+      <a href="../portfolio/">Portfolio</a>
+      <a href="../leadership/">Leadership</a>
+    </nav>
+  </header>
+
+  <main class="ops-shell">
+    <section class="ops-head" aria-label="Ops intake tool">
+      <div class="ops-meta">
+        <span class="ops-pill">Internal</span>
+        <span class="ops-pill" id="ops-env">Loading…</span>
+        <a class="ops-link" id="ops-open" href="#" target="_blank" rel="noreferrer">Open in new tab</a>
+      </div>
+      <h2>Ops intake</h2>
+      <p>Field-friendly intake + PDF generator. This page embeds the tool to keep it on the Walden Ridge site shell.</p>
+    </section>
+
+    <div class="ops-frame-wrap">
+      <iframe class="ops-frame" id="ops-frame" title="Walden Ridge Ops Intake"></iframe>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <a href="mailto:workwithus@waldenridgeco.com">workwithus@waldenridgeco.com</a>
+        <div class="footer-location">Chattanooga, TN</div>
+        <div class="footer-cta"><a href="../request/">Request Proposal</a></div>
+      </div>
+      <div class="footer-mark">
+        <img src="../logo.png" alt="WR" class="footer-logo">
+        <div class="footer-mark-text">Since 2009</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const explicit = params.get('src');
+      const defaultLocal = 'http://localhost:3000';
+      const defaultProd = 'https://ops.waldenridgeco.com';
+
+      const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const src = explicit || (isLocal ? defaultLocal : defaultProd);
+
+      const frame = document.getElementById('ops-frame');
+      const env = document.getElementById('ops-env');
+      const open = document.getElementById('ops-open');
+
+      frame.src = src;
+      open.href = src;
+      env.textContent = explicit ? 'Custom src' : (isLocal ? 'Local' : 'Production');
+    })();
+  </script>
+</body>
+</html>

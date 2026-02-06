@@ -2,12 +2,12 @@
 
 ## ✅ Deliverables Complete
 
-### HTML Pages (4)
+### HTML Pages (5)
 - ✅ `/our-story/index.html` - Two-column layout with hero image
 - ✅ `/portfolio/index.html` - Three-column property grid
 - ✅ `/strategy/index.html` - Two-column strategy blocks
-- ✅ `/governance/index.html` - Governance and oversight page
-- ✅ `/index.html` - Root redirect to Our Story
+- ✅ `/leadership/index.html` - Leadership page (formerly governance)
+- ✅ `/governance/index.html` - Redirects to Leadership
 
 ### CSS
 - ✅ `/styles.css` - Single stylesheet with:

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Walden Ridge</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+    <script>
+    document.documentElement.classList.add('js');
+
+    // Font loading optimization
+    if ('fonts' in document) {
+      Promise.all([
+        document.fonts.load('400 1em IBM Plex Sans'),
+        document.fonts.load('600 1em IBM Plex Sans'),
+        document.fonts.load('600 1em Cormorant Garamond'),
+        document.fonts.load('700 1em JunicodeExpBold')
+      ]).then(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      }).catch(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      });
+
+      // Timeout fallback
+      setTimeout(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      }, 2000);
+    } else {
+      document.documentElement.classList.add('fonts-loaded');
+    }
+  </script>
+
+
+  <!-- Google Fonts - IBM Plex Sans + Cormorant Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"></noscript>
+
+  <!-- Site Styles -->
+  <link rel="stylesheet" href="./styles.css">
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+</head>
+<body class="page-home">
+
+  <header class="site-header">
+    <a href="./" class="logo-block">
+      <h1 class="logo-wordmark">WALDEN RIDGE</h1>
+      <p class="logo-subtitle">Hospitality Design &amp;&nbsp;Construction</p>
+    </a>
+
+    <nav class="main-nav">
+      <a href="./our-story/">Our Story</a>
+      <a href="./strategy/">Strategy</a>
+      <a href="./portfolio/">Portfolio</a>
+      <a href="./leadership/">Leadership</a>
+    </nav>
+  </header>
+
+  <main class="container home-main">
+    <div class="reveal-overlay" aria-hidden="true"></div>
+
+    <section class="home-hero">
+      <div class="home-hero-media">
+        <img src="./assets/images/hero-b.jpg" alt="Hotel exterior at dusk" class="home-hero-image">
+      </div>
+      <div class="home-hero-caption">Renovated courtyard, <span class="nowrap">select-service</span> hospitality asset</div>
+      <div class="home-hero-text">
+        <h1>Renovation, repeated <span class="nowrap">with&nbsp;discipline</span></h1>
+        <div class="page-metrics">60+ renovations &middot; 6 <span class="nowrap">ground-up</span> developments &middot; 7 flag families</div>
+        <p><span class="copy-extended">Institutional renovation platform for <span class="nowrap">select-service</span> and&nbsp;upscale hospitality assets</span><span class="copy-compact">Institutional renovation platform for <span class="nowrap">select-service</span> and&nbsp;upscale assets</span><span class="break-desktop"><br></span> Predictable execution for owners, operators, and&nbsp;capital partners</p>
+        <p class="home-hero-proof"><span class="copy-extended">Formerly HRS Group, the platform has executed branded hotel renovations for institutional owners</span><span class="copy-compact">Formerly HRS Group, branded renovations for institutional owners</span></p>
+        <div class="home-hero-cta">
+          <a class="btn btn-primary" href="./request/">Request proposal</a>
+          <a class="btn btn-secondary" href="mailto:workwithus@waldenridgeco.com?subject=Proposal%20Request">Email us</a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="home-summary" aria-label="Investment committee summary">
+      <div class="section-header">
+        <span class="section-eyebrow">Investment Committee Summary</span>
+      </div>
+      <div class="data-panel">
+        <div class="summary-grid">
+          <article class="summary-item">
+            <h3>Mandatory, <span class="nowrap">Non-Discretionary</span> Demand</h3>
+            <p><span class="copy-extended">$29B annual US hotel renovation spend; PIPs required to maintain franchise, ADR, and&nbsp;asset value</span><span class="copy-compact">$29B annual renovation spend; PIPs required to maintain franchise and&nbsp;asset value</span></p>
+          </article>
+          <article class="summary-item">
+            <h3><span class="nowrap">Execution-Led</span> Risk Profile</h3>
+            <p><span class="copy-extended">Outcomes driven by schedule certainty, inspection readiness, and&nbsp;compliance (<span class="nowrap">fire/life-safety</span>, ADA)</span><span class="copy-compact">Outcomes driven by schedule certainty and&nbsp;compliance</span></p>
+          </article>
+          <article class="summary-item">
+            <h3>Short Duration, High Capital Velocity</h3>
+            <p><span class="copy-extended">~<span class="nowrap">4-6</span> month renovations vs <span class="nowrap">9-14</span> month conversions and&nbsp;24+ month new builds</span><span class="copy-compact">~<span class="nowrap">4-6</span> month renovations vs longer conversions and&nbsp;new builds</span></p>
+          </article>
+          <article class="summary-item">
+            <h3>Institutional Brand Fluency</h3>
+            <p><span class="copy-extended">Repeat execution in Hilton, Marriott, Hyatt, IHG, and&nbsp;Wyndham systems reduces approval friction</span><span class="copy-compact">Repeat execution in major brand systems reduces approval friction</span></p>
+          </article>
+          <article class="summary-item">
+            <h3>Repeat Portfolio Economics</h3>
+            <p><span class="copy-extended"><span class="nowrap">Multi-asset</span> owners drive backlog visibility, procurement leverage, and&nbsp;margin durability</span><span class="copy-compact"><span class="nowrap">Multi-asset</span> owners drive backlog visibility and&nbsp;procurement leverage</span></p>
+          </article>
+          <article class="summary-item">
+            <h3>Vertically Integrated Control Model</h3>
+            <p><span class="copy-extended">Internal construction, millwork, fabrication, and&nbsp;FF&amp;E reduce handoffs and&nbsp;rework</span><span class="copy-compact">Internal construction, millwork, fabrication, and&nbsp;FF&amp;E reduce handoffs</span></p>
+          </article>
+        </div>
+      </div>
+</section>
+
+    <section class="home-metrics" aria-label="Track record">
+      <div class="section-header">
+        <span class="section-eyebrow">Track Record</span>
+      </div>
+      <div class="data-panel">
+        <dl class="metrics-grid">
+          <div class="metric-item">
+            <dt>Operating History</dt>
+            <dd>Established platform with repeat renovation programs</dd>
+          </div>
+          <div class="metric-item">
+            <dt>60+ Branded Renovations</dt>
+            <dd>Renovations across <span class="nowrap">select-service</span> and&nbsp;upscale assets</dd>
+          </div>
+          <div class="metric-item">
+            <dt>6 Ground-Up Developments</dt>
+            <dd>Participated in six hotel <span class="nowrap">ground-up</span> developments</dd>
+          </div>
+          <div class="metric-item">
+            <dt>7 Flag Families</dt>
+            <dd>Hilton, Marriott, Hyatt, IHG, Wyndham, <span class="nowrap">La Quinta</span>, Extended Stay</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <a href="mailto:workwithus@waldenridgeco.com">workwithus@waldenridgeco.com</a>
+        <div class="footer-location">Chattanooga, TN</div>
+        <div class="footer-cta"><a href="./request/">Request Proposal</a></div>
+      </div>
+      <div class="footer-mark">
+        <img src="./logo.png" alt="WR" class="footer-logo">
+        <div class="footer-mark-text">Since 2009</div>
+      </div>
+    </div>
+  </footer>
+
+    <script>
+    // Lightweight entrance animation - only on initial page load
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isInitialLoad = !window.performance || performance.navigation.type === 0;
+
+    if (prefersReduced || !window.gsap || !isInitialLoad) {
+      // Skip animation on navigation or if motion reduced
+      document.documentElement.classList.add('no-motion');
+      document.querySelector('.reveal-overlay')?.remove();
+    } else {
+      const run = () => {
+        const tl = gsap.timeline({
+          defaults: { ease: 'power2.out', duration: 0.6 },
+          onComplete: () => {
+            document.querySelector('.reveal-overlay')?.remove();
+          }
+        });
+        tl.to('.reveal-overlay', { autoAlpha: 0, duration: 0.4, ease: 'power2.inOut' }, 0)
+          .from('.site-header', { autoAlpha: 0, y: -8, duration: 0.5 }, 0.1)
+          .from('main', { autoAlpha: 0, y: 12, duration: 0.6 }, 0.15);
+      };
+
+      let ran = false;
+      const safeRun = () => { if (ran) return; ran = true; run(); };
+
+      // Wait for fonts to be ready
+      if (document.documentElement.classList.contains('fonts-loaded')) {
+        requestAnimationFrame(safeRun);
+      } else {
+        const checkFonts = setInterval(() => {
+          if (document.documentElement.classList.contains('fonts-loaded')) {
+            clearInterval(checkFonts);
+            requestAnimationFrame(safeRun);
+          }
+        }, 50);
+
+        // Timeout fallback
+        setTimeout(safeRun, 800);
+      }
+    }
+  </script>
+
+
+</body>
+</html>
