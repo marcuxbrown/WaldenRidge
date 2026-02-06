@@ -1141,13 +1141,13 @@ body.overlay-mode.page-strategy::before {
 @media (max-width: 980px) {
   .site-header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center; /* keep logo centered in stacked header */
     gap: 16px;
   }
 
   .main-nav {
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
     gap: 18px;
     padding-top: 0;
   }
@@ -1315,6 +1315,17 @@ body.overlay-mode.page-strategy::before {
     --fs-caption: 14px;
   }
 
+  /* Leadership page: prevent horizontal overflow on mobile */
+  .page-leadership .leadership-grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  .page-leadership .leadership-photo {
+    width: 104px;
+    height: 104px;
+  }
+
   body {
     letter-spacing: 0.002em; /* Slightly tighter on mobile */
   }
@@ -1342,6 +1353,12 @@ body.overlay-mode.page-strategy::before {
     gap: 12px;
     align-self: stretch;
     margin-left: 0;
+  }
+
+  /* Mobile nav solution (Option 3): remove header CTA to prevent truncation.
+     Request Proposal remains available via hero CTA (home) and footer CTA (all pages). */
+  .main-nav .nav-cta {
+    display: none;
   }
 
   .logo-wordmark {
