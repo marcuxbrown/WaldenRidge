@@ -70,12 +70,8 @@
       <div class="request-main">
         <p class="request-lede">Enter your details below and we’ll send the proposal sheet to your inbox.</p>
 
-        <form class="request-form" action="https://formspree.io/f/mreazran" method="POST">
-          <!-- IMPORTANT (Formspree): Configure an auto-reply in the Formspree dashboard to send the PDF link.
-               PDF path (live): https://<YOUR_DOMAIN>/assets/downloads/Walden%20Ridge%20-%20Proposal%20Sheet.pdf -->
-          <input type="hidden" name="request_type" value="proposal" />
-          <input type="hidden" name="_subject" value="Walden Ridge — Proposal Request" />
-          <input type="hidden" name="_next" value="./thanks.html" />
+        <form class="request-form" id="wr-request" novalidate>
+          <input type="hidden" name="kind" value="proposal_request" />
 
           <div class="form-grid">
             <label class="form-field">
@@ -111,14 +107,18 @@
             </label>
           </div>
 
-          <div class="form-actions">
+          <div class="form-actions" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
             <button class="btn btn-primary" type="submit">Email me the proposal</button>
+            <a class="btn btn-secondary" href="../assets/downloads/Walden Ridge - Proposal Sheet.pdf" target="_blank" rel="noopener">Open PDF</a>
+            <span id="request-status" class="status" aria-live="polite" style="margin-left:4px;"></span>
           </div>
 
-          <p class="request-subtext"><a href="mailto:workwithus@waldenridgeco.com?subject=Proposal%20Request">Email us at workwithus@waldenridgeco.com</a>. If you prefer, <a href="../assets/downloads/Walden Ridge - Proposal Sheet.pdf" target="_blank" rel="noopener">open the proposal PDF</a> in a new tab.</p>
+          <p class="request-subtext"><a href="mailto:workwithus@waldenridgeco.com?subject=Proposal%20Request">Email us at workwithus@waldenridgeco.com</a>.</p>
 
           <p class="form-fineprint">We use your information only to respond to your request.</p>
         </form>
+
+        <script src="./assets/request.js" defer></script>
       </div>
 
       <aside class="page-sidebar request-sidebar">

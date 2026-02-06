@@ -1,0 +1,80 @@
+/* Request Proposal (public)
+   - Emails proposal PDF via Apps Script
+   - Opens PDF in a new tab on submit (best-effort; pop-up blockers may apply)
+*/
+
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxpqCxmIbQQGecvCclMtg6RZK-gPHLSGFeYh1-5xa3Qz72Ag8-vtT0cT6BspglWETTEeA/exec";
+const PROPOSAL_PDF_URL = "https://waldenridge.pages.dev/assets/downloads/Walden%20Ridge%20-%20Proposal%20Sheet.pdf";
+
+const form = document.getElementById('wr-request');
+const statusEl = document.getElementById('request-status');
+
+function setStatus(msg, kind){
+  statusEl.textContent = msg || '';
+  statusEl.classList.remove('status-ok','status-bad');
+  if(kind==='ok') statusEl.classList.add('status-ok');
+  if(kind==='bad') statusEl.classList.add('status-bad');
+}
+
+function collect(){
+  const fd = new FormData(form);
+  return {
+    kind: 'proposal_request',
+    name: (fd.get('name') || '').toString().trim(),
+    company: (fd.get('company') || '').toString().trim(),
+    email: (fd.get('email') || '').toString().trim(),
+    role: (fd.get('role') || '').toString().trim(),
+    notes: (fd.get('notes') || '').toString().trim(),
+    pdf_url: PROPOSAL_PDF_URL
+  };
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const d = collect();
+  if(!d.name || !d.company || !d.email || !d.role){
+    setStatus('Please fill required fields.', 'bad');
+    return;
+  }
+
+  // Best-effort open in new tab (must be within user gesture)
+  let pdfWin = null;
+  try { pdfWin = window.open('about:blank', '_blank', 'noopener'); } catch {}
+
+  try {
+    setStatus('Sending...', null);
+
+    const res = await fetch(WEB_APP_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(d)
+    });
+
+    const txt = await res.text();
+    let j; try{ j = JSON.parse(txt); } catch { j = { ok:false, raw:txt }; }
+
+    if(!res.ok || !j.ok){
+      setStatus(j.error || 'Request failed. Please email us instead.', 'bad');
+      if(pdfWin) pdfWin.close();
+      return;
+    }
+
+    // Navigate the new tab to the PDF (or fallback)
+    const pdfUrl = j.pdfUrl || PROPOSAL_PDF_URL;
+    if(pdfWin){
+      try { pdfWin.location = pdfUrl; } catch {}
+    } else {
+      window.open(pdfUrl, '_blank', 'noopener');
+    }
+
+    setStatus('Sent. Check your inbox.', 'ok');
+
+    // Optional: redirect to thanks page
+    setTimeout(() => { window.location.href = './thanks.html'; }, 600);
+
+  } catch (err) {
+    setStatus('Network error. Please email us instead.', 'bad');
+    if(pdfWin) pdfWin.close();
+  }
+});
