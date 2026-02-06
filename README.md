@@ -13,7 +13,21 @@ This is a pixel-perfect recreation of the Walden Ridge marketing site, built to 
 - Modern browser (Chrome/Firefox/Safari)
 - 1440px viewport width for validation
 
-### Quick Start
+### Deploying on Cloudflare Pages
+
+This repo is a **static HTML/CSS** site (not Next.js).
+
+Cloudflare Pages settings:
+- Framework preset: **None**
+- Build command: *(blank)*
+- Build output directory: *(blank)*
+- Root directory: *(blank; repo root)*
+
+This repo includes optional Pages config files:
+- `_headers` for caching behavior
+- `_redirects` to normalize directory routes (e.g., `/our-story` → `/our-story/`)
+
+## Quick Start
 
 1. **Place your hero image**:
    ```
