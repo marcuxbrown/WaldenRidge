@@ -8,12 +8,19 @@ const PROPOSAL_PDF_URL = "https://waldenridge.pages.dev/assets/downloads/Walden%
 
 const form = document.getElementById('wr-request');
 const statusEl = document.getElementById('request-status');
+const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
 
 function setStatus(msg, kind){
-  statusEl.textContent = msg || '';
-  statusEl.classList.remove('status-ok','status-bad');
-  if(kind==='ok') statusEl.classList.add('status-ok');
-  if(kind==='bad') statusEl.classList.add('status-bad');
+  if (statusEl) {
+    statusEl.textContent = msg || '';
+    statusEl.classList.remove('status-ok','status-bad');
+    if(kind==='ok') statusEl.classList.add('status-ok');
+    if(kind==='bad') statusEl.classList.add('status-bad');
+  }
+  if (submitBtn) {
+    if (!msg) submitBtn.textContent = 'Email me the proposal';
+    else submitBtn.textContent = msg;
+  }
 }
 
 function collect(){
@@ -49,7 +56,8 @@ form.addEventListener('submit', async (e) => {
     const res = await fetch(WEB_APP_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(d)
+      body: JSON.stringify(d),
+      redirect: 'follow'
     });
 
     const txt = await res.text();
