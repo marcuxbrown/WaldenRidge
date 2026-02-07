@@ -1,0 +1,7 @@
+# Cloudflare Pages redirects
+
+# Ensure directory-style routes resolve consistently
+/our-story /our-story/ 301
+/portfolio /portfolio/ 301
+/strategy /strategy/ 301
+/governance /governance/ 301

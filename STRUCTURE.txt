@@ -29,10 +29,14 @@ walden-ridge/
 │                                          • Strategy blocks with headings
 │                                          • Body text with line breaks
 │
+├── 📁 leadership/
+│   └── 📄 index.html                      Leadership page
+│                                          • Oversight structure and leadership bios
+│                                          • Board and advisory sections
+│
 ├── 📁 governance/
-│   └── 📄 index.html                      Governance page
-│                                          • Oversight structure and board
-│                                          • Advisory governance details
+│   └── 📄 index.html                      Redirect stub
+│                                          • Redirects to /leadership/
 │
 ├── 📁 assets/
 │   │
@@ -151,13 +155,16 @@ PAGES OVERVIEW
    • Headings + body text
    • Manual line breaks match reference
 
-4️⃣ GOVERNANCE PAGE
-   URL: http://localhost:8000/governance/
+4️⃣ LEADERSHIP PAGE
+   URL: http://localhost:8000/leadership/
    Layout: Single-column content block
    Features:
-   • Governance & oversight summary
-   • Board of Directors
-   • Advisory Board
+   • Leadership overview
+   • Board of Directors grid + bios
+   • Advisory Board grid + bios
+
+   Legacy URL (redirect):
+   • http://localhost:8000/governance/
 
 ================================================================================
 

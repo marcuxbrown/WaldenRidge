@@ -186,27 +186,34 @@ Each block's body text line breaks should match exactly:
 
 ---
 
-## GOVERNANCE PAGE
+## LEADERSHIP PAGE
 
-### Open http://localhost:8000/governance/
+### Open http://localhost:8000/leadership/
 
 ### Layout & Typography
-- [ ] H1 "Governance & Oversight" matches other pages' H1 styling
+- [ ] H1 "Leadership" matches other pages' H1 styling
 - [ ] Body text uses Elza Text Light (300), size 18px
 - [ ] Paragraph spacing matches global body rhythm
 - [ ] Section headings (H3) match section heading styling
 - [ ] Contact line uses standard link styling
 
 ### Content Presence
-- [ ] Governance summary appears above Board of Directors section
-- [ ] Board of Directors section present
-- [ ] Advisory Board section present
+- [ ] Leadership summary appears above Board of Directors section
+- [ ] Board of Directors grid present (clickable cards)
+- [ ] Advisory Board grid present (clickable cards)
+- [ ] Leader photos render as small thumbnails (not full-card images)
+- [ ] Bios appear below grids
+- [ ] Clicking a card scrolls to the matching bio anchor
+- [ ] "Back to top" links return to the top of the page
+
+### Redirect Check
+- [ ] Open http://localhost:8000/governance/ and confirm it redirects to /leadership/
 
 ---
 
 ## CROSS-PAGE CONSISTENCY
 
-- [ ] Header is identical across all four pages
+- [ ] Header is identical across all pages
 - [ ] Container width consistent: 1280px (with 80px outer margins)
 - [ ] H1 styling identical on all pages
 - [ ] Body text styling consistent throughout
