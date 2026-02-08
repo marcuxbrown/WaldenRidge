@@ -7,6 +7,12 @@
 
   <link rel="icon" type="image/png" href="../favicon.png" />
 
+  <!-- Preconnect for faster third-party fetches -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <!-- Preload critical assets -->
+  <link rel="preload" href="../styles.css" as="style">
+
   <script>
     document.documentElement.classList.add('js');
     if ('fonts' in document) {
@@ -30,25 +36,10 @@
 
   <link rel="stylesheet" href="../styles.css" />
 
-  <style>
-    .shell { max-width: 920px; margin: 0 auto; padding: 0 var(--outer-margin); }
-    .card { border: 1px solid var(--line-soft); border-radius: 12px; padding: 20px; background: rgba(255,255,255,0.25); }
-    label { display:block; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.9; margin: 0 0 6px; }
-    input[type="text"], input[type="email"], input[type="tel"], textarea {
-      width: 100%; padding: 12px 12px; border-radius: 10px;
-      border: 1px solid var(--line-soft); background: rgba(255,255,255,0.65);
-      font-family: var(--font-body); font-size: 15px; line-height: 1.45;
-    }
-    textarea { min-height: 110px; resize: vertical; }
-    .grid { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 18px; }
-    .full { grid-column: 1 / -1; }
-    .muted { opacity: 0.8; }
-    .actions { display:flex; gap: 12px; flex-wrap: wrap; align-items:center; margin-top: 14px; }
-    .status { margin-top: 12px; font-size: 14px; opacity: 0.9; }
-    .status-ok { color: #1d3e2f; }
-    .status-bad { color: #7a2f2f; }
-    @media (max-width: 740px) { .grid { grid-template-columns: 1fr; } }
-  </style>
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+  <!-- Schedule styles in styles.css -->
 </head>
 <body class="page-schedule">
 
@@ -66,93 +57,107 @@
     </nav>
   </header>
 
-  <main class="shell" style="padding-top: 18px;">
-    <div class="card">
-      <h1 style="margin:0 0 6px;">Schedule a Call</h1>
-      <p class="muted" style="margin:0 0 14px;">
-        A brief introductory call to assess fit and determine whether Walden Ridge can be helpful.
-      </p>
+  <main class="container">
+    <div class="reveal-overlay" aria-hidden="true"></div>
 
-      <p class="muted" style="margin:0 0 14px;">
-        Typical topics include:<br>
-        – Hotel renovation or repositioning scope<br>
-        – Brand requirements and timing considerations<br>
-        – Capital constraints and execution risk<br>
-        – Advisory or delivery pathways<br><br>
-        This call is exploratory and non-binding. If appropriate, next steps will be outlined following the discussion.
-      </p>
+    <div class="schedule-intro">
+      <h1>Schedule a&nbsp;Call</h1>
+      <div class="page-metrics">15-minute intro &middot; <span class="nowrap">Mon&ndash;Fri</span> &middot; Eastern time</div>
+    </div>
 
-      <div class="card" style="padding:14px 16px; margin: 0 0 14px; background: rgba(255,255,255,0.35);">
-        <div style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.85;">Availability (Eastern)</div>
-        <div style="margin-top:6px;">Mon–Fri, 8:00 AM – 5:00 PM · 15-minute calls</div>
+    <div class="schedule-shell">
+      <p class="schedule-lede">A brief introductory call to assess fit and&nbsp;determine whether Walden Ridge can be helpful.</p>
+
+      <p class="schedule-topics">Typical topics include hotel renovation or repositioning scope, brand requirements and&nbsp;timing considerations, capital constraints and&nbsp;execution risk, and&nbsp;advisory or delivery pathways. This call is exploratory and&nbsp;<span class="nowrap">non-binding</span>. If appropriate, next steps will be outlined following the discussion.</p>
+
+      <div class="schedule-availability">
+        <div class="schedule-availability-label">Availability (Eastern)</div>
+        <div class="schedule-availability-time">Mon&ndash;Fri, 8:00&nbsp;AM&nbsp;&ndash;&nbsp;5:00&nbsp;PM &middot; <span class="nowrap">15-minute</span> calls</div>
       </div>
 
-      <form id="wr-schedule" novalidate>
-        <div class="grid">
-          <div>
-            <label>Your name <span style="color:#7a2f2f; font-weight:600;">*</span></label>
-            <input name="name" type="text" required />
-          </div>
-          <div>
-            <label>Your email <span style="color:#7a2f2f; font-weight:600;">*</span></label>
-            <input name="email" type="email" required />
-          </div>
-          <div>
-            <label>Phone</label>
-            <input name="phone" type="tel" />
-          </div>
-          <div>
-            <label>Property / Project</label>
-            <input name="property" type="text" />
-          </div>
-
-          <div class="full">
-            <label>Select a date <span style="color:#7a2f2f; font-weight:600;">*</span></label>
-            <div id="slot-picker" class="card" style="padding:16px; background: rgba(255,255,255,0.35);">
-              <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
-                <button type="button" id="cal-prev" class="btn btn-secondary" style="padding:10px 12px; border-radius:999px;">←</button>
-                <div id="cal-title" style="font-size:18px; font-weight:600; letter-spacing:-0.01em;"></div>
-                <button type="button" id="cal-next" class="btn btn-secondary" style="padding:10px 12px; border-radius:999px;">→</button>
-              </div>
-
-              <div style="display:grid; grid-template-columns: repeat(7, 1fr); gap:10px; margin-top:14px; text-align:center;">
-                <div style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.7;">Sun</div>
-                <div style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.7;">Mon</div>
-                <div style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.7;">Tue</div>
-                <div style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.7;">Wed</div>
-                <div style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.7;">Thu</div>
-                <div style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.7;">Fri</div>
-                <div style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.7;">Sat</div>
-              </div>
-
-              <div id="cal-grid" style="display:grid; grid-template-columns: repeat(7, 1fr); gap:10px; margin-top:10px;"></div>
-
-              <div style="margin-top:16px;">
-                <div style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.8;">Select a time (ET)</div>
-                <div id="time-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap:10px; margin-top:10px;"></div>
-              </div>
+      <div class="schedule-card">
+        <form id="wr-schedule" class="schedule-form" novalidate>
+          <div class="schedule-grid">
+            <div>
+              <label>Your name <span class="req">*</span></label>
+              <input name="name" type="text" required />
+            </div>
+            <div>
+              <label>Your email <span class="req">*</span></label>
+              <input name="email" type="email" required />
+            </div>
+            <div>
+              <label>Phone</label>
+              <input name="phone" type="tel" />
+            </div>
+            <div>
+              <label>Property / Project</label>
+              <input name="property" type="text" />
             </div>
 
-            <input type="hidden" name="slot_date" id="slot_date" required />
-            <input type="hidden" name="slot_time" id="slot_time" required />
+            <div class="full">
+              <label>Select a date <span class="req">*</span></label>
+              <div id="slot-picker" class="cal-picker">
+                <div class="cal-nav">
+                  <button type="button" id="cal-prev" class="btn btn-secondary">&larr;</button>
+                  <div id="cal-title" class="cal-title"></div>
+                  <button type="button" id="cal-next" class="btn btn-secondary">&rarr;</button>
+                </div>
+
+                <div class="cal-weekdays">
+                  <div class="cal-weekday">Sun</div>
+                  <div class="cal-weekday">Mon</div>
+                  <div class="cal-weekday">Tue</div>
+                  <div class="cal-weekday">Wed</div>
+                  <div class="cal-weekday">Thu</div>
+                  <div class="cal-weekday">Fri</div>
+                  <div class="cal-weekday">Sat</div>
+                </div>
+
+                <div id="cal-grid" class="cal-days"></div>
+
+                <div class="time-section">
+                  <div class="time-label">Select a time (ET)</div>
+                  <div id="time-grid" class="time-slots"></div>
+                </div>
+              </div>
+
+              <input type="hidden" name="slot_date" id="slot_date" required />
+              <input type="hidden" name="slot_time" id="slot_time" required />
+            </div>
+
+            <div class="full">
+              <label>Notes</label>
+              <textarea name="notes" placeholder="Any constraints, participants, or context"></textarea>
+            </div>
           </div>
 
-          <div class="full">
-            <label>Notes</label>
-            <textarea name="notes" placeholder="Any constraints, participants, or context"></textarea>
+          <div class="schedule-actions">
+            <button class="btn btn-primary" type="submit">Request a call</button>
+            <a class="btn btn-secondary" id="mailto-fallback" href="#">Email instead</a>
+            <span id="status" class="schedule-status"></span>
           </div>
-        </div>
+        </form>
 
-        <div class="actions">
-          <button class="btn btn-primary" type="submit">Request a call</button>
-          <a class="btn btn-secondary" id="mailto-fallback" href="#">Email instead</a>
-          <span id="status" class="status"></span>
-        </div>
-      </form>
-
-      <p class="muted" style="margin-top:12px;">We’ll confirm a time window shortly.</p>
+        <p class="schedule-confirm">We'll confirm a time window shortly.</p>
+      </div>
     </div>
   </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <a href="mailto:workwithus@waldenridgeco.com">workwithus@waldenridgeco.com</a>
+        <div class="footer-location">Chattanooga, TN</div>
+        <div class="footer-cta"><a href="../request/">Request Proposal</a></div>
+      </div>
+      <div class="footer-mark">
+        <img src="../logo.png" alt="WR" class="footer-logo">
+        <div class="footer-mark-text">Since 2009</div>
+      </div>
+    </div>
+  </footer>
 
   <script>
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxpqCxmIbQQGecvCclMtg6RZK-gPHLSGFeYh1-5xa3Qz72Ag8-vtT0cT6BspglWETTEeA/exec";
@@ -170,7 +175,7 @@
 
     const TZ = 'America/New_York';
     const START_HOUR = 8;
-    const END_HOUR = 17; // end at 5pm
+    const END_HOUR = 17;
     const SLOT_MIN = 15;
 
     function setStatus(msg, kind){
@@ -244,7 +249,6 @@
       const startDow = first.getDay();
       const daysInMonth = new Date(view.getFullYear(), view.getMonth()+1, 0).getDate();
 
-      // blanks
       for(let i=0;i<startDow;i++){
         const blank=document.createElement('div');
         calGrid.appendChild(blank);
@@ -291,7 +295,6 @@
         calGrid.appendChild(b);
       }
 
-      // style active state
       calGrid.querySelectorAll('button').forEach(btn => {
         btn.addEventListener('mouseenter', () => {
           if(btn.disabled) return;
@@ -305,7 +308,6 @@
     }
 
     function applyActiveStyles(){
-      // Date
       calGrid.querySelectorAll('button').forEach(btn => {
         if(btn.dataset.active==='true'){
           btn.style.background='rgba(29, 62, 47, 0.10)';
@@ -315,7 +317,6 @@
           btn.style.borderColor='var(--line-soft)';
         }
       });
-      // Time
       timeGrid.querySelectorAll('button').forEach(btn => {
         if(btn.dataset.active==='true'){
           btn.style.background='rgba(29, 62, 47, 0.10)';
@@ -382,12 +383,12 @@
       }
 
       if(!WEB_APP_URL || WEB_APP_URL.includes('__APPS_SCRIPT_WEBAPP_URL__')){
-        setStatus('Scheduling endpoint not configured yet. Use “Email instead”.', 'bad');
+        setStatus('Scheduling endpoint not configured yet. Use "Email instead".', 'bad');
         return;
       }
 
       try{
-        setStatus('Submitting…', null);
+        setStatus('Submitting\u2026', null);
         const res = await fetch(WEB_APP_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -407,7 +408,7 @@
         renderTimes();
         updateMailto();
       }catch(err){
-        setStatus('Network error. Use “Email instead”.', 'bad');
+        setStatus('Network error. Use "Email instead".', 'bad');
       }
     });
 
@@ -416,5 +417,44 @@
     renderTimes();
     updateMailto();
   </script>
+
+  <script>
+    // Lightweight entrance animation - only on initial page load
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isInitialLoad = !window.performance || performance.navigation.type === 0;
+
+    if (prefersReduced || !window.gsap || !isInitialLoad) {
+      document.documentElement.classList.add('no-motion');
+      document.querySelector('.reveal-overlay')?.remove();
+    } else {
+      const run = () => {
+        const tl = gsap.timeline({
+          defaults: { ease: 'power2.out', duration: 0.6 },
+          onComplete: () => {
+            document.querySelector('.reveal-overlay')?.remove();
+          }
+        });
+        tl.to('.reveal-overlay', { autoAlpha: 0, duration: 0.4, ease: 'power2.inOut' }, 0)
+          .from('.site-header', { autoAlpha: 0, y: -8, duration: 0.5 }, 0.1)
+          .from('main', { autoAlpha: 0, y: 12, duration: 0.6 }, 0.15);
+      };
+
+      let ran = false;
+      const safeRun = () => { if (ran) return; ran = true; run(); };
+
+      if (document.documentElement.classList.contains('fonts-loaded')) {
+        requestAnimationFrame(safeRun);
+      } else {
+        const checkFonts = setInterval(() => {
+          if (document.documentElement.classList.contains('fonts-loaded')) {
+            clearInterval(checkFonts);
+            requestAnimationFrame(safeRun);
+          }
+        }, 50);
+        setTimeout(safeRun, 800);
+      }
+    }
+  </script>
+
 </body>
 </html>

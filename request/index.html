@@ -8,6 +8,12 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../favicon.png">
 
+  <!-- Preconnect for faster third-party fetches -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <!-- Preload critical assets -->
+  <link rel="preload" href="../styles.css" as="style">
+
   <script>
     document.documentElement.classList.add('js');
 
@@ -41,6 +47,9 @@
 
   <!-- Site Styles -->
   <link rel="stylesheet" href="../styles.css">
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 </head>
 <body class="page-request">
 
@@ -61,6 +70,8 @@
   </header>
 
   <main class="container">
+    <div class="reveal-overlay" aria-hidden="true"></div>
+
     <div class="request-intro">
       <h1>Request Proposal</h1>
       <div class="page-metrics">Proposal sheet delivery via email</div>
@@ -114,7 +125,7 @@
 
           <p class="request-subtext"><a href="mailto:workwithus@waldenridgeco.com?subject=Proposal%20Request">Email us at workwithus@waldenridgeco.com</a>.</p>
 
-          <p class="form-fineprint">We use your information only to respond to your request.</p>
+          <p class="form-fineprint">Your information is used only to respond to your request. See our <a href="../privacy/">Privacy Policy</a>.</p>
         </form>
 
         <script src="./assets/request.js" defer></script>
@@ -154,6 +165,44 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Lightweight entrance animation - only on initial page load
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isInitialLoad = !window.performance || performance.navigation.type === 0;
+
+    if (prefersReduced || !window.gsap || !isInitialLoad) {
+      document.documentElement.classList.add('no-motion');
+      document.querySelector('.reveal-overlay')?.remove();
+    } else {
+      const run = () => {
+        const tl = gsap.timeline({
+          defaults: { ease: 'power2.out', duration: 0.6 },
+          onComplete: () => {
+            document.querySelector('.reveal-overlay')?.remove();
+          }
+        });
+        tl.to('.reveal-overlay', { autoAlpha: 0, duration: 0.4, ease: 'power2.inOut' }, 0)
+          .from('.site-header', { autoAlpha: 0, y: -8, duration: 0.5 }, 0.1)
+          .from('main', { autoAlpha: 0, y: 12, duration: 0.6 }, 0.15);
+      };
+
+      let ran = false;
+      const safeRun = () => { if (ran) return; ran = true; run(); };
+
+      if (document.documentElement.classList.contains('fonts-loaded')) {
+        requestAnimationFrame(safeRun);
+      } else {
+        const checkFonts = setInterval(() => {
+          if (document.documentElement.classList.contains('fonts-loaded')) {
+            clearInterval(checkFonts);
+            requestAnimationFrame(safeRun);
+          }
+        }, 50);
+        setTimeout(safeRun, 800);
+      }
+    }
+  </script>
 
 </body>
 </html>
