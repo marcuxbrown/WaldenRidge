@@ -12,8 +12,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Audit with Lighthouse
-        uses: treosh/lighthouse-ci-action@v12
+      - name: Run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli
+          lhci autorun
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          configPath: .github/lighthouserc.json
-          uploadArtifacts: true
+          name: lighthouse-results
+          path: .lighthouseci/
+          retention-days: 14
