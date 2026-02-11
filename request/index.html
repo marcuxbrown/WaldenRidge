@@ -8,8 +8,13 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../favicon.png">
 
-  <!-- Preconnect for faster third-party fetches -->
+  <!-- Preconnect: warm up font + CDN origins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <!-- Google Fonts (render-blocking so @font-face rules exist before script) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
 
   <!-- Preload critical assets -->
   <link rel="preload" href="../styles.css" as="style">
@@ -17,33 +22,25 @@
   <script>
     document.documentElement.classList.add('js');
 
-    // Font loading optimization
     if ('fonts' in document) {
       Promise.all([
-        document.fonts.load('400 1em IBM Plex Sans'),
-        document.fonts.load('600 1em IBM Plex Sans'),
-        document.fonts.load('600 1em Cormorant Garamond'),
+        document.fonts.load('400 1em "IBM Plex Sans"'),
+        document.fonts.load('600 1em "IBM Plex Sans"'),
+        document.fonts.load('600 1em "Cormorant Garamond"'),
         document.fonts.load('700 1em JunicodeExpBold')
-      ]).then(() => {
+      ]).then(function() {
         document.documentElement.classList.add('fonts-loaded');
-      }).catch(() => {
+      }).catch(function() {
         document.documentElement.classList.add('fonts-loaded');
       });
 
-      // Timeout fallback
-      setTimeout(() => {
+      setTimeout(function() {
         document.documentElement.classList.add('fonts-loaded');
       }, 2000);
     } else {
       document.documentElement.classList.add('fonts-loaded');
     }
   </script>
-
-  <!-- Google Fonts - IBM Plex Sans + Cormorant Garamond -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"></noscript>
 
   <!-- Site Styles -->
   <link rel="stylesheet" href="../styles.css">
@@ -160,7 +157,7 @@
         <div class="footer-cta"><a href="./">Request Proposal</a> · <a href="../schedule/">Schedule a Call</a></div>
       </div>
       <div class="footer-mark">
-        <img src="../logo.png" alt="WR" class="footer-logo">
+        <img src="../logo.png" alt="WR" class="footer-logo" width="91" height="72" loading="lazy">
         <div class="footer-mark-text">Since 2009</div>
       </div>
     </div>

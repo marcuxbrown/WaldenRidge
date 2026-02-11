@@ -8,8 +8,13 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../favicon.png">
 
-  <!-- Preconnect for faster third-party fetches -->
+  <!-- Preconnect: warm up font + CDN origins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <!-- Google Fonts (render-blocking so @font-face rules exist before script) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
 
   <!-- Preload critical assets -->
   <link rel="preload" href="../styles.css" as="style">
@@ -17,21 +22,19 @@
   <script>
     document.documentElement.classList.add('js');
 
-    // Font loading optimization
     if ('fonts' in document) {
       Promise.all([
-        document.fonts.load('400 1em IBM Plex Sans'),
-        document.fonts.load('600 1em IBM Plex Sans'),
-        document.fonts.load('600 1em Cormorant Garamond'),
+        document.fonts.load('400 1em "IBM Plex Sans"'),
+        document.fonts.load('600 1em "IBM Plex Sans"'),
+        document.fonts.load('600 1em "Cormorant Garamond"'),
         document.fonts.load('700 1em JunicodeExpBold')
-      ]).then(() => {
+      ]).then(function() {
         document.documentElement.classList.add('fonts-loaded');
-      }).catch(() => {
+      }).catch(function() {
         document.documentElement.classList.add('fonts-loaded');
       });
 
-      // Timeout fallback
-      setTimeout(() => {
+      setTimeout(function() {
         document.documentElement.classList.add('fonts-loaded');
       }, 2000);
     } else {
@@ -39,17 +42,18 @@
     }
   </script>
 
-  <!-- Google Fonts - IBM Plex Sans + Cormorant Garamond -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"></noscript>
-
   <!-- Site Styles -->
   <link rel="stylesheet" href="../styles.css">
 
   <!-- GSAP -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+  <style>
+    /* Hide placeholder photos until real photos are available */
+    .leadership-photo {
+      display: none;
+    }
+  </style>
 </head>
 <body class="page-leadership">
 
@@ -89,24 +93,32 @@
         <h3 class="governance-section">Board of Directors</h3>
         <div class="role-tag">Board</div>
         <div class="leadership-grid" aria-label="Board of Directors">
-          <div class="leadership-card">
-            <img class="leadership-photo" src="../assets/images/leadership/placeholder.svg" alt="Nicholas Lewis">
+          <a class="leadership-card" href="#nicholas-lewis">
+            <img class="leadership-photo" src="../assets/images/leadership/placeholder.svg" width="168" height="168" loading="lazy" alt="Nicholas Lewis">
             <div class="leadership-card-text">
               <div class="leadership-name">Nicholas Lewis</div>
               <div class="leadership-title">Business Owner</div>
             </div>
-          </div>
+          </a>
 
           <div class="leadership-card">
-            <img class="leadership-photo" src="../assets/images/leadership/placeholder.svg" alt="John Zumolt">
+            <img class="leadership-photo" src="../assets/images/leadership/placeholder.svg" width="168" height="168" loading="lazy" alt="John Zumolt">
             <div class="leadership-card-text">
               <div class="leadership-name">John Zumolt</div>
               <div class="leadership-title">Director</div>
             </div>
           </div>
 
+          <a class="leadership-card" href="#nausheen-hussain">
+            <img class="leadership-photo" src="../assets/images/leadership/placeholder.svg" width="168" height="168" loading="lazy" alt="Nausheen Hussain">
+            <div class="leadership-card-text">
+              <div class="leadership-name">Nausheen Hussain</div>
+              <div class="leadership-title">Director</div>
+            </div>
+          </a>
+
           <a class="leadership-card" href="#nathan-moore">
-            <img class="leadership-photo" src="../assets/images/leadership/placeholder.svg" alt="Nathan Moore">
+            <img class="leadership-photo" src="../assets/images/leadership/placeholder.svg" width="168" height="168" loading="lazy" alt="Nathan Moore">
             <div class="leadership-card-text">
               <div class="leadership-name">Nathan Moore</div>
               <div class="leadership-title">CEO</div>
@@ -119,24 +131,24 @@
         <h3 class="governance-section">Advisory Board</h3>
         <div class="role-tag">Advisory</div>
         <div class="leadership-grid" aria-label="Advisory Board">
-          <div class="leadership-card">
-            <img class="leadership-photo" src="../assets/images/leadership/placeholder.svg" alt="John Lahays">
+          <a class="leadership-card" href="#john-lahaise">
+            <img class="leadership-photo" src="../assets/images/leadership/placeholder.svg" width="168" height="168" loading="lazy" alt="John LaHaise">
             <div class="leadership-card-text">
-              <div class="leadership-name">John Lahays</div>
-              <div class="leadership-title">Davidson Hotels / ROJ Lodging Trust</div>
+              <div class="leadership-name">John LaHaise</div>
+              <div class="leadership-title">Advisor</div>
             </div>
-          </div>
+          </a>
 
-          <div class="leadership-card">
-            <img class="leadership-photo" src="../assets/images/leadership/placeholder.svg" alt="Mike Ruiz Serra">
+          <a class="leadership-card" href="#mike-ruiz-serra">
+            <img class="leadership-photo" src="../assets/images/leadership/placeholder.svg" width="168" height="168" loading="lazy" alt="Mike Ruiz Serra">
             <div class="leadership-card-text">
               <div class="leadership-name">Mike Ruiz Serra</div>
-              <div class="leadership-title">Furniture Designer</div>
+              <div class="leadership-title">Advisor</div>
             </div>
-          </div>
+          </a>
 
           <a class="leadership-card" href="#larry-colher">
-            <img class="leadership-photo" src="../assets/images/leadership/placeholder.svg" alt="Larry Colher">
+            <img class="leadership-photo" src="../assets/images/leadership/placeholder.svg" width="168" height="168" loading="lazy" alt="Larry Colher">
             <div class="leadership-card-text">
               <div class="leadership-name">Larry Colher</div>
               <div class="leadership-title">Advisor</div>
@@ -174,7 +186,65 @@
 
           <p class="governance-text">Larry advises Walden Ridge on capital allocation strategy, phasing and&nbsp;logistics that protect revenue, and&nbsp;operational readiness protocols that accelerate stabilization <span class="nowrap">post-renovation</span>.</p>
 
-          <p class="governance-text leadership-focus">Focus: hospitality operations, renovation oversight, capital prioritization, <span class="nowrap">post-renovation</span> performance optimization.</p>
+          <p class="governance-text leadership-focus">Focus: operational continuity during renovation, capital prioritization, revenue protection, <span class="nowrap">post-renovation</span> stabilization, brand inspection readiness.</p>
+          <a class="role-tag leadership-backtop" href="#leadership-top">Back to top</a>
+        </section>
+
+        <section id="nicholas-lewis" class="leadership-bio">
+          <div class="role-tag">Biography</div>
+          <p class="governance-text"><strong>Nicholas Lewis, Board of Directors</strong>: Nicholas has spent over a decade in electrical construction, with deep expertise in commercial and&nbsp;residential electrical systems, code compliance, and&nbsp;construction coordination. Born and&nbsp;raised in Tennessee, he founded his own electrical contracting business in 2023, bringing <span class="nowrap">field-tested</span> knowledge of electrical infrastructure, power distribution, lighting systems, and&nbsp;jobsite electrical management to complex renovation projects.</p>
+
+          <p class="governance-text">Nick's background in electrical trades gives him a practical understanding of construction timelines, material lead times, and&nbsp;the coordination required between electrical work and&nbsp;other building systems—knowledge that directly informs capital planning, bid review, and&nbsp;project risk assessment at the board level.</p>
+
+          <p class="governance-text">His <span class="nowrap">hands-on</span> experience includes commercial tenant improvements, <span class="nowrap">multi-family</span> electrical retrofits, service upgrades, and&nbsp;electrical coordination on occupied properties—challenges that mirror the logistical complexity of hotel renovations. He understands how electrical scope impacts schedule, when to <span class="nowrap">value-engineer</span> without compromising performance, and&nbsp;how to sequence electrical work to minimize operational disruption.</p>
+
+          <p class="governance-text">Nick lives in Tennessee with his wife and&nbsp;three children.</p>
+
+          <p class="governance-text leadership-focus">Focus: electrical scope validation, trade coordination, subcontractor vetting, code compliance, material lead times, value engineering.</p>
+          <a class="role-tag leadership-backtop" href="#leadership-top">Back to top</a>
+        </section>
+
+        <section id="nausheen-hussain" class="leadership-bio">
+          <div class="role-tag">Biography</div>
+          <p class="governance-text"><strong>Nausheen Hussain, Board of Directors</strong>: Nausheen Hussain is a seasoned HR executive with over two decades of leadership experience across investment banking, private equity, and&nbsp;real estate. She has scaled HR functions at <span class="nowrap">high-growth</span> firms, guided organizations through mergers and&nbsp;restructurings, and&nbsp;built talent strategies that support rapid expansion while maintaining organizational cohesion.</p>
+
+          <p class="governance-text">As Managing Director of HR at Madison International, a $10+ billion global real estate private equity manager, Nausheen scaled headcount from 40 to 100 employees while leading global recruiting, compensation design, succession planning, and&nbsp;the launch of firmwide DEI and&nbsp;social impact initiatives. She managed the full spectrum of HR strategy: talent acquisition, leadership development, organizational design, and&nbsp;<span class="nowrap">post-merger</span> integration—ensuring that growth didn't compromise culture or execution quality.</p>
+
+          <p class="governance-text">Prior to Madison, Nausheen held senior HR Business Partner roles at Credit Suisse and&nbsp;Deutsche Bank, supporting Fixed Income, Global Banking, and&nbsp;Research divisions across the U.S., U.K., and&nbsp;EMEA. She led <span class="nowrap">large-scale</span> restructurings, managed <span class="nowrap">multi-million-dollar</span> compensation programs, and&nbsp;was selected for international expat assignments to Germany and&nbsp;the U.K.—demonstrating the <span class="nowrap">cross-border</span> fluency required to manage teams, compliance, and&nbsp;performance across global operations.</p>
+
+          <p class="governance-text">In 2020 she founded Hudson &amp;&nbsp;Perry LLC, a boutique HR consultancy providing fractional HR leadership, executive coaching, and&nbsp;recruitment for investment, real estate, and&nbsp;professional services clients. Her <span class="nowrap">hands-on</span>, creative approach to talent strategy has made her a trusted partner to CEOs and&nbsp;executive teams navigating growth, transitions, and&nbsp;organizational complexity.</p>
+
+          <p class="governance-text">Nausheen holds an M.A. in Organizational Psychology from Columbia University and&nbsp;a B.S. in Communications and&nbsp;Marketing from NYU (cum laude). She completed executive education in Leadership Excellence at the London School of Economics and&nbsp;is currently pursuing Mental Health Counseling licensure. She serves on the Women's Philanthropy Group at Children of Promise of New York, the Corporate Advisory Council for Project Destined, and&nbsp;is an active member of the Real Estate Executive Council (REEC) and&nbsp;NYPEN.</p>
+
+          <p class="governance-text">Nausheen advises Walden Ridge on organizational design, talent acquisition strategy, leadership development, and&nbsp;the HR infrastructure required to scale a renovation platform while maintaining operational discipline and&nbsp;team performance.</p>
+
+          <p class="governance-text leadership-focus">Focus: organizational scaling, talent acquisition, leadership development, retention strategy, compensation structure, culture building.</p>
+          <a class="role-tag leadership-backtop" href="#leadership-top">Back to top</a>
+        </section>
+
+        <section id="john-lahaise" class="leadership-bio">
+          <div class="role-tag">Biography</div>
+          <p class="governance-text"><strong>John LaHaise, Advisory Board</strong>: John LaHaise brings over 30 years of senior leadership in hospitality and&nbsp;senior living operations, specializing in <span class="nowrap">multi-unit</span> facilities management, capital planning, and&nbsp;infrastructure oversight. He has served as Vice President for three major organizations, leading national initiatives in preventive maintenance, energy management, and&nbsp;centralized project delivery across large property portfolios.</p>
+
+          <p class="governance-text">His operational expertise spans facilities infrastructure—HVAC, life safety, roofing, façades, and&nbsp;building systems—with a proven track record of reducing costs, managing risk, and&nbsp;enhancing asset performance. John led the design, development, and&nbsp;national rollout of a <span class="nowrap">web-based</span> preventive maintenance platform for <span class="nowrap">Marriott-managed</span> hotels, significantly improving consistency, compliance, and&nbsp;operational efficiency across hundreds of properties.</p>
+
+          <p class="governance-text">He has directed Energy Star participation programs, capital planning processes, and&nbsp;centralized project management initiatives that improved <span class="nowrap">portfolio-wide</span> performance and&nbsp;stakeholder satisfaction. His ability to translate complex technical solutions into clear strategic direction has made him effective at aligning facilities strategy with ownership objectives and&nbsp;brand standards.</p>
+
+          <p class="governance-text">John understands the full lifecycle of hotel capital planning: which systems fail first, how to prioritize competing capital needs, and&nbsp;how to stage major renovations without destabilizing operations. That facilities leadership perspective ensures that Walden Ridge's renovation approach aligns with <span class="nowrap">long-term</span> asset performance and&nbsp;operational reliability.</p>
+
+          <p class="governance-text leadership-focus">Focus: building systems prioritization, preventive maintenance strategy, capital planning cycles, <span class="nowrap">long-term</span> asset performance, risk mitigation.</p>
+          <a class="role-tag leadership-backtop" href="#leadership-top">Back to top</a>
+        </section>
+
+        <section id="mike-ruiz-serra" class="leadership-bio">
+          <div class="role-tag">Biography</div>
+          <p class="governance-text"><strong>Mike Ruiz Serra, Advisory Board</strong>: Mike Ruiz Serra is a furniture designer and&nbsp;fabricator based in Brooklyn, New York. A graduate of the Rhode Island School of Design, he operates Serra Studio, producing custom furniture and&nbsp;hardware for hospitality, food &amp;&nbsp;beverage, entertainment, and&nbsp;residential clients. His work has appeared in Apartamento, The New York Times, and&nbsp;Architectural Digest, and&nbsp;has been shown at Galerie Philia, 1stdibs, and&nbsp;Colbo.</p>
+
+          <p class="governance-text">His experience in <span class="nowrap">high-traffic</span> commercial environments provides practical perspective on FF&amp;E procurement, lead times, and&nbsp;budget constraints. He understands how institutional capital cycles influence procurement strategy and&nbsp;how furniture decisions impact asset positioning and&nbsp;operational durability.</p>
+
+          <p class="governance-text">Mike advises Walden Ridge on furniture sourcing, custom fabrication opportunities, and&nbsp;specification choices that align brand standards with market expectations and&nbsp;project economics.</p>
+
+          <p class="governance-text leadership-focus">Focus: design trends, vendor relationships, brand compliance, value engineering, durability benchmarking, guest perception drivers, competitive differentiation.</p>
           <a class="role-tag leadership-backtop" href="#leadership-top">Back to top</a>
         </section>
       </div>
@@ -195,7 +265,7 @@
         <div class="footer-cta"><a href="../request/">Request Proposal</a> · <a href="../schedule/">Schedule a Call</a></div>
       </div>
       <div class="footer-mark">
-        <img src="../logo.png" alt="WR" class="footer-logo">
+        <img src="../logo.png" alt="WR" class="footer-logo" width="91" height="72" loading="lazy">
         <div class="footer-mark-text">Since 2009</div>
       </div>
     </div>
