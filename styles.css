@@ -523,15 +523,15 @@ p:last-child {
 .story-timeline {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 24px;
   margin: 20px 0 28px;
-  padding-left: 16px;
+  padding-left: 20px;
   border-left: 1px solid var(--line-mid);
 }
 
 .story-rail .story-timeline {
   margin: 0;
-  padding-left: 18px;
+  padding-left: 24px;
 }
 
 .timeline-eyebrow {
@@ -540,13 +540,15 @@ p:last-child {
   text-transform: uppercase;
   font-weight: 700;
   opacity: 0.7;
+  margin-bottom: 4px;
 }
 
 .timeline-item {
   display: grid;
-  grid-template-columns: 90px 1fr;
-  gap: 16px;
+  grid-template-columns: 110px 1fr;
+  gap: 32px;
   align-items: baseline;
+  max-width: 520px;
 }
 
 .timeline-year {
@@ -559,9 +561,10 @@ p:last-child {
 
 .timeline-text {
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.6;
   font-weight: 400;
   opacity: 0.75;
+  max-width: 42ch;
 }
 
 .content-column p {
