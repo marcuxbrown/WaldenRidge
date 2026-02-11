@@ -1,19 +1,22 @@
 # Cloudflare Pages headers
 
-# Default: don't aggressively cache HTML
+# Default: security + caching for all pages
 /*
   Cache-Control: max-age=0, must-revalidate
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self'; img-src 'self' data:; connect-src 'self' https://script.google.com https://cloudflareinsights.com; frame-ancestors 'none'
 
-# Cache static assets aggressively
+# Static assets: cache forever (Cloudflare purges edge cache on deploy)
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
+# CSS: short browser cache (no filename hash), Cloudflare edge handles invalidation
 /styles.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
 
+# Immutable static files
 /favicon.png
   Cache-Control: public, max-age=31536000, immutable
 
@@ -21,4 +24,10 @@
   Cache-Control: public, max-age=31536000, immutable
 
 /logo.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+/og-image.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/apple-touch-icon.png
   Cache-Control: public, max-age=31536000, immutable
