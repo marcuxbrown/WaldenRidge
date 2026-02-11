@@ -4,19 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio - Walden Ridge</title>
+  <meta name="description" content="60+ branded hotel renovations across Hilton, Marriott, Hyatt, IHG, Wyndham, La Quinta, and Extended Stay. Nationwide execution for repeat owners.">
+  <meta property="og:title" content="Portfolio — Walden Ridge">
+  <meta property="og:description" content="60+ branded hotel renovations across seven flag families. Nationwide execution for repeat owners.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://waldenridgeco.com/portfolio/">
+  <meta property="og:image" content="https://waldenridgeco.com/logo.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#f5f3f0">
+  <link rel="canonical" href="https://waldenridgeco.com/portfolio/">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../favicon.png">
 
-  <!-- Preconnect: warm up font + CDN origins -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Preconnect: warm up CDN origin -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
-  <!-- Google Fonts (render-blocking so @font-face rules exist before script) -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
-
-  <!-- Preload critical assets -->
+  <!-- Preload critical fonts + assets -->
+  <link rel="preload" href="../assets/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../styles.css" as="style">
 
   <script>
@@ -46,7 +52,7 @@
   <link rel="stylesheet" href="../styles.css">
 
   <!-- GSAP -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
 </head>
 <body class="page-portfolio">
 
@@ -56,7 +62,7 @@
       <p class="logo-subtitle">Hospitality Design &amp;&nbsp;Construction</p>
     </a>
 
-    <nav class="main-nav">
+    <nav class="main-nav" aria-label="Main">
       <a href="../our-story/">Our Story</a>
       <a href="../strategy/">Strategy</a>
       <a href="../portfolio/">Portfolio</a>
@@ -102,45 +108,6 @@
         </div>
       </div>
     </section>
-
-        <!-- Select Projects -->
-        <section class="select-projects" aria-label="Select projects">
-          <div class="section-header">
-            <span class="section-eyebrow">Select Projects</span>
-          </div>
-          <div class="projects-grid">
-            <article class="project-item">
-              <div class="project-brand">Hilton Garden Inn</div>
-              <h3 class="project-name">Memphis Medical District</h3>
-              <p class="project-tagline">Schedule certainty, zero downtime</p>
-            </article>
-            <article class="project-item">
-              <div class="project-brand">Courtyard by Marriott</div>
-              <h3 class="project-name">Buckhead Atlanta</h3>
-              <p class="project-tagline">First-attempt brand compliance</p>
-            </article>
-            <article class="project-item">
-              <div class="project-brand">Hampton Inn</div>
-              <h3 class="project-name">Downtown Nashville</h3>
-              <p class="project-tagline">Occupied renovation, revenue protected</p>
-            </article>
-            <article class="project-item">
-              <div class="project-brand">Residence Inn</div>
-              <h3 class="project-name">Airport Charlotte</h3>
-              <p class="project-tagline">Four months, PIP to inspection</p>
-            </article>
-            <article class="project-item">
-              <div class="project-brand">SpringHill Suites</div>
-              <h3 class="project-name">Financial District Denver</h3>
-              <p class="project-tagline">Millwork delivered, schedule held</p>
-            </article>
-            <article class="project-item">
-              <div class="project-brand">Hilton Garden Inn</div>
-              <h3 class="project-name">Airport Phoenix</h3>
-              <p class="project-tagline">Repeat owner, repeat execution</p>
-            </article>
-          </div>
-        </section>
 
         <!-- Brand Logos (Static) -->
         <div class="brand-logos-section">
@@ -196,7 +163,8 @@
     <script>
     // Lightweight entrance animation - runs immediately, no font-loading dependency
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isInitialLoad = !window.performance || performance.navigation.type === 0;
+    const navEntry = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+    const isInitialLoad = navEntry ? navEntry.type === 'navigate' : true;
 
     if (prefersReduced || !window.gsap || !isInitialLoad) {
       document.documentElement.classList.add('no-motion');
