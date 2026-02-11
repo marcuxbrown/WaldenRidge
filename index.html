@@ -84,6 +84,26 @@
     }
   </script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Walden Ridge",
+    "url": "https://waldenridgeco.com",
+    "logo": "https://waldenridgeco.com/logo.png",
+    "description": "Hospitality design and construction firm delivering branded hotel renovations nationwide.",
+    "email": "workwithus@waldenridgeco.com",
+    "foundingDate": "2009",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Chattanooga",
+      "addressRegion": "TN",
+      "addressCountry": "US"
+    },
+    "sameAs": []
+  }
+  </script>
+
   <!-- Site Styles -->
   <link rel="stylesheet" href="./styles.css">
 
@@ -91,6 +111,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
 </head>
 <body class="page-home">
+  <a href="#main" class="skip-link">Skip to content</a>
 
   <header class="site-header">
     <a href="./" class="logo-block">
@@ -106,7 +127,7 @@
     </nav>
   </header>
 
-  <main class="container home-main">
+  <main id="main" class="container home-main">
     <div class="reveal-overlay" aria-hidden="true"></div>
 
     <section class="home-hero">

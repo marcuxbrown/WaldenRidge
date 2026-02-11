@@ -20,6 +20,7 @@
 
   <!-- Preconnect: warm up CDN origin -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="dns-prefetch" href="https://script.google.com">
 
   <!-- Preload critical fonts + assets -->
   <link rel="preload" href="../assets/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -73,6 +74,17 @@
     }
   </script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Request Proposal — Walden Ridge",
+    "url": "https://waldenridgeco.com/request/",
+    "description": "Request a proposal from Walden Ridge for your next hotel renovation or construction project.",
+    "isPartOf": { "@type": "WebSite", "name": "Walden Ridge", "url": "https://waldenridgeco.com" }
+  }
+  </script>
+
   <!-- Site Styles -->
   <link rel="stylesheet" href="../styles.css">
 
@@ -80,6 +92,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
 </head>
 <body class="page-request">
+  <a href="#main" class="skip-link">Skip to content</a>
 
   <header class="site-header">
     <a href="../" class="logo-block">
@@ -97,7 +110,7 @@
     </nav>
   </header>
 
-  <main class="container">
+  <main id="main" class="container">
     <div class="reveal-overlay" aria-hidden="true"></div>
 
     <div class="request-intro">
@@ -111,6 +124,10 @@
 
         <form class="request-form" id="wr-request" novalidate>
           <input type="hidden" name="kind" value="proposal_request" />
+
+          <div style="position:absolute;left:-9999px" aria-hidden="true">
+            <label>Leave blank <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          </div>
 
           <div class="form-grid">
             <label class="form-field">

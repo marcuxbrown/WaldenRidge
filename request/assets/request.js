@@ -40,6 +40,10 @@ form.addEventListener('submit', async (e) => {
   e.preventDefault();
   if(submitBtn && submitBtn.disabled) return;
 
+  // Honeypot check
+  const hp = form.querySelector('[name="website"]');
+  if(hp && hp.value) return;
+
   const d = collect();
   if(!d.name || !d.company || !d.email || !d.role){
     setStatus('Please fill required fields.', 'bad');
