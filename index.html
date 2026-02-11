@@ -172,44 +172,25 @@
   </footer>
 
     <script>
-    // Lightweight entrance animation - only on initial page load
+    // Lightweight entrance animation - runs immediately, no font-loading dependency
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isInitialLoad = !window.performance || performance.navigation.type === 0;
 
     if (prefersReduced || !window.gsap || !isInitialLoad) {
-      // Skip animation on navigation or if motion reduced
       document.documentElement.classList.add('no-motion');
       document.querySelector('.reveal-overlay')?.remove();
     } else {
-      const run = () => {
+      requestAnimationFrame(() => {
         const tl = gsap.timeline({
-          defaults: { ease: 'power2.out', duration: 0.6 },
+          defaults: { ease: 'power2.out', duration: 0.4 },
           onComplete: () => {
             document.querySelector('.reveal-overlay')?.remove();
           }
         });
-        tl.to('.reveal-overlay', { autoAlpha: 0, duration: 0.4, ease: 'power2.inOut' }, 0)
-          .from('.site-header', { autoAlpha: 0, y: -8, duration: 0.5 }, 0.1)
-          .from('main', { autoAlpha: 0, y: 12, duration: 0.6 }, 0.15);
-      };
-
-      let ran = false;
-      const safeRun = () => { if (ran) return; ran = true; run(); };
-
-      // Wait for fonts to be ready
-      if (document.documentElement.classList.contains('fonts-loaded')) {
-        requestAnimationFrame(safeRun);
-      } else {
-        const checkFonts = setInterval(() => {
-          if (document.documentElement.classList.contains('fonts-loaded')) {
-            clearInterval(checkFonts);
-            requestAnimationFrame(safeRun);
-          }
-        }, 50);
-
-        // Timeout fallback
-        setTimeout(safeRun, 800);
-      }
+        tl.to('.reveal-overlay', { autoAlpha: 0, duration: 0.3, ease: 'power2.inOut' }, 0)
+          .from('.site-header', { autoAlpha: 0, y: -6, duration: 0.35 }, 0.05)
+          .from('main', { autoAlpha: 0, y: 8, duration: 0.4 }, 0.08);
+      });
     }
   </script>
 
