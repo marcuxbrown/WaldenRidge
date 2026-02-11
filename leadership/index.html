@@ -156,16 +156,58 @@
       color: var(--color-text-secondary);
     }
 
-    /* Mobile responsive */
+    /* Mobile responsive - maintain vertical pattern, optimize for touch */
     @media (max-width: 900px) {
       .leadership-layout {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 40px;
       }
 
       .leadership-nav {
         position: static;
         max-height: none;
+      }
+
+      .leadership-nav-section {
+        margin-bottom: 40px;
+      }
+
+      .leadership-nav-section h3 {
+        font-size: 15px;
+        margin-bottom: 20px;
+        letter-spacing: 0.08em;
+      }
+
+      .leadership-nav-card {
+        padding: 20px 0;
+        border-bottom: 1px solid var(--line-subtle);
+      }
+
+      .leadership-nav-card.active {
+        padding-left: 0;
+        border-left: none;
+        border-bottom: 1px solid var(--color-text-primary);
+      }
+
+      .leadership-nav-card:hover {
+        padding-left: 0;
+      }
+
+      .leadership-nav-name {
+        font-size: 16px;
+      }
+
+      .leadership-nav-title {
+        font-size: 14px;
+        opacity: 0.6;
+      }
+
+      .bio-name {
+        font-size: 28px;
+      }
+
+      .bio-role {
+        font-size: 14px;
       }
     }
   </style>
@@ -207,16 +249,16 @@
           <h3>Board of Directors</h3>
           <a class="leadership-nav-card" data-bio="nathan-moore" href="#nathan-moore">
             <div class="leadership-nav-name">Nathan Moore</div>
-            <div class="leadership-nav-title">CEO</div>
+            <div class="leadership-nav-title">Founder and CEO</div>
           </a>
           <a class="leadership-nav-card" data-bio="nicholas-lewis" href="#nicholas-lewis">
             <div class="leadership-nav-name">Nicholas Lewis</div>
             <div class="leadership-nav-title">Business Owner</div>
           </a>
-          <a class="leadership-nav-card" data-bio="john-zumolt" href="#john-zumolt">
+          <!-- <a class="leadership-nav-card" data-bio="john-zumolt" href="#john-zumolt">
             <div class="leadership-nav-name">John Zumolt</div>
             <div class="leadership-nav-title">Director</div>
-          </a>
+          </a> -->
           <a class="leadership-nav-card" data-bio="nausheen-hussain" href="#nausheen-hussain">
             <div class="leadership-nav-name">Nausheen Hussain</div>
             <div class="leadership-nav-title">Director</div>
@@ -246,7 +288,7 @@
         <div class="leadership-bio-content" id="bio-nathan-moore">
           <div class="bio-header">
             <h2 class="bio-name">Nathan Moore</h2>
-            <div class="bio-role">CEO, Board of Directors</div>
+            <div class="bio-role">Founder and CEO, Board of Directors</div>
           </div>
 
           <p class="governance-text">Nathan grew up on construction sites in Montana, operating backhoes, dozers, and&nbsp;loaders alongside his father's crew from the age of&nbsp;ten. He studied structural engineering at the University of Colorado Boulder, then moved into construction sales management before leading regional operations as Area Director for Northern California at Transwestern Publishing.</p>
@@ -280,7 +322,7 @@
           <p class="governance-text leadership-focus">Focus: electrical scope validation, trade coordination, subcontractor vetting, code compliance, material lead times, value engineering.</p>
         </div>
 
-        <!-- John Zumolt (placeholder - no bio yet) -->
+        <!-- John Zumolt (hidden until bio is ready)
         <div class="leadership-bio-content" id="bio-john-zumolt">
           <div class="bio-header">
             <h2 class="bio-name">John Zumolt</h2>
@@ -289,6 +331,7 @@
 
           <p class="governance-text">Biography coming soon.</p>
         </div>
+        -->
 
         <!-- Nausheen Hussain -->
         <div class="leadership-bio-content" id="bio-nausheen-hussain">

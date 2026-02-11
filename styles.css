@@ -446,14 +446,18 @@ p:last-child {
 }
 
 .our-story-grid.no-hero {
-  grid-template-columns: minmax(0, 1fr) 300px;
-  gap: 64px;
+  grid-template-columns: 1fr;
+  gap: 0;
 }
 
 .story-rail {
   position: relative;
   align-self: start;
-  max-width: 300px;
+  max-width: none;
+  width: 100%;
+  margin-top: 64px;
+  padding-top: 48px;
+  border-top: 1px solid var(--line-mid);
 }
 
 .hero-column {
@@ -521,50 +525,53 @@ p:last-child {
 }
 
 .story-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  margin: 20px 0 28px;
-  padding-left: 20px;
-  border-left: 1px solid var(--line-mid);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 48px 64px;
+  margin: 0;
+  padding: 0;
 }
 
 .story-rail .story-timeline {
   margin: 0;
-  padding-left: 24px;
+  padding: 0;
 }
 
 .timeline-eyebrow {
   font-size: 11px;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  font-weight: 700;
-  opacity: 0.7;
-  margin-bottom: 4px;
+  font-weight: 600;
+  opacity: 0.4;
+  margin-bottom: 32px;
+  grid-column: 1 / -1;
+}
+
+.story-rail .timeline-eyebrow {
+  position: static;
+  margin-bottom: 32px;
 }
 
 .timeline-item {
-  display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 32px;
-  align-items: baseline;
-  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .timeline-year {
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  opacity: 0.7;
+  opacity: 0.5;
+  margin-bottom: 4px;
 }
 
 .timeline-text {
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.55;
   font-weight: 400;
-  opacity: 0.75;
-  max-width: 42ch;
+  opacity: 0.7;
 }
 
 .content-column p {
@@ -577,7 +584,7 @@ p:last-child {
 
 @media (min-width: 1024px) {
   .page-our-story .content-column p {
-    max-width: 60ch;
+    max-width: 72ch;
   }
 }
 
@@ -1098,8 +1105,8 @@ body.overlay-mode.page-strategy::before {
   }
 
   .our-story-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 
   .portfolio-grid {
@@ -1180,23 +1187,25 @@ body.overlay-mode.page-strategy::before {
     letter-spacing: 0.12em;
   }
 
-  /* Our Story - Stack on tablet */
+  /* Our Story - Timeline below narrative */
   .our-story-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 0;
   }
 
   .our-story-grid.no-hero {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 0;
   }
 
   .story-rail {
     max-width: none;
+    margin-top: 56px;
+    padding-top: 40px;
   }
 
   .story-rail .story-timeline {
-    margin-top: 8px;
+    gap: 36px 48px;
   }
 
   .hero-column {
@@ -1308,7 +1317,7 @@ body.overlay-mode.page-strategy::before {
 /* ---- Mobile Portrait (390px - 599px) - iPhone, Android ----------- */
 @media (max-width: 599px) {
   :root {
-    --outer-margin: 16px;
+    --outer-margin: 24px;
     --fs-h1: 30px;
     --fs-intro: 17px;
     --fs-body: 15px;
@@ -1398,7 +1407,17 @@ body.overlay-mode.page-strategy::before {
 
   /* Our Story - Mobile */
   .our-story-grid {
-    gap: 24px;
+    gap: 0;
+  }
+  
+  .story-rail {
+    margin-top: 48px;
+    padding-top: 32px;
+  }
+  
+  .story-rail .story-timeline {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 
   .hero-column {
@@ -1473,7 +1492,7 @@ body.overlay-mode.page-strategy::before {
 /* ---- Small Mobile (320px - 389px) - iPhone SE, older Android ----- */
 @media (max-width: 389px) {
   :root {
-    --outer-margin: 16px;
+    --outer-margin: 24px;
     --fs-h1: 28px;
     --fs-intro: 16px;
     --fs-body: 14px;
@@ -1516,6 +1535,39 @@ body.overlay-mode.page-strategy::before {
   .portfolio-grid,
   .strategy-grid {
     gap: 16px;
+  }
+
+  .site-footer {
+    padding: 32px var(--outer-margin) 28px;
+  }
+
+  .site-footer::before {
+    margin-bottom: 18px;
+  }
+
+  .footer-content {
+    gap: 24px;
+  }
+
+  .footer-logo {
+    height: 46px;
+  }
+
+  .footer-left a,
+  .footer-location {
+    font-size: 12px;
+  }
+
+  .footer-cta {
+    margin-top: 6px;
+  }
+
+  .footer-cta a {
+    font-size: 9px;
+  }
+
+  .footer-mark-text {
+    font-size: 9px;
   }
 }
 
@@ -2085,6 +2137,13 @@ html.js body.page-request .page-sidebar {
     font-size: 17px;
   }
 
+  /* Smaller buttons to fit side-by-side on mobile */
+  .home-hero-cta .btn {
+    padding: 10px 14px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+  }
+
   .home-hero-proof {
     font-size: 14px;
   }
@@ -2220,47 +2279,28 @@ html.js body.page-request .page-sidebar {
   width: 100%;
   height: 1px;
   background: var(--line-mid);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .footer-content {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
+  gap: 48px;
 }
 
 .footer-left {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  line-height: 1.2;
+  gap: 4px;
 }
 
-.footer-cta {
-  margin-top: 6px;
-}
-
-.footer-cta a {
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-weight: 500;
-  opacity: 0.55;
-  transition: opacity 0.2s ease;
-}
-
-.footer-cta a:hover {
-  opacity: 1;
-}
-
-.footer-left a,
-.footer-left .footer-location {
+.footer-left a {
   font-size: 14px;
   font-weight: 400;
-  letter-spacing: 0.01em;
-  opacity: 0.4;
   color: var(--color-text);
   text-decoration: none;
+  opacity: 0.45;
   transition: opacity 0.2s ease;
 }
 
@@ -2268,12 +2308,32 @@ html.js body.page-request .page-sidebar {
   opacity: 1;
 }
 
-.footer-logo {
-  width: auto;
-  height: 72px;
-  opacity: 0.3;
-  flex-shrink: 0;
-  margin-bottom: -2px;
+.footer-location {
+  font-size: 14px;
+  opacity: 0.45;
+  margin-top: 0;
+}
+
+.footer-cta {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  line-height: 1.2;
+}
+
+.footer-cta a {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+  line-height: 1.2;
+}
+
+.footer-cta a:hover {
+  opacity: 1;
 }
 
 .footer-mark {
@@ -2281,17 +2341,27 @@ html.js body.page-request .page-sidebar {
   flex-direction: column;
   align-items: flex-end;
   gap: 0;
-  line-height: 1;
+  margin-right: -2px;
+  line-height: 1.2;
+}
+
+.footer-logo {
+  width: auto;
+  height: 68px;
+  opacity: 0.28;
+  display: block;
+  transform: translateY(7px); /* Lower just the logo */
 }
 
 .footer-mark-text {
   font-size: 11px;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   font-weight: 600;
-  opacity: 0.55;
-  line-height: 1;
-  margin-top: -6px;
+  opacity: 0.5;
+  padding-right: 2px;
+  line-height: 1.2;
+  margin-top: -2px; /* Tuck closer to logo */
 }
 
 .footer-info {
@@ -2377,15 +2447,32 @@ html.js body.page-request .page-sidebar {
 
   .site-footer {
     margin-top: auto;
-    padding: 40px var(--outer-margin) 32px;
+    padding: 36px var(--outer-margin) 32px;
   }
 
   .site-footer::before {
-    width: 100%;
+    margin-bottom: 20px;
   }
 
   .footer-content {
-    width: 100%;
+    gap: 32px;
+  }
+
+  .footer-logo {
+    height: 54px;
+  }
+
+  .footer-left a,
+  .footer-location {
+    font-size: 13px;
+  }
+
+  .footer-cta a {
+    font-size: 10px;
+  }
+
+  .footer-mark-text {
+    font-size: 10px;
   }
 
   .page-portfolio .site-footer,
