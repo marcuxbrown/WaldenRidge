@@ -1,0 +1,24 @@
+{
+  "ci": {
+    "collect": {
+      "staticDistDir": "./",
+      "url": [
+        "http://localhost/",
+        "http://localhost/our-story/",
+        "http://localhost/portfolio/",
+        "http://localhost/strategy/",
+        "http://localhost/leadership/",
+        "http://localhost/request/",
+        "http://localhost/schedule/"
+      ],
+      "numberOfRuns": 1
+    },
+    "assert": {
+      "budgetsFile": ".github/lighthouse-budget.json"
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": ".lighthouseci"
+    }
+  }
+}
