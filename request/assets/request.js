@@ -38,12 +38,15 @@ function collect(){
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+  if(submitBtn && submitBtn.disabled) return;
 
   const d = collect();
   if(!d.name || !d.company || !d.email || !d.role){
     setStatus('Please fill required fields.', 'bad');
     return;
   }
+
+  if(submitBtn) submitBtn.disabled = true;
 
   // Open the PDF in a new tab immediately (must be within user gesture)
   // This is independent of whether the email request succeeds.
@@ -83,5 +86,7 @@ form.addEventListener('submit', async (e) => {
   } catch (err) {
     setStatus('Network error. Please email us instead.', 'bad');
     if(pdfWin) pdfWin.close();
+  } finally {
+    if(submitBtn) submitBtn.disabled = false;
   }
 });

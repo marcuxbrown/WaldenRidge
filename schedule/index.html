@@ -15,6 +15,7 @@
   <link rel="canonical" href="https://waldenridgeco.com/schedule/">
 
   <link rel="icon" type="image/png" href="../favicon.png" />
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 
   <!-- Preconnect: warm up CDN origin -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -177,6 +178,8 @@
     const form = document.getElementById('wr-schedule');
     const statusEl = document.getElementById('status');
     const mailto = document.getElementById('mailto-fallback');
+
+    const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
 
     const calTitle = document.getElementById('cal-title');
     const calGrid = document.getElementById('cal-grid');
@@ -388,12 +391,14 @@
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if(submitBtn && submitBtn.disabled) return;
       const d = collect();
 
       if(!d.name || !d.email || !d.slot_date || !d.slot_time){
         setStatus('Please select a date and time, and fill required fields.', 'bad');
         return;
       }
+      if(submitBtn) submitBtn.disabled = true;
 
       if(!WEB_APP_URL || WEB_APP_URL.includes('__APPS_SCRIPT_WEBAPP_URL__')){
         setStatus('Scheduling endpoint not configured yet. Use "Email instead".', 'bad');
@@ -422,6 +427,8 @@
         updateMailto();
       }catch(err){
         setStatus('Network error. Use "Email instead".', 'bad');
+      }finally{
+        if(submitBtn) submitBtn.disabled = false;
       }
     });
 
