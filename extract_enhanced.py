@@ -15,8 +15,8 @@ import pillow_heif
 pillow_heif.register_heif_opener()
 
 # Configuration
-CARDS_FOLDER = "/Users/525n/Library/Mobile Documents/com~apple~CloudDocs/New Folder With Items"
-OUTPUT_CSV = "/Users/525n/clawd/workspaces/WaldenRidge-marketing/business_cards_enhanced.csv"
+CARDS_FOLDER = os.environ.get("CARDS_FOLDER", "./business_cards")
+OUTPUT_CSV = os.environ.get("OUTPUT_CSV", "./business_cards_enhanced.csv")
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 
 # Enhanced prompt
@@ -91,7 +91,7 @@ def extract_contact_info(image_path, client):
         image_b64 = base64.standard_b64encode(jpeg_data).decode("utf-8")
 
         response = client.messages.create(
-            model="claude-sonnet-4-5-20250929",
+            model="claude-3-5-sonnet-20241022",
             max_tokens=2048,  # Increased for more detailed extraction
             messages=[{
                 "role": "user",

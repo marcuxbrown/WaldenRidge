@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 """Clean up CSV file by removing explanatory text"""
 
+import os
+
+# Configuration
+csv_file = os.environ.get("OUTPUT_CSV", "./business_cards_enhanced.csv")
+
 # Read and clean CSV
-with open('business_cards_enhanced.csv', 'r') as f:
+with open(csv_file, 'r') as f:
     lines = f.readlines()
 
 # Keep header and valid data rows only
@@ -18,7 +23,7 @@ for line in lines:
             clean_lines.append(line)
 
 # Write cleaned file
-with open('business_cards_enhanced.csv', 'w') as f:
+with open(csv_file, 'w') as f:
     f.writelines(clean_lines)
 
 print(f'✓ Cleaned CSV: {len(clean_lines)-1} data rows ({len(lines) - len(clean_lines)} junk rows removed)')
