@@ -2519,16 +2519,10 @@ html.js body.page-request .page-sidebar {
 @media (max-width: 599px) {
   body {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  main {
-    flex: 1;
   }
 
   .site-footer {
-    margin-top: auto;
+    margin-top: 64px;
     padding: 36px var(--outer-margin) 32px;
   }
 
@@ -2583,7 +2577,7 @@ html.js body.page-request .page-sidebar {
   .page-our-story .site-footer,
   .page-governance .site-footer,
   .page-home .site-footer {
-    margin-top: auto;
+    margin-top: 64px;
   }
 
   .page-home main {
