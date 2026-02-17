@@ -23,17 +23,25 @@
 
   <!-- Preload critical fonts + assets -->
   <link rel="preload" href="../assets/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../styles.css" as="style">
 
+  <!-- Inline @font-face so the font-loading script below can find them immediately -->
   <style>
     @font-face {
-      font-family: "IBM Plex Sans";
-      src: url("../assets/fonts/ibm-plex-sans-latin.woff2") format("woff2");
+      font-family: "Cormorant Garamond";
+      src: url("../assets/fonts/cormorant-garamond-latin.woff2") format("woff2");
       font-weight: 300 700;
       font-style: normal;
       font-display: swap;
     }
-
+    @font-face {
+      font-family: "IBM Plex Sans";
+      src: url("../assets/fonts/ibm-plex-sans-latin.woff2") format("woff2");
+      font-weight: 100 700;
+      font-style: normal;
+      font-display: swap;
+    }
     @font-face {
       font-family: "JunicodeExpBold";
       src: url("../assets/fonts/Junicode-ExpBold.woff2") format("woff2");
@@ -46,17 +54,21 @@
   <script>
     document.documentElement.classList.add('js');
 
+    // Font loading gate: body stays opacity:0 until all typefaces resolve.
+    // @font-face rules are inlined above so document.fonts.load() finds them.
     if ('fonts' in document) {
       Promise.all([
-        document.fonts.load('300 1em "IBM Plex Sans"'),
         document.fonts.load('400 1em "IBM Plex Sans"'),
-        document.fonts.load('700 1em "JunicodeExpBold"')
+        document.fonts.load('600 1em "IBM Plex Sans"'),
+        document.fonts.load('600 1em "Cormorant Garamond"'),
+        document.fonts.load('700 1em JunicodeExpBold')
       ]).then(function() {
         document.documentElement.classList.add('fonts-loaded');
       }).catch(function() {
         document.documentElement.classList.add('fonts-loaded');
       });
 
+      // Hard timeout — never leave the page blank
       setTimeout(function() {
         document.documentElement.classList.add('fonts-loaded');
       }, 2000);
