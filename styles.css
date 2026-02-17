@@ -100,6 +100,8 @@ html {
   -webkit-text-size-adjust: 100%;
   background-color: var(--color-bg);
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
 }
 
 /* View Transitions API support */
@@ -1666,6 +1668,85 @@ body.overlay-mode.page-strategy::before {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ---- Mobile-Native Enhancements ---------------------------------- */
+
+/* Touch targets: enforce 44px minimum on all interactive elements (WCAG 2.5.8) */
+@media (max-width: 599px) {
+  .main-nav a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .footer-cta a,
+  .footer-left a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .leadership-nav-card {
+    min-height: 44px;
+  }
+
+  .btn {
+    min-height: 44px;
+  }
+}
+
+/* Safe areas for notched devices (iPhone X+, Pixel) */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .site-footer {
+    padding-bottom: calc(48px + env(safe-area-inset-bottom));
+  }
+
+  @media (max-width: 599px) {
+    .site-header {
+      padding-left: max(var(--outer-margin), env(safe-area-inset-left));
+      padding-right: max(var(--outer-margin), env(safe-area-inset-right));
+    }
+
+    .site-footer {
+      padding-bottom: calc(32px + env(safe-area-inset-bottom));
+      padding-left: max(var(--outer-margin), env(safe-area-inset-left));
+      padding-right: max(var(--outer-margin), env(safe-area-inset-right));
+    }
+
+    .container {
+      padding-left: max(0px, env(safe-area-inset-left));
+      padding-right: max(0px, env(safe-area-inset-right));
+    }
+  }
+}
+
+/* Momentum scrolling for iOS */
+@media (max-width: 1023px) {
+  .leadership-nav {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Prevent text selection on interactive elements */
+.main-nav a,
+.btn,
+.leadership-nav-card,
+.footer-cta a {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* GPU-accelerated transforms for smoother animations */
+.site-header,
+.leadership-bio-content,
+.reveal-overlay {
+  will-change: transform, opacity;
+}
+
+/* Remove 300ms tap delay (modern browsers) */
+a, button, [role="button"] {
+  touch-action: manipulation;
 }
 
 /* ---- Disable animations on very small screens -------------------- */
