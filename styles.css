@@ -2309,10 +2309,27 @@ html.js body.page-request .page-sidebar {
     margin-top: 22px;
   }
   .metrics-grid {
-    gap: 16px;
+    gap: 20px;
   }
   .home-summary {
-    margin-top: 24px;
+    margin-top: 28px;
+  }
+  .summary-grid {
+    gap: 22px;
+  }
+  .summary-item h3 {
+    font-size: 15px;
+  }
+  .summary-item p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .metric-item dt {
+    font-size: 13px;
+  }
+  .metric-item dd {
+    font-size: 13px;
+    line-height: 1.5;
   }
   .data-panel {
     padding: 14px 0 16px;
@@ -2546,6 +2563,10 @@ html.js body.page-request .page-sidebar {
   .page-governance .site-footer,
   .page-home .site-footer {
     margin-top: auto;
+  }
+
+  .page-home main {
+    padding-bottom: 48px;
   }
 
   .footer-grid {
