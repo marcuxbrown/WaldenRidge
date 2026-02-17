@@ -747,7 +747,7 @@ p:last-child {
 
 .governance-text {
   font-size: var(--fs-body);
-  line-height: 1.7;
+  line-height: 1.55;
   font-weight: 400;
   margin-bottom: 20px;
   opacity: 0.72;
@@ -1276,6 +1276,26 @@ body.overlay-mode.page-strategy::before {
     gap: 20px 28px;
   }
 
+  /* Portfolio evidence — tablet scaling */
+  .portfolio-intro-text {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .evidence-item h3 {
+    font-size: 16px;
+  }
+
+  .evidence-item p {
+    font-size: 13px;
+  }
+
+  /* Leadership — tablet governance text */
+  .governance-text {
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+
   .site-footer {
     width: 100%;
     max-width: none;
@@ -1477,9 +1497,47 @@ body.overlay-mode.page-strategy::before {
   .strategy-block {
     gap: 10px;
   }
-}
 
-/* ---- Small Phones (<= 420px) ------------------------------------ */
+  /* Portfolio evidence - mobile scaling to match strategy-text rhythm */
+  .portfolio-intro-text {
+    font-size: 15px;
+    line-height: 1.55;
+    margin-bottom: 24px;
+  }
+
+  .evidence-item h3 {
+    font-size: 15px;
+  }
+
+  .evidence-item p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .portfolio-evidence {
+    margin-bottom: 28px;
+  }
+
+  /* Leadership - governance text mobile scaling */
+  .governance-text {
+    font-size: var(--fs-body);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .governance-divider {
+    margin-bottom: 20px;
+  }
+
+  .governance-intro {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+  }
+
+  .governance-header {
+    margin-bottom: 24px;
+  }
+}
 @media (max-width: 599px) {
   .main-nav {
     gap: 10px 16px;
@@ -1497,7 +1555,7 @@ body.overlay-mode.page-strategy::before {
 }
 
 /* ---- Small Mobile (320px - 389px) - iPhone SE, older Android ----- */
-@media (max-width: 599px) {
+@media (max-width: 389px) {
   :root {
     --outer-margin: 24px;
     --fs-h1: 28px;

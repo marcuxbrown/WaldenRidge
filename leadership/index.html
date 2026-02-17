@@ -104,7 +104,7 @@
     .leadership-layout {
       display: grid;
       grid-template-columns: 320px 1fr;
-      gap: 64px;
+      gap: 80px;
       margin-top: 48px;
     }
 
@@ -122,11 +122,11 @@
     }
 
     .leadership-nav-section h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
+      font-family: var(--font-display);
+      font-size: var(--fs-section-head);
       font-weight: 600;
       margin-bottom: 16px;
-      color: var(--color-text-primary);
+      letter-spacing: -0.01em;
     }
 
     .leadership-nav-card {
@@ -144,19 +144,19 @@
 
     .leadership-nav-card.active {
       padding-left: 8px;
-      border-left: 2px solid var(--color-text-primary);
+      border-left: 2px solid var(--color-text);
     }
 
     .leadership-nav-name {
       font-size: 15px;
       font-weight: 500;
-      color: var(--color-text-primary);
+      color: var(--color-text);
       margin-bottom: 2px;
     }
 
     .leadership-nav-title {
       font-size: 13px;
-      color: var(--color-text-secondary);
+      opacity: 0.6;
     }
 
     /* Right column - bio content */
@@ -170,18 +170,12 @@
 
     .leadership-bio-content.active {
       display: block;
-      animation: fadeIn 0.3s ease;
+      animation: leadershipFadeIn 0.3s ease;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    @keyframes leadershipFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .bio-header {
@@ -191,7 +185,7 @@
     }
 
     .bio-name {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--font-display);
       font-size: 32px;
       font-weight: 600;
       margin-bottom: 8px;
@@ -199,14 +193,16 @@
 
     .bio-role {
       font-size: 15px;
-      color: var(--color-text-secondary);
+      opacity: 0.6;
     }
 
-    /* Mobile responsive - maintain vertical pattern, optimize for touch */
-    @media (max-width: 900px) {
+    /* ---- Responsive: aligned to global breakpoint system ---- */
+
+    /* Tablet landscape ≤1023px — matches strategy/portfolio collapse */
+    @media (max-width: 1023px) {
       .leadership-layout {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 48px;
       }
 
       .leadership-nav {
@@ -214,25 +210,34 @@
         max-height: none;
       }
 
+      .leadership-bio-container {
+        min-height: auto;
+      }
+    }
+
+    /* Tablet portrait ≤833px */
+    @media (max-width: 833px) {
+      .leadership-layout {
+        gap: 40px;
+      }
+
       .leadership-nav-section {
-        margin-bottom: 40px;
+        margin-bottom: 32px;
       }
 
       .leadership-nav-section h3 {
-        font-size: 15px;
-        margin-bottom: 20px;
-        letter-spacing: 0.08em;
+        font-size: var(--fs-section-head);
+        margin-bottom: 14px;
       }
 
       .leadership-nav-card {
-        padding: 20px 0;
-        border-bottom: 1px solid var(--line-subtle);
+        padding: 16px 0;
       }
 
       .leadership-nav-card.active {
         padding-left: 0;
         border-left: none;
-        border-bottom: 1px solid var(--color-text-primary);
+        border-bottom: 1px solid var(--color-text);
       }
 
       .leadership-nav-card:hover {
@@ -240,20 +245,70 @@
       }
 
       .leadership-nav-name {
-        font-size: 16px;
+        font-size: 15px;
       }
 
       .leadership-nav-title {
-        font-size: 14px;
-        opacity: 0.6;
+        font-size: 13px;
       }
 
       .bio-name {
         font-size: 28px;
       }
 
+      .bio-header {
+        margin-bottom: 24px;
+        padding-bottom: 18px;
+      }
+
       .bio-role {
         font-size: 14px;
+      }
+    }
+
+    /* Mobile ≤599px — matches strategy mobile treatment */
+    @media (max-width: 599px) {
+      .leadership-layout {
+        gap: 32px;
+        margin-top: 32px;
+      }
+
+      .leadership-nav-section {
+        margin-bottom: 24px;
+      }
+
+      .leadership-nav-section h3 {
+        font-size: 15px;
+        margin-bottom: 12px;
+      }
+
+      .leadership-nav-card {
+        padding: 14px 0;
+      }
+
+      .leadership-nav-name {
+        font-size: 14px;
+      }
+
+      .leadership-nav-title {
+        font-size: 12px;
+      }
+
+      .bio-name {
+        font-size: 24px;
+      }
+
+      .bio-header {
+        margin-bottom: 20px;
+        padding-bottom: 14px;
+      }
+
+      .bio-role {
+        font-size: 13px;
+      }
+
+      .leadership-bio-container {
+        min-height: auto;
       }
     }
   </style>
