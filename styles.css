@@ -2537,24 +2537,45 @@ html.js body.page-request .page-sidebar {
   }
 
   .footer-content {
-    gap: 32px;
+    gap: 16px;
+    align-items: flex-end;
   }
 
   .footer-logo {
-    height: 54px;
+    height: 42px;
+    transform: translateY(4px);
   }
 
   .footer-left a,
   .footer-location {
-    font-size: 13px;
+    font-size: 11px;
+  }
+
+  .footer-cta {
+    margin-top: 4px;
+    font-size: 0; /* hide the · text node */
   }
 
   .footer-cta a {
-    font-size: 10px;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+  }
+
+  .footer-cta a:first-child::after {
+    content: '';
+    display: inline-block;
+    width: 8px;
+  }
+
+  .footer-mark {
+    align-items: center;
+    gap: 0;
   }
 
   .footer-mark-text {
-    font-size: 10px;
+    font-size: 8px;
+    letter-spacing: 0.16em;
+    margin-top: 0;
   }
 
   .page-portfolio .site-footer,
