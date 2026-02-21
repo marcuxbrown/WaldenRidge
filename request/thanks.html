@@ -81,6 +81,7 @@
   </header>
 
   <main class="container">
+    <div class="reveal-overlay" aria-hidden="true"></div>
     <div class="request-intro">
       <h1>Request received</h1>
       <div class="page-metrics">Proposal delivery via email</div>
@@ -115,6 +116,22 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    (function() {
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+      var initial = nav ? nav.type === 'navigate' : true;
+      if (reduced || !initial) {
+        document.documentElement.classList.add('no-motion');
+        var o = document.querySelector('.reveal-overlay'); if (o) o.remove();
+      } else {
+        document.documentElement.classList.add('entrance-play');
+        var o = document.querySelector('.reveal-overlay');
+        if (o) o.addEventListener('animationend', function() { o.remove(); });
+      }
+    })();
+  </script>
 
 </body>
 </html>

@@ -18,9 +18,6 @@
   <link rel="icon" type="image/png" href="../favicon.png">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 
-  <!-- Preconnect: warm up CDN origin -->
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-
   <!-- Preload critical fonts + assets -->
   <link rel="preload" href="../assets/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -91,8 +88,6 @@
   <!-- Site Styles -->
   <link rel="stylesheet" href="../styles.css">
 
-  <!-- GSAP -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
 </head>
 <body class="page-strategy">
 
@@ -195,28 +190,20 @@
     </div>
   </footer>
 
-    <script>
-    // Lightweight entrance animation - runs immediately, no font-loading dependency
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const navEntry = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
-    const isInitialLoad = navEntry ? navEntry.type === 'navigate' : true;
-
-    if (prefersReduced || !window.gsap || !isInitialLoad) {
-      document.documentElement.classList.add('no-motion');
-      document.querySelector('.reveal-overlay')?.remove();
-    } else {
-      requestAnimationFrame(() => {
-        const tl = gsap.timeline({
-          defaults: { ease: 'power2.out', duration: 0.4 },
-          onComplete: () => {
-            document.querySelector('.reveal-overlay')?.remove();
-          }
-        });
-        tl.to('.reveal-overlay', { autoAlpha: 0, duration: 0.3, ease: 'power2.inOut' }, 0)
-          .from('.site-header', { autoAlpha: 0, y: -6, duration: 0.35 }, 0.05)
-          .from('main', { autoAlpha: 0, y: 8, duration: 0.4 }, 0.08);
-      });
-    }
+  <script>
+    (function() {
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+      var initial = nav ? nav.type === 'navigate' : true;
+      if (reduced || !initial) {
+        document.documentElement.classList.add('no-motion');
+        var o = document.querySelector('.reveal-overlay'); if (o) o.remove();
+      } else {
+        document.documentElement.classList.add('entrance-play');
+        var o = document.querySelector('.reveal-overlay');
+        if (o) o.addEventListener('animationend', function() { o.remove(); });
+      }
+    })();
   </script>
 
 
