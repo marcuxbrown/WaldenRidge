@@ -228,6 +228,10 @@ form?.addEventListener('submit', async (e) => {
   e.preventDefault();
   setStatus(submitStatus, '', null);
 
+  // Honeypot check
+  const hp = form.querySelector('[name="website"]');
+  if (hp && hp.value) return;
+
   const data = collectFormData();
   const missing = validateRequired(data);
   if(missing.length){
