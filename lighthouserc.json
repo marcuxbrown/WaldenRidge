@@ -9,7 +9,9 @@
         "http://localhost/strategy/",
         "http://localhost/leadership/",
         "http://localhost/request/",
-        "http://localhost/schedule/"
+        "http://localhost/request/thanks.html",
+        "http://localhost/schedule/",
+        "http://localhost/ops-intake/"
       ],
       "numberOfRuns": 1
     },

@@ -102,10 +102,26 @@ Sidebar item text | — | 14px | 14px | 400
 - Light rule divider
 
 ## 5) Motion & Interaction (Implemented)
-- Header and main content use `breatheIn` (0.8s) on load
-- Sidebar and portfolio sections use `fadeIn` and staggered `breatheIn`
-- Underline expansion on section intros
-- Motion is permitted and part of the system
+All entrance animations use pure CSS keyframes (no external library).
+
+**Entrance sequence** (triggered by `html.entrance-play` class):
+1. `.reveal-overlay` fades out: 0.3s `cubic-bezier(0.33, 0, 0.67, 1)`
+2. `.site-header` slides down: 0.35s @ 50ms delay, `cubic-bezier(0.22, 1, 0.36, 1)`
+3. `main` slides up: 0.4s @ 80ms delay, same easing
+
+**Form pages** (request, schedule): longer durations (0.4s/0.5s/0.6s) with larger offsets (-8px/12px).
+
+**Trigger logic** (~12 lines inline JS per page):
+- Check `prefers-reduced-motion` — skip if reduced
+- Check `performance.navigation.type` — skip on back/forward
+- Add `entrance-play` class to `<html>` on initial load
+- Remove `.reveal-overlay` on `animationend`
+
+**Other motion**:
+- Underline expansion on section intros (`expandWidth` keyframe)
+- Leadership bio fade-in (`leadershipFadeIn` keyframe)
+- `prefers-reduced-motion: reduce` disables all animation/transition durations
+- Animations disabled below 599px via media query
 
 ## 6) Color System (Implemented)
 - Text: `#1a1a1a`
@@ -143,3 +159,30 @@ Media queries are structural only (layout shifts):
 ## 9) Documentation Governance
 - This rulebook supersedes prior measurement and typography documents.
 - If implementation changes, update this rulebook in the same change set.
+
+## 10) Font Loading Contract
+All pages use self-hosted woff2 files from `assets/fonts/`. No external font CDN.
+
+**Files**: `ibm-plex-sans-latin.woff2`, `cormorant-garamond-latin.woff2`, `Junicode-ExpBold.woff2`
+
+**Loading pattern** (every page):
+1. Inline `@font-face` declarations in `<style>` block (before any script)
+2. Font gate script: `document.fonts.load()` for each face, adds `.fonts-loaded` class
+3. 2s hard timeout fallback — page never stays blank
+4. CSS: `.js:not(.fonts-loaded) body { opacity: 0 }` hides FOUC
+
+**CSP**: `font-src 'self'` — only self-hosted fonts are permitted.
+
+**404.html special case**: Uses absolute `/assets/fonts/` paths since 404 can serve at any URL depth.
+
+## 11) Build & Validation
+Run `bash build.sh` before deploy. Checks:
+
+1. No image > 500KB
+2. CSS braces balanced
+3. No Google Fonts references in live pages
+4. No GSAP CDN references in live pages
+5. All live pages exist
+6. Generates fresh `styles.min.css`
+
+Exit code 0 = ready to deploy.
