@@ -8,12 +8,33 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../favicon.png">
 
-  <!-- Preconnect: warm up font + CDN origins -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Preload critical fonts -->
+  <link rel="preload" href="../assets/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
 
-  <!-- Google Fonts (render-blocking so @font-face rules exist before script) -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
+  <style>
+    @font-face {
+      font-family: "Cormorant Garamond";
+      src: url("../assets/fonts/cormorant-garamond-latin.woff2") format("woff2");
+      font-weight: 300 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "IBM Plex Sans";
+      src: url("../assets/fonts/ibm-plex-sans-latin.woff2") format("woff2");
+      font-weight: 100 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "JunicodeExpBold";
+      src: url("../assets/fonts/Junicode-ExpBold.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+  </style>
 
   <script>
     document.documentElement.classList.add('js');
