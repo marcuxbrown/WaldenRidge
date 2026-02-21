@@ -2000,6 +2000,21 @@ html.entrance-play body.page-schedule main {
   display: none;
 }
 
+/* Entrance animations disabled on tablet/mobile — overlay already hidden at 833px */
+@media (max-width: 833px) {
+  html.entrance-play .reveal-overlay,
+  html.entrance-play .site-header,
+  html.entrance-play main {
+    animation: none;
+  }
+
+  html.entrance-play .site-header,
+  html.entrance-play main {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .sidebar-title {
   position: relative;
   display: flex;
