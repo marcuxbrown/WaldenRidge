@@ -1189,7 +1189,7 @@ p:last-child {
 .page-leadership .site-footer,
 .page-home .site-footer,
 .page-request .site-footer {
-  margin-top: 120px;
+  margin-top: 64px;
 }
 
 @media (max-width: 833px) {
@@ -2594,7 +2594,7 @@ html.entrance-play body.page-schedule main {
 /* ---- Footer (Swiss Grid / Paul Rand Approach) -------------------- */
 .site-footer {
   max-width: 1440px;
-  margin: 120px auto 0;
+  margin: 64px auto 0;
   padding: 0 var(--outer-margin) 48px;
 }
 
